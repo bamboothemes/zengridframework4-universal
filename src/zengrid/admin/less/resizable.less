@@ -1,0 +1,238 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+ #zgf {
+	 #resize-container {
+		width:635px; 
+		background:#eee;
+		float:left;
+		padding:0 10px 10px;
+	}
+	
+	.module-row {
+		margin-left:-10px;
+		clear:both;
+		margin-bottom:45px;
+	}
+	
+	.resizable { 
+		position:relative;
+		min-height:80px;
+		height:80px;
+		max-height: 80px;
+		float:left;
+		border:1px solid #eee;
+		
+		&:hover {
+			border:1px solid #ccc
+		}
+		background:#fff;
+		text-align:center;
+		padding-top:15px;
+		margin:-10px 0 10px 10px;
+		border:1px solid #ddd;
+		border-radius:4px;
+		
+		&.grid-1 {
+			width:50px !important}
+		
+		&.grid-2 {
+			width:93px !important}
+		
+		&.grid-3 {
+			width:145px !important}
+		
+		&.grid-4 {
+			width:197px !important}
+		
+		&.grid-5 {
+			width:248px !important}
+		
+		&.grid-6 {
+			width:300px !important}
+		
+		&.grid-7 {
+			width:350px !important}
+		
+		&.grid-8 {
+			width:403px!important
+		}
+		
+		&.grid-9 {
+			width:455px !important
+		}
+		
+		&.grid-10 {
+			width:500px !important
+		}
+		
+		&.grid-11 {
+			width:550px !important
+		}
+		
+		&.grid-12 {
+			width:610px !important
+		}
+		
+		span {
+			display:block;
+			font-weight:normal
+		}
+	 	
+	 	h3 { 
+			text-align: left; 
+			margin: 0; 
+			font-size:90%;
+			padding-left:15px;
+			
+		}
+		
+		.icon-eye {
+			position:absolute;
+			z-index:10;
+			top:0px;
+			padding:10px;
+			right:12px;
+			cursor:pointer
+		}
+	}
+	
+	
+	.main-content-toggle {
+		color:#333;
+		font-size:90%;
+		font-weight:bold;
+		margin-left:20px;
+		padding-right:20px
+	}
+	
+	.row-title {
+		text-transform:uppercase;
+		position:relative;
+		z-index:1;
+		//text-align:center;
+		border-bottom:40px solid @bg;
+		height:0px;
+		clear:both;
+		width:645px;
+		margin-top:0px;
+		margin-bottom:20px;
+		
+		span {
+			background: @bg;
+			padding:0 10px 0 0;
+			margin-top:18px;
+			display:inline-block;
+			font-weight:bold;
+			font-size:80%
+		}
+	}
+	
+	
+	.unused-modules {
+		float:left;
+		width:100%;
+		position:relative;
+		padding-left:10px;
+		height: 22px;
+		
+		&.has-content {
+			margin-bottom:10px;
+			height:auto;
+	
+			
+			.icon-eye {
+				display:block
+			}
+		}
+		
+		div {
+			float:left;
+			padding:0 10px;
+			height: 22px;
+			border:1px solid #ddd;
+			border-radius:1px;
+			margin-right:4px;
+			margin:16px 4px 10px 4px;
+			background:#fff;
+			cursor:pointer;
+			font-size:10px;
+			text-transform:uppercase;
+			
+			&:hover {
+				border:1px solid #ccc
+			}
+	
+		}
+			
+		.icon-eye {
+			float:left;	
+			margin-top:13px;
+			margin-left: 2px;
+			margin-right:25px;
+			right:auto;
+			display: none;
+			
+			&:before {
+				background:red;
+				color:#fff;
+				padding:3px 10px;
+				margin-top:4px;
+				border-radius:2px;
+			}
+			
+		}
+			
+		
+	}
+	
+	
+	.stack-position {
+		position:absolute;
+		z-index:2;
+		right:-300px;
+		width:280px;
+		top:42px;
+		
+	
+		
+		span {
+			margin-right:0px;
+			margin-top:8px;
+			display:inline-block;
+			text-align:center;
+			width:30px;
+			display:inline-block;
+			
+	
+		}
+	}
+	
+	
+	.stack-positions {
+		background: @bg;
+		padding:0 10px;
+		display:inline-block;
+		font-weight:bold;
+		font-size:80%;
+		color:#999;
+		margin-right:4px;
+		border-radius:2px;
+		&.active {
+			background:lighten( #3498DB,10%);
+			color:#fff
+		}
+		
+		&:hover {
+			text-decoration:none
+		}
+	}
+}

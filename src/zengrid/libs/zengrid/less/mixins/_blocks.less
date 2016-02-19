@@ -1,0 +1,27 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+.make-block(@background, @text, @link) {
+	background: @background;
+	color: @text;
+	
+	* {
+		color: @text
+	}
+	
+	a {
+		color: @link;
+		
+		&:hover {
+			color: darken(@link, 15%)
+		}
+	}
+}

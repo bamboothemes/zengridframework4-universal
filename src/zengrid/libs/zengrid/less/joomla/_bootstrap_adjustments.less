@@ -1,0 +1,230 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+  // Bootstrap Fixes
+ .container {
+ 	max-width:100%
+ }
+ 
+ main .container {
+ 	padding:0;
+ 	
+ 	width:100%
+ }
+ 
+ 
+ // Fix for modal
+ 
+ div.modal {
+ 	display:none;
+ 	
+ 	&.in {
+ 		display:block
+ 	}
+ }
+ 
+ 
+ 
+ // Inputs
+ // Inputs
+ .bootstrap2 {
+ 	input.uneditable-input, span.uneditable-input {
+ 		.box-sizing(border-box);
+ 	}
+ 	
+ 	
+ 	.input-prepend.input-append .add-on:first-child, 
+ 	.input-prepend.input-append .btn:first-child {
+ 		padding:5px 20px 35px;
+ 		border-color:@border-color
+ 	}
+ 	
+ 	input {
+ 		width:auto
+ 	}
+ 	
+ 	.media-preview .icon-eye {
+ 		margin-left:14px
+ 	}
+ 	
+ 	.btn .icon-remove {
+ 		
+ 		background-position:-312px 2px;
+ 		
+ 		&:before {
+ 			display:none;
+ 		}
+ 	}
+ 	
+ 	.btn .icon-calendar:before {
+ 		display:none
+ 	}
+ 	
+ 	.control-label {
+ 		label {
+ 			
+ 		}
+ 	}
+ 	
+ 	.input-prepend.input-append {
+ 		.btn {
+ 			line-height: (@input-min-height - 2);
+ 			padding-top:0;
+ 			padding-bottom:0
+ 		}
+ 		
+ 		.icon-eye {
+ 			margin-top:0;
+ 			line-height: (@input-min-height - 2);
+ 			
+ 		}
+ 		
+ 		.media-preview.add-on {
+ 			min-height:(@input-min-height);
+ 			padding-top:0;
+ 			padding-bottom:0
+ 		}
+ 	}
+ }
+ 
+ 
+ 
+ // reset checkbox and radio width
+ .bootstrap2,
+ .bootstrap3 {
+ 	input[type="radio"],
+ 	input[type="checkbox"] {
+ 	  width:auto
+ 	}
+ 	
+ 	.form-inline .form-group {
+ 		margin-bottom:10px
+ 	}
+ 	
+ 	a:hover {
+ 		text-decoration:none
+ 	}
+ 	
+ 	.input-group-addon {
+ 		border:0
+ 	}
+ }
+ 
+ 
+ // Nav
+ .navbar-nav,
+ .navbar-collapse,
+ .collapse,
+ .navbar-responsive-collapse {
+ 	clear:none !important
+ }
+ 
+ 
+ 
+ .nav-tabs {
+ 
+ 	.dropdown-menu {
+ 		
+ 		border:0;
+ 		padding:0;
+ 		
+ 		li,a {
+ 			width:100%;
+ 			margin:0;
+ 		}
+ 		
+ 		.divider {
+ 			margin:0;
+ 		}
+ 	}
+ }
+ 
+ 
+ .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+ 	.btn-active();
+ }
+ 
+ 
+ // ul reset 
+ .nav-pills,.list-group,ul.breadcrumb {
+ 	margin-left:0;
+ }
+ 
+ .list-unstyled {
+ 	margin:@gutter * 2 0
+ }
+ 
+ 
+ // Breadcumb
+ .breadcrumb > li + li:before {
+ 	content:""
+ }
+ 
+ 
+ // Wells
+ .well-lg {padding:@gutter * 2 !important}
+ .well-sm {padding:@gutter / 2 !important}
+ 
+ 
+ 
+ // Bootstrap 2
+ 
+ // Navbar
+ .navbar-search {
+ 	margin-top:@navbar-height / 10;
+ }
+ 
+ .navbar-inverse {
+ 	input {
+ 		border-color:rgba(0,0,0,0.3) !important
+ 	}
+ }
+ 
+ // Breadcrumb
+ // Only applied tpo main because the template uses the same class but different style
+ main {
+ 	ul.breadcrumb {
+ 
+ 		float:left;
+ 		width:100%;
+ 		margin:0;
+ 	
+ 		.divider {
+ 			clear:none;
+ 			display:inline;
+ 			float:right;
+ 			border:0
+ 		}
+ 	
+ 		li {
+ 			float:left
+ 		}
+ 	
+ 		li:after {
+ 			content:""
+ 		}
+ 	}
+ }
+ 
+ 
+ .btn-group {
+     position: relative;
+     display: inline-block;
+     vertical-align: middle;
+     white-space: nowrap;
+ }
+ 
+ 
+ .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
+ 	.btn-active() !important
+ }
+

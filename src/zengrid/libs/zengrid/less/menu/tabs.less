@@ -1,0 +1,77 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+ .zen-menu-tabs {
+	
+	
+	float:left;
+	width:100%;
+	
+		
+	&:after {
+		position: absolute;
+	    content: "";
+	    width: 100%;
+	    bottom: 0;
+	    left: 0;
+	    border-bottom: 1px solid #eee;
+	    z-index: 1;
+	}
+	
+		
+	li {
+		
+		margin:0;
+		z-index: 2;
+		    
+		> a,
+		> .zen-menu-heading {
+			
+			padding:10px 30px;
+			border-bottom:0;
+			border-left:0;
+			
+			&:hover {
+				
+			}
+			
+		}
+		
+		&.active {
+			 
+			> a,
+			> .zen-menu-heading {
+				border:1px solid #eee;
+				border-bottom-color: #fff;
+				border-radius:4px 4px 0 0 
+			}
+		}
+		
+		li {
+			
+			> a,
+			> .zen-menu-heading {
+				border:0;
+				padding:0
+			}
+			
+			&.active {
+				
+				> a,
+				> .zen-menu-heading {
+					border:0
+				}
+			}
+		}
+		
+	}
+}

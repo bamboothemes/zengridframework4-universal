@@ -1,0 +1,77 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+
+//------------------------------------*\
+// Labels and badges
+// ----
+
+.label,.badge,label {
+	border-radius:@border-radius;
+	font-size: 90%;
+	margin: 0 10px 10px 0;
+	display: inline-block;
+	padding: 4px 8px;
+}
+
+
+.badge {
+	padding: 10px	
+}
+
+.label-default,
+.badge-default {
+	.make-label(@gray, #000);
+}
+
+
+.label-black,
+.badge-black {
+	.make-label(@black, #fff);
+}
+
+
+.label-primary,
+.badge-primary {
+	.make-label(@primary, #fff);
+}
+
+.label-secondary,
+.badge-secondary {
+	.make-label(@black, #fff);
+}
+
+.label-error,
+.badge-error {
+	.make-label(@btn-danger-bg, @btn-danger-color);
+}
+
+
+.label-success,
+.badge-success {
+	.make-label(@btn-success-bg, @btn-success-color);
+}
+
+.label-warning,
+.badge-warning {
+	.make-label(@btn-warning-bg, @btn-warning-color);
+}
+
+.label-danger,
+.badge-danger {
+	.make-label(@btn-danger-bg, @btn-danger-color);
+}
+
+
+.label-white,
+.badge-white {
+	.make-label(@white, @black);
+}

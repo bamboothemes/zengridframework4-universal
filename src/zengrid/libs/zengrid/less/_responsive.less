@@ -1,0 +1,213 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+
+
+// Responsive Tools
+.responsive-enabled {
+	
+	width:100% !important;
+	
+	@media screen and (min-width: @tablet-max-width) {
+		.hidden-desktop {
+			.visuallyhidden();
+		}
+	
+		.visible-desktop,
+		.min-width-tablet,
+		.min-width-phone {
+			display:block !important;
+			visibility:visible
+		}
+	
+		.visible-tablets,
+		.visible-tablet {
+			.visuallyhidden();
+		}
+	
+		.visible-phones,
+		.visible-phone {
+			.visuallyhidden();
+		}
+	
+	}
+
+
+
+
+	@media screen and (min-width: @phone-max-width) and (max-width: @tablet-max-width) {
+		
+		.stack-tablets {
+			.zen-col {
+				width:100% !important;
+				margin-left:0;
+			}
+		}
+		
+		.hidden-tablets,
+		.hidden-tablet,
+		.min-width-desktop {
+			.visuallyhidden();
+		}
+	
+		.visible-tablets,
+		.visible-tablet {
+			display:block !important;
+			visibility:visible
+		}
+		
+		.visible-phones,
+		.visible-phone {
+			.visuallyhidden();
+		}
+	
+	}
+
+
+
+@media screen and (max-width: @phone-max-width) {
+	
+
+	.stack-phones {
+		.zen-col {
+			width:100%
+		}
+	}
+	
+	.hidden-phones,
+	.hidden-phone,
+	.min-width-tablet,
+	.min-width-desktop {
+		.visuallyhidden();
+	}
+	
+	.visible-phone,
+	.visible-phones,
+	.min-width-phone  {
+		display:block !important;
+		visibility:visible
+	}
+	
+	.zen-container{
+		width:60%
+	}
+	
+}
+
+
+@media screen and (min-width: @navcollapse) {
+
+	.visible-navcollapse,
+	#off-canvas-menu .simple-list {
+		.visuallyhidden();
+	}
+}
+
+
+@media screen and (max-width: @navcollapse) {
+	
+	.visible-navcollapse {
+		display:block !important;
+		visibility:visible
+	}
+	
+	.hidden-navcollapse{
+		.visuallyhidden();
+	}
+	
+	#menu ul{
+		display:none
+	}
+	
+	&.default-menu,
+	&.stacked-menu {
+		#menu ul{
+			display:block;
+			
+			ul {
+				display:none
+			}
+		}
+		
+		#navwrap.fixed {
+			position:relative 
+		}
+	}
+	
+	// Stacked menu
+	&.stacked-menu {
+		#menu {
+			ul {
+				li {
+					width:100%
+				}
+
+			}
+		}
+	}
+	
+	
+	
+	.fixed {
+		.off-canvas-trigger {
+			display:none !important
+		}
+	}
+	
+	
+}
+
+
+@media screen and (min-width: @gridcollapse) {
+
+	.visible-gridcollapse {
+		.visuallyhidden();
+	}
+	
+	
+}
+
+
+@media screen and (max-width: @gridcollapse) {
+
+	.visible-gridcollapse {
+		display:block !important;
+		visibility:visible
+	}
+	
+	.hidden-gridcollapse{
+		.visuallyhidden();
+	}
+}
+
+
+// Max Widths on the main containers
+@media screen and (min-width: @tablet-max-width) {
+	.zen-container{	
+		width: @container-width;
+	}
+}
+
+
+@media screen and (max-width: @tablet-max-width) {
+
+	.zen-container{
+		width:@tablet-container-width
+	}
+}
+
+
+@media screen and (max-width: @phone-max-width) {
+
+	.zen-container{
+		width:@phone-container-width
+	}
+}
+}

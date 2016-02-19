@@ -1,0 +1,142 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   Copyright (C) Joomlabamboo, November 16 2015
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	November 16 2015
+ *------------------------------------------------------------------------------
+ */
+
+
+/*------------------------------------*\
+	FORMS
+\*------------------------------------*/
+
+
+// Fieldsets
+// -----------------------------------------------------------------------------*/
+fieldset{
+	margin:0;
+	max-width: 100%;
+	border:0;
+	padding:0;
+
+	legend {
+		font-weight: bold;
+		font-size: 1.2em;
+		width:100%;
+		padding-bottom:8px;
+		border-bottom:1px solid @border-color
+	}
+}
+
+
+// Labels
+// -----------------------------------------------------------------------------*/
+
+label {
+	display: block;
+	cursor:pointer;
+	font-weight:normal;
+	margin-bottom:4px;
+}
+
+
+// Inputs, Textarea
+// -----------------------------------------------------------------------------*/
+input,
+textarea{
+	font-family:inherit;
+	font-size:1em;
+	line-height:2em;
+	padding:6px 12px;
+	background: @input-bg;
+	color:@input-color;
+	border:1px solid @input-border;
+	max-width:100%;
+	margin-bottom: @gutter-sml;
+	
+	&:hover {
+		background:lighten(@border-color, 5%);
+	}
+}
+
+
+input[type="checkbox"], input[type="radio"], input[type="submit"] {
+	min-height: 0;
+	height: auto;
+	width: auto
+}
+
+textarea {
+	border-radius:@input-border-radius !important;
+}
+
+
+// Input groups
+.input-group-addon {display:inline}
+
+
+// Reset Input buttons
+input.button {
+	width: auto;
+	-webkit-appearance:none
+}
+
+
+
+// Input / Selectes
+// -----------------------------------------------------------------------------*/
+input,select {
+	border-radius:@input-border-radius !important;
+	border: 1px solid @border-color  !important;
+	box-shadow:none !important;
+	margin-bottom: @gutter-sml;
+	height: @input-min-height;
+}
+
+
+
+
+// Forms
+// -----------------------------------------------------------------------------*/
+form {
+	margin-bottom: @gutter
+}
+
+.form-control {
+	height:auto
+}
+
+.form-group,
+.form-inline .form-group {
+	margin-bottom:10px;
+}
+
+
+
+// Contact Form
+// -----------------------------------------------------------------------------*/
+
+.contact-form {
+
+	legend {
+		margin-bottom: @gutter;
+	}
+	
+	
+	label {
+		display: block
+	}
+	
+	input,textarea {
+		width: 100%;
+	}
+	
+	input[type="radio"],
+	input[type="checkbox"] {
+		width: auto
+	}
+}

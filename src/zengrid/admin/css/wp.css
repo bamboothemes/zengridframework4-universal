@@ -1,0 +1,36 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+.wp-toolbar #template-toolbar,
+.wp-toolbar #framework-options {
+  position: relative;
+  top: auto;
+  margin: 0;
+  padding-left: 0;
+}
+.wp-toolbar #framework-options {
+  margin-left: -20px;
+  padding-left: 60px;
+}
+.wp-toolbar #zen-sidebar,
+.wp-toolbar #template-toolbar {
+  left: 0px;
+}
+.wp-toolbar #template-toolbar {
+  margin-left: -20px;
+  padding-left: 30px;
+}
+.wp-toolbar #zen-sidebar li {
+  margin-bottom: 0;
+}
+.wp-toolbar #theme-settings label {
+  display: block;
+  margin-bottom: 8px;
+}

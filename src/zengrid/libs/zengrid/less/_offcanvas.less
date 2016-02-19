@@ -1,0 +1,75 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+// Extends the default slidebars.less
+.sb-slidebar {
+	background: @off-canvas-bg;
+	color: @off-canvas-text;
+	
+	p {
+		color:  @off-canvas-text;
+	}
+	
+	.zen-nav.zen-nav-stacked li {
+		a,span {
+			color: @off-canvas-link;
+			
+			&:hover {
+				color: @off-canvas-link-hover
+			}
+		}
+	}
+	
+	.zen-nav {
+		ul {
+			font-size: 90%
+		}
+	}
+	
+	h1,h2,h3,h4,h5,h6 {
+		color: @off-canvas-heading;
+		
+		a {
+			color:  @off-canvas-heading;
+			
+			&:hover {
+				color: @off-canvas-link-hover
+			}
+		}
+	}
+	
+	.zen-nav.zen-nav-stacked li.active > a, 
+	.zen-nav.zen-nav-stacked li.active > span {
+		color:  @off-canvas-active-link-color
+	}
+}
+
+
+// Offcanvas trigger
+.off-canvas-trigger {
+	margin-bottom:0;
+}
+
+
+// Offcanvas close
+.sb-close span{
+	cursor: pointer;
+	top: 20px;
+	right: 20px;
+	position: absolute;
+	z-imdex:1;
+	color: @off-canvas-text;
+	
+	&:hover {
+		color: @off-canvas-link-hover
+	}
+}

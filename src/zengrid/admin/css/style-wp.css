@@ -1,0 +1,125 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+ #template-toolbar {
+ 	top: 0px;
+ 	z-index:10;
+ 	margin-left: -20px;
+ 	width: auto;
+ 	right: 0;
+ }
+ 
+ #template-toolbar h3 {
+ 	float: left;
+ }
+ 
+ #template-toolbar #load-config,
+ #template-toolbar select {
+  	float: left;
+  	
+ }
+ 
+ #template-toolbar select {
+ min-width: 180px;
+ margin-left: 20px;
+ }
+ 
+ #framework-options {
+ 	margin-top: 70px;
+ 	margin-left: -20px;
+ 	right: 0;
+ 	width: auto;;
+ }
+ 
+ #zgfmessage {
+ 	top: 0;
+ 	background: #00AAE7;
+ 	color: #fff;
+ 	margin: 30px 0 0 160px;
+ 	padding: 28px;
+ 	display: none;
+ }
+ 
+  #zgfmessage * {
+  	color: #fff;
+  }
+ 
+ .uk-button {
+ 	margin-bottom: 20px;
+ }
+ 
+ #framework-options .uk-form {
+ 	display: block; 
+ 	margin-bottom: 20px;	
+ }
+ 
+ #framework-options select {
+ 	min-width: 300px;
+ }
+ 
+  #framework-options ul {
+  	
+  	padding-left: 0;
+  }
+
+ #zen-sidebar {
+ 	
+ } 
+ #zen-sidebar li{
+ 	padding: 0;
+ 	margin: 0;
+ }
+ 
+  #zen-sidebar a{
+	box-shadow: none;
+	padding: 20px 0;
+ }
+ 
+ #template-toolbar a#save-theme {
+ 	margin-right: 45px;
+ }
+ 
+ [class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+ 
+  display: inline-block;
+  text-decoration: inherit;
+  width: auto !important;
+  margin-right: 0 !important;
+  text-align: center;
+  /* opacity: .8; */
+ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+ 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+ 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+#resize-container .icon-eye {right: 0;} 
+#resize-container .icon-eye:before { content: "\f177"; font-family: dashicons;} /* '' */
+#resize-container .icon-eye-off:before { content: "\f530";font-family: dashicons; } /* '' */

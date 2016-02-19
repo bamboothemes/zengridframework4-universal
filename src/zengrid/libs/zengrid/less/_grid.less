@@ -1,0 +1,430 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+
+/* Reusable column setup */
+	
+	.mixin-col {
+	     border:0px solid rgba(0,0,0,0);
+	     float:left;
+	     box-sizing:border-box;
+	     -moz-background-clip:padding-box !important;
+	     -webkit-background-clip:padding-box !important;
+	     background-clip:padding-box !important;
+	}
+	
+
+	.stacked() {
+		.mixin-span_first;
+		margin-left:0;
+		padding:0;
+		width:100%
+	}
+	
+	
+	.zen-col{
+	     .mixin-col;
+	     margin-bottom: @gutter-sml	     
+	}
+	
+	
+	
+	.mixin-span(@num, @gutter-pc, @gutter_px, @padding, @max_columns) {
+	    @one_col: (100% - (@gutter-pc * (@max_columns - 1))) / @max_columns;
+	    width:(@one_col * @num) + (@gutter-pc * (@num - 1));
+	    border-left-width:@gutter_px;
+	    padding:@padding;
+	    margin-left:@gutter-pc;
+	}
+	
+	
+	.pushcol(@num, @gutter-pc) {
+		@cols: 100%/12;
+		@offset: @num;
+		@gutter: @gutter-pc * (0.08 * @offset);
+		left:((@cols)* @offset) + @gutter;
+	}
+	
+	
+	.pullcol(@num, @gutter-pc) {
+		@cols: 100%/12;
+		@gutter: @gutter-pc * (0.08 * @num);
+		left:-(((@cols)* @num) + @gutter);
+	}
+	
+	
+	.pad-push-col(@num, @gutter-pc) {
+		@cols: 100%/12;
+		@offset: @num;
+		@gutter: @gutter-pc * (0.08 * @offset);
+		padding-left:((@cols)* @offset) + @gutter;
+	}
+	
+	
+	.pad-pull-col(@num, @gutter-pc) {
+		@cols: 100%/12;
+		@offset: @num;
+		@gutter: @gutter-pc * (0.08 * @offset);
+		padding-right:((@cols)* @offset) + @gutter;
+	}
+	
+	
+	.mixin-span_first,
+	.no-margin {
+	    margin-left:0;
+	}
+	
+	
+	// Sets all columns to full width
+   // Widths get instantiated at browsers 
+   // Beyond the global collapse point
+  	.zen-col {
+  	    .stacked();
+  	}
+   
+   
+   
+   
+	@media screen and (min-width: @gridcollapse) {
+        
+      
+        /* --- Gridpak variables ---*/ 
+        @max_columns: 12;
+        @padding:0;
+        @gutter_px: 0;
+       
+        
+		@one_col: 100% / @max_columns;
+        
+        .zen-row .zen-col:first-child {
+            .mixin-span_first;
+        }
+       
+        
+        /*
+        Add your semantic classnames in alongside their corresponding spans here. e.g.
+        
+        */
+        .zen-col-1 {
+            .mixin-span(1, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-2,
+        .one-sixth {
+            .mixin-span(2, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-3,
+        .one-quarter {
+            .mixin-span(3, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-4,
+        .one-third {
+            .mixin-span(4, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-5 {
+            .mixin-span(5, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-6,
+        .one-half {
+            .mixin-span(6, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-7 {
+            .mixin-span(7, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-8,
+        .two-thirds {
+            .mixin-span(8, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-9,
+        .three-quarters {
+            .mixin-span(9, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-10 {
+            .mixin-span(10, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-11 {
+            .mixin-span(11, @gutter-pc, @gutter_px, @padding, @max_columns);
+        }
+        .zen-col-12,
+        .one-whole {
+            .stacked()
+        }
+        
+        
+        
+        .zen-push,
+        .zen-pull {
+        		position:relative;
+        		z-index:1;
+        }
+        
+        
+        .zen-push-11 {.pushcol(11, @gutter-pc)}	
+        .zen-push-10 {.pushcol(10, @gutter-pc)}	
+        .zen-push-9 {.pushcol(9, @gutter-pc)}	
+        .zen-push-8 {.pushcol(8, @gutter-pc)}	
+        .zen-push-7 {.pushcol(7, @gutter-pc)}	
+        .zen-push-6 {.pushcol(6, @gutter-pc)}	
+        .zen-push-5 {.pushcol(5, @gutter-pc)}	
+        .zen-push-4 {.pushcol(4, @gutter-pc)}	
+        .zen-push-3 {.pushcol(3, @gutter-pc)}	
+        .zen-push-2 {.pushcol(2, @gutter-pc)}	
+        .zen-push-1 {.pushcol(1, @gutter-pc)}	
+        
+        .zen-pull-11 {.pullcol(11, @gutter-pc)}
+        .zen-pull-10 {.pullcol(10, @gutter-pc)}
+        .zen-pull-9 {.pullcol(9, @gutter-pc)}
+        .zen-pull-8 {.pullcol(8, @gutter-pc)}
+        .zen-pull-7 {.pullcol(7, @gutter-pc)}
+        .zen-pull-6 {.pullcol(6, @gutter-pc)}
+        .zen-pull-5 {.pullcol(5, @gutter-pc)}
+        .zen-pull-4 {.pullcol(4, @gutter-pc)}
+        .zen-pull-3 {.pullcol(3, @gutter-pc)}
+        .zen-pull-2 {.pullcol(2, @gutter-pc)}
+        .zen-pull-1 {.pullcol(1, @gutter-pc)}
+        
+       	
+       	.zen-pad-push-11 {.pad-push-col(11, @gutter-pc)}
+        .zen-pad-push-10 {.pad-push-col(10, @gutter-pc)}
+        .zen-pad-push-9 {.pad-push-col(9, @gutter-pc)}
+        .zen-pad-push-8 {.pad-push-col(8, @gutter-pc)}
+        .zen-pad-push-7 {.pad-push-col(7, @gutter-pc)}
+        .zen-pad-push-6 {.pad-push-col(6, @gutter-pc)}
+        .zen-pad-push-5 {.pad-push-col(5, @gutter-pc)}
+        .zen-pad-push-4 {.pad-push-col(4, @gutter-pc)}
+        .zen-pad-push-3 {.pad-push-col(3, @gutter-pc)}
+        .zen-pad-push-2 {.pad-push-col(2, @gutter-pc)}
+        .zen-pad-push-1 {.pad-push-col(1, @gutter-pc)}
+        .zen-pad-pull-11 {.pad-pull-col(11, @gutter-pc)}
+        .zen-pad-pull-10 {.pad-pull-col(10, @gutter-pc)}
+        .zen-pad-pull-9 {.pad-pull-col(9, @gutter-pc)}
+        .zen-pad-pull-8 {.pad-pull-col(8, @gutter-pc)}
+        .zen-pad-pull-7 {.pad-pull-col(7, @gutter-pc)}
+        .zen-pad-pull-6 {.pad-pull-col(6, @gutter-pc)}
+        .zen-pad-pull-5 {.pad-pull-col(5, @gutter-pc)}
+        .zen-pad-pull-4 {.pad-pull-col(4, @gutter-pc)}
+        .zen-pad-pull-3 {.pad-pull-col(3, @gutter-pc)}
+        .zen-pad-pull-2 {.pad-pull-col(2, @gutter-pc)}
+        .zen-pad-pull-1 {.pad-pull-col(1, @gutter-pc)}
+     }
+    
+    
+    
+    .responsive-enabled {
+	    @media screen and (max-width: @tablet-max-width) {
+	     		
+	    		.stack-tablets {
+	    		
+	    			.zen-col{
+	    				.stacked() 
+	    			}
+	    		}
+	    	}
+	     	
+	     	
+	    	@media screen and (max-width: @phone-max-width) {
+	     		
+	    		.stack-phones {
+	    			.zen-col {
+	    				 .stacked()
+	    			}
+	    		}
+	    	}
+    }
+    	
+   // No Change for items in the layout that have the classes no-change-tablets and no-change-phones
+  .responsive-disabled,
+  .no-change-phones,
+  .no-change-tablets { 
+	   .zen-col { margin-left:0;}
+	           
+	           /* --- Gridpak variables ---*/ 
+	           @max_columns: 12;
+	           @padding:0;
+	           @gutter_px: 0;
+	          
+	           
+	   
+	   		@one_col: 100% / @max_columns;
+	           
+	           .zen-row .zen-col:first-child {
+	               .mixin-span_first;
+	           }
+	          
+	           
+	           /*
+	           Add your semantic classnames in alongside their corresponding spans here. e.g.
+	           
+	           */
+	           .zen-col-1 {
+	               .mixin-span(1, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-2,
+	           .one-sixth {
+	               .mixin-span(2, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-3,
+	           .one-quarter {
+	               .mixin-span(3, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-4,
+	           .one-third {
+	               .mixin-span(4, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-5 {
+	               .mixin-span(5, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-6,
+	           .one-half {
+	               .mixin-span(6, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-7 {
+	               .mixin-span(7, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-8,
+	           .two-thirds {
+	               .mixin-span(8, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-9,
+	           .three-quarters {
+	               .mixin-span(9, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-10 {
+	               .mixin-span(10, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-11 {
+	               .mixin-span(11, @gutter-pc, @gutter_px, @padding, @max_columns);
+	           }
+	           .zen-col-12,
+	           .one-whole {
+	               .stacked()
+	           }
+	           
+	           
+	           
+	           .zen-push,
+	           .zen-pull {
+	           		position:relative;
+	           		z-index:1;
+	           }
+	    }      
+        
+        @media screen and (min-width: @phone-max-width) and (max-width: @tablet-max-width) {
+	        .no-change-tablets {
+		        .zen-push-11 {.pushcol(11, @gutter-pc)}	
+		        .zen-push-10 {.pushcol(10, @gutter-pc)}	
+		        .zen-push-9 {.pushcol(9, @gutter-pc)}	
+		        .zen-push-8 {.pushcol(8, @gutter-pc)}	
+		        .zen-push-7 {.pushcol(7, @gutter-pc)}	
+		        .zen-push-6 {.pushcol(6, @gutter-pc)}	
+		        .zen-push-5 {.pushcol(5, @gutter-pc)}	
+		        .zen-push-4 {.pushcol(4, @gutter-pc)}	
+		        .zen-push-3 {.pushcol(3, @gutter-pc)}	
+		        .zen-push-2 {.pushcol(2, @gutter-pc)}	
+		        .zen-push-1 {.pushcol(1, @gutter-pc)}	
+		        .zen-pull-11 {.pullcol(11, @gutter-pc)}
+		        .zen-pull-10 {.pullcol(10, @gutter-pc)}
+		        .zen-pull-9 {.pullcol(9, @gutter-pc)}
+		        .zen-pull-8 {.pullcol(8, @gutter-pc)}
+		        .zen-pull-7 {.pullcol(7, @gutter-pc)}
+		        .zen-pull-6 {.pullcol(6, @gutter-pc)}
+		        .zen-pull-5 {.pullcol(5, @gutter-pc)}
+		        .zen-pull-4 {.pullcol(4, @gutter-pc)}
+		        .zen-pull-3 {.pullcol(3, @gutter-pc)}
+		        .zen-pull-2 {.pullcol(2, @gutter-pc)}
+		        .zen-pull-1 {.pullcol(1, @gutter-pc)}  	
+			}
+		}
+		
+		
+		@media screen and (max-width: @phone-max-width) {
+		    .no-change-phones {
+		        .zen-push-11 {.pushcol(11, @gutter-pc)}	
+		        .zen-push-10 {.pushcol(10, @gutter-pc)}	
+		        .zen-push-9 {.pushcol(9, @gutter-pc)}	
+		        .zen-push-8 {.pushcol(8, @gutter-pc)}	
+		        .zen-push-7 {.pushcol(7, @gutter-pc)}	
+		        .zen-push-6 {.pushcol(6, @gutter-pc)}	
+		        .zen-push-5 {.pushcol(5, @gutter-pc)}	
+		        .zen-push-4 {.pushcol(4, @gutter-pc)}	
+		        .zen-push-3 {.pushcol(3, @gutter-pc)}	
+		        .zen-push-2 {.pushcol(2, @gutter-pc)}	
+		        .zen-push-1 {.pushcol(1, @gutter-pc)}	
+		        .zen-pull-11 {.pullcol(11, @gutter-pc)}
+		        .zen-pull-10 {.pullcol(10, @gutter-pc)}
+		        .zen-pull-9 {.pullcol(9, @gutter-pc)}
+		        .zen-pull-8 {.pullcol(8, @gutter-pc)}
+		        .zen-pull-7 {.pullcol(7, @gutter-pc)}
+		        .zen-pull-6 {.pullcol(6, @gutter-pc)}
+		        .zen-pull-5 {.pullcol(5, @gutter-pc)}
+		        .zen-pull-4 {.pullcol(4, @gutter-pc)}
+		        .zen-pull-3 {.pullcol(3, @gutter-pc)}
+		        .zen-pull-2 {.pullcol(2, @gutter-pc)}
+		        .zen-pull-1 {.pullcol(1, @gutter-pc)}  	
+			}
+		}
+		
+		
+		// Marginless grid
+		.zen-marginless-grid {
+		
+			@marginlesscol: 8.3%;
+			
+			.zen-col {
+				margin-left:0
+			}
+			
+			.zen-col-1 {
+			    width: 1 * @marginlesscol;
+			}
+			
+			.zen-col-2 {
+			    width: 2 * @marginlesscol;
+			}
+			
+			.zen-col-3 {
+			    width: 25%;
+			}
+			
+			.zen-col-4 {
+			    width: 33.3333%;
+			}
+			
+			.zen-col-5 {
+			    width: 5 * @marginlesscol;
+			}
+			
+			.zen-col-6 {
+			    width: 6 * @marginlesscol;
+			}
+			
+			.zen-col-7 {
+			    width: 7 * @marginlesscol;
+			}
+			
+			.zen-col-8 {
+			    width: 66.6666%;
+			}
+			
+			.zen-col-9 {
+			    width: 9 * @marginlesscol;
+			}
+			
+			.zen-col-10 {
+			    width: 10 * @marginlesscol;
+			}
+			
+			.zen-col-11 {
+			    width: 11 * @marginlesscol;
+			}
+			
+			.zen-col-12 {
+			    width: 12 * @marginlesscol;
+			}
+		}

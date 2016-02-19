@@ -1,0 +1,115 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+
+/*------------------------------------*\
+	Pagination
+\*------------------------------------*/
+
+.pagination{
+
+	.flatlist();
+	
+	float:left;
+	width:100%;
+	padding:20px 0;
+	
+	
+	ul {
+		margin-left:0
+	}
+	
+	
+	li {
+	
+		line-height:3em;
+		margin-right:4px;
+		font-size: 90%;
+		
+		a,span {
+			.btn-empty();
+			display:inline-block;
+			padding: 0 10px;
+			background:@pagination-bg;
+			border:1px solid @pagination-border;
+			color:@pagination-color;
+			min-height:@input-min-height;
+			line-height:@input-min-height;
+			margin-right: 0;
+		}
+		
+		&.active {
+			a {
+				&:hover {
+					background: @btn-primary-bg;
+					border: 1px solid @btn-primary-border;
+					color:@btn-primary-color-hover;
+				}
+			}
+		}
+		
+		&.next {
+			float:right;
+			margin-right:0;
+		}
+		
+		&.disabled a,
+		span{
+			border-color:darken(@gray, 4%);
+			background: @gray;
+			color: @text-color;
+			
+			&:hover {
+				background: @gray;
+				border-color:darken(@gray, 4%);
+				color: @text-color;
+			}
+		}
+	}
+}
+
+.pagination-wrap {
+	
+	.counter {
+		.small();
+		.muted
+	}
+	
+}
+
+
+// Article index
+.article-index,
+.mainwrap .article-index  {
+	
+	h3 {
+		display:none
+	}
+	
+	.nav-tabs li {
+		
+		a.active {
+			background:none !important;
+			color:@link-color !important
+		}
+	}
+	
+	&.pull-right {
+		width:100%
+	}
+}
+
+
+.pagenavcounter {
+	color:@gray;
+	font-size:90%
+}

@@ -1,0 +1,141 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+.zen-menu ul{
+	
+	
+	*, *:before, *:after{
+	  .box-sizing(border-box);
+	  padding: 0;
+	  margin: 0;
+	}
+	
+	span.zen-menu-heading {
+		cursor:default !important
+	}
+	
+	
+	// First level
+	margin: 0;
+	
+	
+	li {
+		list-style-type: none;
+		margin:0;
+	
+		
+		
+		// Link Items
+		// Nav header
+		a,
+		.zen-menu-heading {
+			color:  @navbar-default-link-color;
+			cursor:pointer;
+			
+			&:hover {
+				text-decoration:none;
+				color:  @navbar-default-link-hover-color;
+			}
+		
+		}
+		
+		// Active States
+		&.active,
+		&.current-menu-item {
+		
+			 > a,
+			 .zen-menu-heading {
+				
+				color: @navbar-default-link-active-color;
+				
+				&:hover {
+					
+				}
+			}
+		}
+		
+		
+		// Parent items
+		&.parent {
+			
+			> a,
+			> .zen-menu-heading {
+				&:before {
+					width: 0;
+					height: 0;
+					float:left;
+					content:"";
+					margin-top:@navbar-height / 2;
+					margin-right:8px;
+					border-style: solid;
+					border-width: 4px 4px 0 4px;
+					border-color: @navbar-default-link-color transparent transparent transparent;
+				}
+			}
+			
+			&.active {
+				> a,
+				> .zen-menu-heading {
+					&:before {
+						border-color: @navbar-default-link-active-color transparent transparent transparent;
+					}	
+				}
+			}
+		}	
+		
+		
+		ul li {
+		
+			&.parent{
+		
+				> a,
+				> .zen-menu-heading {
+					&:before {
+						float:right;
+						content:"";
+						width: 0;
+						height: 0;
+						margin-top:10px;
+						border-style: solid;
+						border-width: 4px 0 4px 4px;
+						border-color: transparent transparent transparent #999;
+					}	
+				}
+			}
+		}
+	}
+	
+	
+	// Second level
+	ul {
+		margin:0 0 0 16px;
+		
+		li {
+			list-style-type:disc;
+		}
+	}
+	
+	
+		
+	// Caption
+	.zen-menu-caption {
+		display: block;
+		font-size: 90%;
+		padding: 4px 0;
+	}	
+}
+
+
+// Sticky nav
+#navwrap,#sticky-fill {
+	float: left;
+	width:100%;
+}

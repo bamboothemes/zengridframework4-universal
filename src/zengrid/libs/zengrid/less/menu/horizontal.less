@@ -1,0 +1,240 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework Xero - 1.3.2 | ZGF v4 1.4.0
+ *------------------------------------------------------------------------------
+ * @copyright   Copyright (C) Joomlabamboo, October 08 2015
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	October 08 2015
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+ .zen-menu-horizontal {
+
+	&.zen-menu-no-animation {
+		
+		ul ul{
+			-webkit-transition: all 0s;
+			-moz-transition: all 0s;
+			transition: all 0s;
+			display:none
+		}
+		
+		li:hover > ul {
+			display:block
+		}
+
+	}
+	
+	
+	// Is menu offscreen
+	.zen-menu-offscreen ul {
+		margin-left:-100%;
+		left:-100%;
+		
+		ul {
+			margin-left:-20px;
+			left:100%
+		}
+	}
+	
+	&.zen-menu-fading .zen-menu-offscreen ul:not(.justify) {
+		left:0
+	}
+	
+	.zen-menu-offscreen ul .zen-group ul {
+		left:0
+	}
+	
+	
+	.parent:hover {
+		z-index:1010
+	}
+	
+	
+	li:hover {
+		ul {
+			z-index:98
+		}
+	}
+}
+
+ .zen-menu-horizontal ul 
+	{
+		width:100%;
+		position:relative;
+		float:left;
+		margin:0;
+		padding:0;
+		min-height:  @navbar-height;
+		
+		&:before,
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+		
+		
+		li
+		{
+			position:relative;
+			z-index:10;
+			float:left;
+			margin:0;
+			padding:0;
+			display: inline-block;
+			list-style-type:none;
+			line-height: @navbar-height;
+		}
+		
+		
+		a,.zen-menu-heading {
+			display:block;
+			color:@navbar-default-link-color;
+			float:left;
+			text-decoration:none;
+			font-weight:700;
+			padding:0 15px;
+		}
+	
+		ul
+		{
+			position:absolute;
+			top:100%;
+			left:-20px;
+			margin-top:-10px;
+			background:@dropdown-bg;
+			padding:@dropdown-padding;
+			min-width: @dropdown_min_width;
+			
+			
+			li {
+				width:100%;
+				line-height: 2em;
+			
+			
+				// Link Items
+				// Nav header
+				a,
+				.zen-menu-heading {
+					color:  @dropdown-link-color;
+					cursor:pointer;
+					display: block;
+					
+					&:hover {
+						text-decoration:none;
+						color:  @dropdown-link-hover-color;
+					}
+				
+				}
+				
+				// Active States
+				&.active,
+				&.current-menu-item {
+				
+					 > a,
+					 .zen-menu-heading {
+						
+						color: @dropdown-link-active-color;
+						
+						&:hover {
+							
+						}
+					}
+				}
+			}
+	
+			ul{
+				top:0;
+				left:100%
+			}
+		}
+		
+		.moduletable {
+			
+			margin-bottom:0;
+			
+			ul {
+				height:auto;
+				opacity:1;
+				overflow:visible;
+				display:block;
+				position:inherit;
+				left:auto;
+				top:auto;
+				padding:0;
+				margin-bottom:0;
+				clear:both;
+				
+				li {
+					padding:0;
+					line-height:1em
+				}
+			}
+		}
+		
+		
+		
+		.justify {
+			position:static;
+			
+			ul {
+				min-width: 0;
+				margin-top:-7px;
+				
+				ul {
+					margin-top:0
+				}
+			}
+		}
+	
+		li:hover {
+		
+			> ul
+			{
+		
+				top:100%;
+				overflow:visible;
+				
+				ul {
+					top: 0;
+				}
+				
+				// Fixes nested ul's inside menu from 
+				// triggering dropdown
+				// Since height was removed
+				
+				.moduletable {
+					ul {
+						visibility:visible;
+					}
+				}
+
+				
+				.zen-group {
+					ul {
+						overflow:visible;
+						height:auto
+					}
+				}
+			}
+		
+		
+			&.justify > ul {
+				//top:85%;
+			}
+		}
+	}
+
+
+.fixed {
+	#menu ul ul {
+		height:0;
+	}
+	
+	#menu li:hover ul {
+		height:auto;
+	}
+}

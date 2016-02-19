@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<files>
+	<css>
+		<file>style.css</file>
+		<file>style-wp.css</file>
+		<file>colpick.css</file>
+		<file>font-awesome.min.css</file>
+	</css>
+	<js> 
+		<file>lib/jquery-ui-1.8.23.custom.min.js</file>
+		<file>lib/uikit.min.js</file> 
+		<file>lib/colpick.js</file>
+		<file>lib/smoothscroll.js</file>
+		<file>zengrid/tools.js</file> 
+		<file>zengrid/set_theme_data.js</file>
+		<file>zengrid/set_layout_data.js</file>
+		<file>zengrid/set_config.js</file>
+		<file>zengrid/compile_data.js</file>
+		<file>zengrid/delete_theme.js</file>
+		<file>zengrid/delete_config.js</file>
+		<file>zengrid/get_config.js</file>
+		<file>zengrid/get_layout.js</file>
+		<file>zengrid/get_compress.js</file>
+		<file>zengrid/get_theme.js</file>
+		<file>zengrid/send_ajax.js</file>
+		<file>zengrid/framework.js</file>
+		<file>zengrid/framework-wp.js</file>    	
+    </js>
+</files>

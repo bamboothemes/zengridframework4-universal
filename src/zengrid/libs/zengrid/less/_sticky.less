@@ -1,0 +1,44 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+ .zen-nav-fixed {
+ 	position: fixed;
+ 	top: 0;
+ 	left: 0;
+ 	width: 100%;
+ 	background: @sticky-bg;
+ 	
+ 	ul.zen-menu {
+ 		a,span {
+	 		color: @sticky-link-color;
+	 		
+	 		&:hover {
+	 			color: @sticky-link-hover-color
+	 		}
+	 	}
+	 	
+	 	li.active {
+	 		
+	 		a,span {
+	 			color: @sticky-link-active-color;
+ 			}	 			
+	 	}
+	 }
+ 	
+ 	.zen-col {
+ 		margin: 0;
+ 	}
+ 	
+ 	#menu {
+ 		margin: 0;
+ 	}
+ }

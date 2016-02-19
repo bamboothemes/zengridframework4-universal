@@ -1,0 +1,82 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       blank.ly | ZGF v4 v2.0
+ *------------------------------------------------------------------------------
+ * @copyright   Copyright (C) Joomlabamboo, November 26 2015
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	November 26 2015
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+ .zen-menu-zoom {
+	
+	li {
+	
+		> ul {
+			-webkit-transform:scale(0.4);
+			-moz-transform:scale(0.4);
+		   	transform:scale(0.4);
+			-webkit-transition: all @menu-animation ease-in-out;
+			-moz-transition: all @menu-animation ease-in-out;
+			transition: all @menu-animation ease-in-out;
+		   	opacity:0;
+		   	overflow:hidden;
+		   	visibility:hidden;
+		   			height:0;				
+		   	.zen-menu-child {
+		   		-webkit-transform:scale(1);
+		   		-moz-transform:scale(1);
+		   			transform:scale(1);
+		   	}
+		}
+	
+		&:hover > ul {
+		   	-webkit-transform:scale(1.0);
+		    -moz-transform:scale(1.0);
+		    transform:scale(1.0);
+		    height:auto;
+		    opacity:1;
+		    visibility:visible;
+		}
+	}
+}
+
+
+
+.zen-menu-zoom {
+
+	ul {
+	
+		ul  {
+			margin:100px 0 0 0
+		}
+		
+		li:hover ul {
+			margin:0;
+			
+
+		}
+		
+
+	
+		.justify {
+				
+			ul {
+				margin:100px 0 0 0;
+			}
+		
+			
+			&:hover ul {
+				margin:-7px 0 0 0;
+				
+				ul {
+					margin:0
+				}
+			}
+	
+			
+		}
+	}
+}

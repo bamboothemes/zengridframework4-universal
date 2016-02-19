@@ -1,0 +1,101 @@
+/* Joomla lists
+-----------------------------------------------------------------------------*/
+
+// Contact Form
+
+.contact{
+	
+	// Tabs
+	.nav-tabs {
+		float:left;
+		width:100%;
+		margin-top:@gutter;
+		margin-bottom:0;
+	}
+	
+	
+	.tab-content {
+		padding-top:@gutter;
+		float:left;
+		width:100%;
+		position:relative;
+	}
+	
+	.tab-pane {
+		top:0
+	}
+	
+	.thumbnail{
+		margin-bottom:@gutter * 2
+	}
+	
+	[itemprop="jobTitle"] {
+		.h1()
+	}
+	
+	
+	dd {
+		padding:4px 0
+	}
+	
+	dl {
+		margin:0
+	}
+	
+	legend {
+		margin-bottom:@gutter
+	}
+	
+	
+	input,textarea {
+		width:75%;
+		margin-bottom:10px;
+		float:right;
+		
+		@media screen and (max-width:@grid-collapse) {
+			width:100%
+		}
+	}
+	
+	#jform_contact_email_copy {
+		width:auto
+	}
+	
+	label {
+		display:inline-block;
+		text-align:left !important;
+		padding-right:10px
+	}
+	
+	
+	// Sliders
+	.panel-heading {
+		padding:10px;
+		border:1px solid @border-color;
+		margin-bottom: @gutter
+	}
+	
+	.zen-collapse,
+	.tab-pane {
+		overflow:hidden;
+		max-height:0;
+		-webkit-transition: all 0.5s ease-in-out;
+		-moz-transition: all 0.5s ease-in-out;
+		-ms-transition: all 0.5s ease-in-out;
+		transition: all 0.5s ease-in-out;
+		opacity:0;
+	}
+	
+	.zen-collapse.in,
+	.tab-pane.active {
+		max-height:1000px;
+		opacity:1;
+	}
+	
+	
+	// Plain
+	.contact-address {
+		padding-bottom:@gutter
+	}
+	
+}

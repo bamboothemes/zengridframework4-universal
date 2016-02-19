@@ -1,0 +1,86 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+ .zen-accordion {
+ 	ul {
+ 		display: none
+ 	}
+ 	
+ 	li.parent {
+ 	
+ 		span:not(.zen-icon) {
+ 			display: block;
+ 		}
+ 		
+ 		
+ 		span {
+ 			cursor: pointer;
+ 		 	
+ 		 	
+ 			&:hover {
+ 				color:  @link-hover-color;
+ 			}
+ 			
+ 			&:before {
+ 			
+ 				float: right;
+ 				width: 25px;
+ 				height: 25px;
+ 				line-height: 25px;
+ 				text-align: center;
+ 				font-size: 1.3em;
+ 				margin-top: -4px
+ 			}
+ 		}
+ 		
+ 		&.open span{
+ 			color: @secondary
+ 		}
+ 	}	
+ 	&.zen-rounded,
+ 	&.zen-flat,
+ 	&.zen-round {
+ 		li.parent {
+ 			span:before {
+ 				background: @primary;
+ 				color: #fff;
+ 				.transition();
+ 			}
+ 			
+ 			&:hover,
+ 			&.open {
+ 				span:before {
+ 					background: @secondary
+ 				}
+ 			}
+ 		}
+ 	}
+ 	
+ 	&.zen-rounded {
+ 		li.parent {
+ 			span:before {
+ 				border-radius:@border-radius;
+ 			}
+ 		}
+ 	}
+ 	
+ 	&.zen-round {
+ 			li.parent {
+ 				span:before {
+ 					border-radius:100px;
+ 					width: 25px;
+ 					height: 25px;
+ 					line-height: 25px
+ 				}
+ 			}
+ 		}
+ }

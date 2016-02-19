@@ -1,0 +1,55 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       blank.ly | ZGF v4 v2.0
+ *------------------------------------------------------------------------------
+ * @copyright   Copyright (C) Joomlabamboo, December 17 2015
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	December 17 2015
+ *------------------------------------------------------------------------------
+ */
+
+// Sets up the base scaffold for the main containers
+.zen-modal {
+	display: none;
+	z-index: 101;
+	width: @modal-max-width;
+	height: @modal-max-height;
+	background: @modal-bg;
+	padding: @base-padding;
+	color: @modal-color;
+	margin: auto;
+	position: fixed;
+	top: 0; 
+	left: 0; 
+	bottom: 0; 
+	right: 0;
+	.transition();
+}
+
+.zen-modal-trigger {
+	cursor: pointer
+}
+
+.zen-modal-content {
+	padding: @base-padding
+}
+
+.zen-modal-overlay {
+	background: fade(@modal-overlay-bg, @modal-overlay-fade);
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 99;
+	height:100%;
+	width: 100%;
+	display: none;
+	cursor: pointer
+}
+
+.zen-modal-close {
+	cursor: pointer;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}

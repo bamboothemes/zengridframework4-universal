@@ -1,0 +1,30 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+
+.make-label(@back, @text) {
+	background: @back;
+	color: @text;
+	
+	&[outline] {
+		background: none;
+		color: @back;
+		border-color: @back;
+	}
+	& a {
+		color: @text;
+		text-decoration: none;
+		&:hover {
+			.transition;
+			color: rgba(red(@text), green(@text), blue(@text), .6);
+		}
+	}
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data>
+	<name>Zen Grid Framework v4</name>
+	<version>v2.0</version>
+	<date>##updated##</date>
+	<author>Joomlabamboo</author>
+	<email>design@joomlabamboo.com</email>
+	<url>http://www.joomlabamboo.com</url>
+	<link>http://docs.joomlabamboo.com/zen-grid-framework-4/</link>
+	<description>The Zen Grid Framework is a streamlined approach to templating with Joomla. It features a beautiful interface with a tonne of features under the hood. It's built by the team at &lt;a href="http://www.joomlabamboo.com"&gt;Joomlabamboo&lt;/a&gt; and first released in November, 2014.</description>
+	<changelog>http://docs.joomlabamboo.com/changelogs/zen-grid-framework-4</changelog>
+	<copyright>Copyright (C) Joomlabamboo</copyright>
+	<license>http://www.gnu.org/licenses/gpl.html GNU/GPL</license>
+</data>

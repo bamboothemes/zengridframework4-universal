@@ -1,0 +1,125 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+
+// -------------------------------------------------------
+//  Base styles
+// -------------------------------------------------------
+html {
+	overflow-x:hidden;
+	height: 100%
+}
+
+body {
+	height: 100%
+}
+
+.section {
+	float:left;
+	width:100%
+}
+
+.article-content {clear:both}
+
+/* Reset the margin on menu items - Not really sure why this is necessary */
+ul, menu, dir,ol{
+padding-left: 0;
+-webkit-margin-before: 0em;
+-webkit-margin-after: 0em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+-webkit-padding-start: 0px;
+}
+
+div,ul,li{
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box; /* Firefox, other Gecko */
+	box-sizing: border-box;
+  }
+  
+  
+  .span12 {margin: 0 !important}
+  .hidden {display: none !important}
+  
+
+/* Reset DD things in Joomla */
+dd {padding: 0;margin: 0}
+
+
+/* Indent on ul */
+ul,ol {
+	margin-left: 16px;
+}
+
+fieldset {
+
+	min-width:0
+}
+
+
+/* Sidebar margin ul reset */
+.items-more ol {
+	margin-left: 0;
+	padding: 0;
+}
+
+
+/* Dont like Hr styling */
+hr {
+	border: 0;
+}
+
+
+/* Puts default margin on content items */
+article{
+	margin:0;
+	padding:0
+}
+
+
+
+
+// Remove Webkit Autofill bg colour
+input:-webkit-autofill {
+   
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    
+    &:hover {
+    	-webkit-box-shadow: 0 0 0px 1000px lighten(@border-color, 5%) inset;
+    }
+}
+
+
+// Bootstrap resets
+.btn-group a {
+	margin-right:8px
+}
+
+.btn-group > .dropdown-toggle,
+.btn-group > .btn:first-child,
+.btn-group > .btn:last-child {
+	.border-radius(0)
+}
+
+#system-message {
+	margin:0 !important
+}
+
+legend {
+	margin:0
+}
+
+iframe {
+	max-width:100%
+}
+
+figure {
+	margin:0
+}

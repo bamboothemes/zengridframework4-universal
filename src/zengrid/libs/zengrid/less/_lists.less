@@ -1,0 +1,62 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   Copyright (C) Joomlabamboo, November 16 2015
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	November 16 2015
+ *------------------------------------------------------------------------------
+ */
+
+
+
+// Base
+// -----------------------------------------------------------------------------*/
+ul {
+	margin-bottom: @gutter;
+	
+	ul,ol {
+		margin-bottom:0
+	}
+}
+
+
+// Simple List
+// -----------------------------------------------------------------------------*/
+
+.simple,
+.striped {
+	.simplelist();
+}
+
+
+.flat-list {
+	.flatlist();
+	margin-bottom:@gutter
+}
+
+
+
+// Striped List
+// -----------------------------------------------------------------------------*/
+
+.striped {
+	li {
+		padding:10px 20px !important;
+		
+		&:nth-child(2n + 1) {
+			background:lighten(@border-color,1%)
+		}
+	}
+}
+
+
+
+
+// Definition Lists
+// -----------------------------------------------------------------------------*/
+dl {
+	clear:both;
+	margin:@gutter 0;
+}

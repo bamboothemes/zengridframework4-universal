@@ -1,0 +1,123 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+
+
+// Basic Button style
+// -------------------------
+
+.btn() {
+ 	color:@btn-color;
+ 	background: @btn-bg;
+ 	border: @btn-border-width solid @btn-border;
+ 	padding:@button-padding;
+ 	border-radius:@button-radius;
+ 	box-shadow:@button-shadow;
+ 	text-shadow:@button-text-shadow;
+ 	margin: 0 10px 10px 0;
+ 	
+ 	.transition();
+ 	
+ 	&:hover {
+ 		color:@btn-primary-color-hover;
+ 		background: @btn-primary-bg-hover;
+ 		border: @btn-border-width solid @btn-primary-border-hover;
+ 		text-decoration:none;
+ 	}	
+ }
+ 
+ 
+ // Ac tive Button
+ // -----------------
+ .btn-active() {
+ 	color:@btn-primary-color-hover !important;
+ 	background: @btn-primary-bg-hover !important;
+ 	border: @btn-border-width solid @btn-primary-border-hover !important;
+ 	border-radius:0px !important;
+ }
+ 
+ 
+ 
+ //Empty Button
+ // -----------------
+ .btn-empty() {
+ 	.btn();
+ 	color:@text-color;
+ 	background: none;
+ }
+ 
+ 
+ 
+ 
+// Button variants
+// -------------------------
+// Easily pump out default styles, as well as :hover, :focus, :active,
+// and disabled options for all buttons
+.button-variant(@color; @background; @border; @hover;) {
+  	color: @color;
+  	background-color: @background;
+  	border-color: @border;
+	padding: @button-padding;
+	.transition();
+	
+	  &:hover,
+	  &:focus,
+	  &:active,
+	  &.active,
+	  .open .dropdown-toggle& {
+	    color: @color;
+	    	background-color: darken(@background, 8%);
+	        border-color: darken(@border, 12%);
+	        color: @hover
+	  }
+	  &:active,
+	  &.active,
+	  .open .dropdown-toggle& {
+	    background-image: none;
+	  }
+	  &.disabled,
+	  &[disabled],
+	  fieldset[disabled] & {
+	    &,
+	    &:hover,
+	    &:focus,
+	    &:active,
+	    &.active {
+	      background-color: @background;
+	          border-color: @border;
+	    }
+	  }
+	
+	  .badge {
+	    color: @background;
+	    background-color: @color;
+	  }
+	  
+	  &.btn-empty {
+	  	background: none;
+	  	color: @border;
+	  	border: @border-width @border-style @border;
+	  	
+	  	&:hover {
+	  		background: @background;
+	  		color:@hover
+	  	}
+	  }
+}
+
+// Button sizes
+// -------------------------
+.button-size(@padding-vertical; @padding-horizontal; @font-size; @line-height; @border-radius) {
+  padding: @padding-vertical @padding-horizontal;
+  font-size: @font-size;
+  line-height: @line-height;
+  border-radius: @border-radius;
+}
+

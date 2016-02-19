@@ -1,0 +1,44 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       blank.ly | ZGF v4 v2.0
+ *------------------------------------------------------------------------------
+ * @copyright   Copyright (C) Joomlabamboo, December 17 2015
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	December 17 2015
+ *------------------------------------------------------------------------------
+ */
+
+// Sets up the base scaffold for the main containers
+.zen-slide-trigger {
+	cursor: pointer;
+	.transition();
+	
+	&.block {
+		margin-bottom: 0;
+		
+		&.primary,
+		&.primary2,
+		&.primary3,
+		&.tertiary,
+		&.tertiary2,
+		&.tertiary3 {
+			&:hover {
+				background: @secondary
+			}
+		}
+		
+		&.secondary,
+		&.secondary2,
+		&.secondary3 {
+			&:hover {
+				background: @primary
+			}
+		}
+	}
+}
+
+
+.zen-slide-content {
+	display: none;
+}

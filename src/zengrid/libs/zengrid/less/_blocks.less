@@ -1,0 +1,173 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework Xero - 1.3.2 | ZGF v4 1.3.3
+ *------------------------------------------------------------------------------
+ * @copyright   Copyright (C) Joomlabamboo, October 07 2015
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	October 07 2015
+ *------------------------------------------------------------------------------
+ */
+ 
+ 
+// Used for colours and various display elements
+
+
+// Primary
+// --------------------------
+// .make-block(@bg, @color, @link)
+//
+
+.primary1 {
+	background:@primary
+}
+.primary2 {
+	background:@primary2
+}
+.primary3 {
+	background:@primary3
+}
+.secondary1 {
+	background:@secondary
+}
+.secondary2 {
+	background:@secondary2
+}
+.secondary3 {
+	background:@secondary3
+}
+.tertiary1 {
+	background:@tertiary
+}
+.tertiary2 {
+	background:@tertiary
+}
+.tertiary3 {
+	background:@tertiary
+}
+
+
+
+.block {
+	padding: @block-padding;
+	margin-bottom: @block-gutter;
+	background: @gray;
+	
+	
+	&.primary,
+	&.primary1 {
+		.make-block(@primary, #fff, #eee)
+	}
+
+	&.primary2 {
+		.make-block(@primary2, #fff, #eee)
+	}
+
+	&.primary3 {
+		.make-block(@primary3, #fff, #eee)
+	}
+
+
+
+	// Secondary
+	// --------------------------
+
+	&.secondary,
+	&.secondary1 {
+		.make-block(@secondary, #fff, #eee)
+	}
+
+
+	&.secondary2 {
+		.make-block(@secondary2, #fff, #eee)
+	}
+
+	&.secondary3 {
+		.make-block(@secondary3, #fff, #eee)
+	}
+	
+	
+	// Tertiary
+	// --------------------------
+	
+		&.tertiary,
+		&.tertiary1 {
+			.make-block(@tertiary, #fff, #eee)
+		}
+	
+	
+		&.tertiary2 {
+			.make-block(@tertiary2, #fff, #eee)
+		}
+	
+		&.tertiary3 {
+			.make-block(@tertiary3, #fff, #eee)
+		}
+}
+
+
+// Rounded
+// ------------------------------------
+.rounded {
+	border-radius: @border-radius-base
+}
+
+
+
+// Shadow
+// ------------------------------------
+.shadow {
+	.box-shadow(4px 4px 0px rgba(0,0,0,.1));
+	background: @body-bg;
+}
+
+.shadow2 {
+	.box-shadow(0 0 20px rgba(0,0,0,.1));
+	background: @body-bg;
+}
+
+
+
+/* Anvil
+-----------------------------------------------------------------------------*/
+.anvil {
+	position: relative;
+	width: 80px;
+	height: 80px;
+	display:inline-block;
+	text-align: right;
+	font: 30px/100px Arial, sans-serif;
+	color: white;
+	border:0;
+	padding-right:10px;
+	margin: 0 10px 10px 0;
+}
+
+
+.anvil::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	border-width: 0 0 80px 80px;
+	border-style: solid;
+	border-color: transparent @body-bg;
+}
+
+
+
+
+
+/* Large Rounded numbers
+-----------------------------------------------------------------------------*/
+.rounded-big  {
+	.border-radius(100px);
+	padding:10px;
+	font-size: 2em;
+	display:inline-block;
+	width: 80px;
+	text-align: center;
+	line-height: 60px;
+	color:#fff;
+	margin: 0 10px 10px 0;
+}

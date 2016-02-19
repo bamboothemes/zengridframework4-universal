@@ -1,0 +1,28 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+ 
+
+// Alerts
+// -------------------------
+.alert-variant(@background; @border; @text-color) {
+  	background-color: @background;
+  	border-color: @border;
+  	color: @text-color;
+	margin-bottom: @gutter;
+	
+  	hr {
+  	  border-top-color: darken(@border, 5%);
+  	}
+  
+  	.alert-link {
+  	  color: darken(@text-color, 10%);
+  	}
+}   
