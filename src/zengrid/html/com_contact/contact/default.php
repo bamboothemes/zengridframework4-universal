@@ -68,7 +68,7 @@ $cparams = JComponentHelper::getParams('com_media');
 					<div class="panel-body">
 	<?php endif; ?>
 	<?php if ($this->params->get('presentation_style') == 'tabs'):?>
-		<ul class="nav nav-tabs" id="myTab">
+		<ul class="zen-nav zen-nav-tabs" id="myTab">
 				<li class="active"><a data-toggle="tab" href="#basic-details"><?php echo JText::_('COM_CONTACT_DETAILS'); ?></a></li>
 				<?php if ($this->params->get('show_email_form') && ($this->contact->email_to || $this->contact->user_id)) : ?><li><a data-toggle="tab" href="#display-form"><?php echo JText::_('COM_CONTACT_EMAIL_FORM'); ?></a></li><?php endif; ?>
 				<?php if ($this->params->get('show_links')) : ?><li><a data-toggle="tab" href="#display-links"><?php echo JText::_('COM_CONTACT_LINKS'); ?></a></li><?php endif; ?>

@@ -71,7 +71,7 @@ $n = count($this->items);
 <?php else : ?>
 	<?php foreach ($this->items as $i => $item) : ?>
 		<?php if ($n == 1 || $i == 0 || $bscolumns == 1 || $i % $bscolumns == 0) : ?>
-			<ul class="zen-menu-vertical">
+			<ul class="zen-nav-stacked zen-nav zen-nav-lines ">
 		<?php endif; ?>
 		<?php if ((!empty($item->access)) && in_array($item->access, $this->user->getAuthorisedViewLevels())) : ?>
  			<li class="cat-list-row<?php echo $i % 2; ?>" >

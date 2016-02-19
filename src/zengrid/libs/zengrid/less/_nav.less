@@ -93,6 +93,13 @@
 				border-width:  1px 1px 0 1px;
 				background: @body-bg;
 			}
+			
+			a:focus {
+				color: @link-color;
+				border: 1px solid @border-color;
+				border-width:  1px 1px 0 1px;
+				background: @body-bg;
+			}
 		}
 		
 		&:after {
@@ -136,13 +143,11 @@
 	&.zen-nav-divider{
 			
 		li {
-			
-			span {
-				padding: @button-padding @button-padding @button-padding 0;
-			}
+			padding: @button-padding 0;
+			margin-right: @button-padding;
+		
 			a,span {
 				color: @text-color;
-				margin-right: 10px;
 				
 				&:hover {
 					color: @link-hover-color
@@ -152,7 +157,7 @@
 			&:after {
 				content: "/";
 				.muted();
-				margin-right: @button-padding;
+				margin-left: @button-padding;
 			}
 			
 			&:last-child:after {

@@ -55,7 +55,7 @@ $listDirn	= $this->escape($this->state->get('list.direction'));
 		<?php endif; ?>
 	</fieldset>
 	<?php endif; ?>
-		<ul class="category list-striped list-condensed list-unstyled">
+		<ul class="category zen-nav zen-nav-lines">
 
 			<?php foreach ($this->items as $i => $item) : ?>
 				<?php if (in_array($item->access, $user->getAuthorisedViewLevels())) : ?>

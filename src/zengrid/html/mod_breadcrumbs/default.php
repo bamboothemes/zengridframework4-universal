@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 ?>
 
-<ul class="breadcrumb zen-reset-list <?php echo $moduleclass_sfx; ?>">
+<ul class="breadcrumbs zen-nav zen-nav-divider <?php echo $moduleclass_sfx; ?>">
 
 	<?php
 

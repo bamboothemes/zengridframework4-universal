@@ -107,9 +107,9 @@ if (!empty($this->items))
 		<tbody>
 			<?php foreach ($this->items as $i => $article) : ?>
 				<?php if ($this->items[$i]->state == 0) : ?>
-				 <tr class="system-unpublished cat-list-row<?php echo $i % 2; ?>">
+				 <tr class="zen-nav zen-nav-lines system-unpublished cat-list-row<?php echo $i % 2; ?>">
 				<?php else: ?>
-				<tr class="cat-list-row<?php echo $i % 2; ?>" >
+				<tr class="zen-nav zen-nav-lines cat-list-row<?php echo $i % 2; ?>" >
 				<?php endif; ?>
 					<td headers="categorylist_header_title" class="list-title">
 						<?php if (in_array($article->access, $this->user->getAuthorisedViewLevels())) : ?>

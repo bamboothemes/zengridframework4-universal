@@ -59,7 +59,7 @@ $n = count($this->items);
 		<p> <?php echo JText::_('COM_TAGS_NO_ITEMS'); ?></p>
 	<?php else : ?>
 
-	<ul class="category zen-menu-vertical">
+	<ul class="category zen-nav-stacked zen-nav">
 		<?php foreach ($items as $i => $item) : ?>
 			<?php if ($item->core_state == 0) : ?>
 				<li class="system-unpublished cat-list-row<?php echo $i % 2; ?>">

@@ -53,9 +53,9 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 		<ul class="category unstyled list-striped list-unstyled">
 			<?php foreach ($this->items as $i => $item) : ?>
 				<?php if ($this->items[$i]->published == 0) : ?>
-					<li class="system-unpublished cat-list-row<?php echo $i % 2; ?>">
+					<li class="zen-nav zen-nav-lines system-unpublished cat-list-row<?php echo $i % 2; ?>">
 				<?php else: ?>
-					<li class="cat-list-row<?php echo $i % 2; ?>" >
+					<li class="zen-nav zen-nav-lines cat-list-row<?php echo $i % 2; ?>" >
 				<?php endif; ?>
 				<?php if ($this->params->get('show_articles')) : ?>
 					<span class="list-hits badge badge-info pull-right">

@@ -74,9 +74,7 @@ JHtml::_('behavior.keepalive');
       <?php endif; ?>
 			
   			<div class="form-group">
-  				<div class="float-right">
-  					<button type="submit" class="btn btn-primary"><?php echo JText::_('JLOGIN'); ?></button>
-  				</div>
+  				<button type="submit" class="btn btn-primary"><?php echo JText::_('JLOGIN'); ?></button>
   			</div>
   			<input type="hidden" name="return" value="<?php echo base64_encode($this->params->get('login_redirect_url', $this->form->getValue('return'))); ?>" />
   			<?php echo JHtml::_('form.token'); ?>
@@ -84,7 +82,7 @@ JHtml::_('behavior.keepalive');
 
       <div class="other-links form-group">
         <div>
-        <ul class="stacked">
+        <ul class="zen-nav zen-nav-divider small">
           <li><a href="<?php echo JRoute::_('index.php?option=com_users&view=reset'); ?>">
             <?php echo JText::_('COM_USERS_LOGIN_RESET'); ?></a></li>
           <li><a href="<?php echo JRoute::_('index.php?option=com_users&view=remind'); ?>">

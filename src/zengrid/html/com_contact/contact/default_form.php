@@ -27,32 +27,32 @@ if (isset($this->error)) : ?>
 	<form id="contact-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" class="form-validate">
 		<fieldset>
 			<legend><?php echo JText::_('COM_CONTACT_FORM_LABEL'); ?></legend>
-			<div class="form-group">
+			<div class="form-group zen-row">
 				<?php echo preg_replace($regex, $label, $this->form->getLabel('contact_name'), 1); ?>
 				<div class="">
 					<?php echo preg_replace($regex, $input, $this->form->getInput('contact_name')); ?>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group zen-row">
 				<?php echo preg_replace($regex, $label, $this->form->getLabel('contact_email'), 1); ?>
 				<div class="">
 					<?php echo preg_replace($regex, $input, $this->form->getInput('contact_email')); ?>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group zen-row">
 				<?php echo preg_replace($regex, $label, $this->form->getLabel('contact_subject'), 1); ?>
 				<div class="">
 					<?php echo preg_replace($regex, $input, $this->form->getInput('contact_subject')); ?>
 				</div>
 			</div>
-			<div class="form-group">
+			<div class="form-group zen-row">
 				<?php echo preg_replace($regex, $label, $this->form->getLabel('contact_message'), 1); ?>
 				<div class="">
 					<?php echo preg_replace($regex, $input, $this->form->getInput('contact_message')); ?>
 				</div>
 			</div>
 			<?php if ($this->params->get('show_email_copy')) { ?>
-				<div class="form-group">
+				<div class="form-group zen-row">
 					<div class="float-right">
 						<div>
 							<?php echo $this->form->getInput('contact_email_copy'); ?>

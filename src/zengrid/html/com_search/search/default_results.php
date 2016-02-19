@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 ?>
 
-<ul class="search-results<?php echo $this->pageclass_sfx; ?> zen-menu-vertical">
+<ul class="search-results<?php echo $this->pageclass_sfx; ?> zen-nav zen-menu-vertical zen-nav-lines">
 	<?php foreach ($this->results as $result) : ?>
 		<li>
 			<h3>

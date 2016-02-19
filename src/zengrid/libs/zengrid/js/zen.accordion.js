@@ -11,14 +11,14 @@
      
        
       // Add the icons where necesary
-      $(this).append('<span class="zen-icon zen-icon-' + settings.closeicon + '"></span>');
+      $('.zen-accordion li.parent span').append('<span class="zen-icon zen-icon-' + settings.closeicon + '"></span>');
       
       // Open First
       if(settings.openfirst) {
        		$(this).parent().parent().find('ul:first').slideDown().parent().addClass('open').find('.zen-icon').removeClass('zen-icon-'+ settings.closeicon).addClass('zen-icon-'+ settings.openicon);
       }
        
-      $(document).on('click', '.zen-accordion > li.parent span', function() {
+      $(document).on('click', '.zen-accordion > li.parent > span', function() {
            
            
            // Markup can define the type of accordion used but if none is specified 
@@ -33,7 +33,7 @@
 
            var menu = $(this).parent().parent();
            	
-           if ($(this).parent().attr('class') === 'parent open'){
+           if ($(this).parent().hasClass('open')){
            		
            		// User clicked on open parent
            		$(this).parent().removeClass('open').find('ul').slideUp();
