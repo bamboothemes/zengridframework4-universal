@@ -191,17 +191,6 @@ foreach ($default_layout as $key => $row) {
 	// Set the save box with the current name
 	$('#layout-name').val(layout);
 	
-	
-	// Applies the layout
-	$('#apply-layout').live('click', function() {
-		
-		$(document).set_layout_data('<?php echo TEMPLATE;?>');
-		
-		return false;
-		
-	});
-
-
 	$('.main-content-toggle').live('click', function() {
 		
 		var main_layout = $(this).attr('id');

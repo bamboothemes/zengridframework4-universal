@@ -64,7 +64,7 @@ foreach ($files as $key => $file) {
 
 
 // Minify all the scripts
-$minifiedCode = \JShrink\Minifier::minify($buffer, array('flaggedComments' => false));
+$minifiedCode = \JShrink\Minifier::minify($buffer, array('flaggedComments' => true));
 
 // Write the js file
 file_put_contents(TEMPLATE_PATH . 'js/template-'.$page_type.'.js', $minifiedCode);

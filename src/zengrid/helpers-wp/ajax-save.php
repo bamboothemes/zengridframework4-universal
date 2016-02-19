@@ -33,4 +33,12 @@ $content = $_POST['content'];
 $content = json_encode($content, JSON_PRETTY_PRINT);
 
 
+// Put the config files
 file_put_contents('../wp-content/themes/'.$template.'/settings/'.$target.'/'.$name.$id.'.json', $content);
+
+// Store the last saved state
+if($target =="config") {	
+	$id= str_replace('-', '', $id);
+	$content = '{"lastsaved": "'.$id.'"}';
+	file_put_contents('../wp-content/themes/'.$template.'/settings/settings.json', $content);
+}

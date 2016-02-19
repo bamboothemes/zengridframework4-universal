@@ -14,9 +14,11 @@
 	display: none;
 	z-index: 101;
 	width: @modal-max-width;
+	max-width: 90%;
+	max-height: 90%;
 	height: @modal-max-height;
 	background: @modal-bg;
-	padding: @base-padding;
+	padding: @modal-padding;
 	color: @modal-color;
 	margin: auto;
 	position: fixed;
@@ -24,6 +26,8 @@
 	left: 0; 
 	bottom: 0; 
 	right: 0;
+	overflow: auto;
+	border-radius:@modal-border-radius;
 	.transition();
 }
 
@@ -32,7 +36,7 @@
 }
 
 .zen-modal-content {
-	padding: @base-padding
+	padding: 0
 }
 
 .zen-modal-overlay {

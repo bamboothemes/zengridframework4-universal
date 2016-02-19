@@ -550,6 +550,20 @@ ol > li > ol,
 ol > li > ul {
   margin: 0;
 }
+
+#zgfmessage {
+	top: 0;
+	background: #00AAE7;
+	color: #fff;
+	margin: 30px 0 0 0px;
+	padding: 28px;
+	display: none;
+}
+
+ #zgfmessage * {
+ 	color: #fff;
+ }
+ 
 /*
  * Description lists
  */

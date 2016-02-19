@@ -115,6 +115,12 @@ defined('ZEN_ALLOW') or die();
 	    	
 	    	var template = '<?php echo TEMPLATE;?>';
 	    	
+	    	<?php if(JOOMLA) {?>
+	    	var url = '<?php echo JURI::base();?>?option=com_ajax&plugin=zengridramework2&format=raw';
+	    	<?php } else { ?>
+	    	var url = 'admin-ajax.php';
+	    	<?php } ?>
+	    	
 	    		
 	    	 var save_preset = function (content) {
 	    	 	 
@@ -138,7 +144,7 @@ defined('ZEN_ALLOW') or die();
 	    	 	 
 	    	 		
 	    			$.ajax({
-	    	         url : "admin-ajax.php",
+	    	         url : url,
 	    	         method: 'post',
 	    	         context: document.body,
 	    	         data: {

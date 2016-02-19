@@ -125,7 +125,7 @@ class zen
 	   	 * @return	array	Files in the given folder.
 	   	 * @since 1.5
 	   	 */
-	   public static function files($path, $filter = '.', $recurse = false, $fullpath = false, $exclude = array('.svn', 'CVS','.DS_Store'))
+	   	function files($path, $filter = '.', $recurse = false, $fullpath = false, $exclude = array('.svn', 'CVS','.DS_Store'))
 	   	{
 	   		// Initialize variables
 	   		$arr = array();
@@ -175,8 +175,35 @@ class zen
 	   	
 	   	
 	   	
-	    
-
+	   	/**
+	   	 *  Last saved config
+	   	 *
+	   	 */
+	   	 
+	   	 public function lastsaved() {
+	   	 	if(JOOMLA) {
+	   	 		return null;
+	    	} else {
+	    		$last_saved_state = self::get_json('settings/settings.json');
+	    		return $last_saved_state->lastsaved;
+	    	}
+		}
+		
+		
+		/**
+		 *  Joomla function to get the template id
+		 *
+		 */
+			 
+		public function template_id() {
+			$templateId = explode('&id=', $_SERVER["REQUEST_URI"]);
+			$templateId = $templateId[1];
+			$templateId = explode('&', $templateId);
+			$templateId = $templateId[0];
+			return $templateId;
+		}
+		
+		
     
 	    /**
 	     *  Get saved settings
@@ -185,18 +212,58 @@ class zen
 	     
 	    public function getsettings() {
 	    
-	    	$settings = TEMPLATE_PATH .'settings/config/config-default.json';
+	    	if(WP) {
+	    		$id = self::lastsaved();
+	    	} else {
+	    		$id = self::template_id();
+	    	}
+	    	
+	    	$settings = TEMPLATE_PATH .'settings/config/config-'.$id.'.json';
+	    	$default = TEMPLATE_PATH .'settings/config/config-default.json';
 	    	
 	    	if(file_exists($settings)) {
 	    	
-	    		$settings = self::get_json('settings/config/config-default.json');
-	    			    		
+	    		$settings = self::get_json('settings/config/config-'.$id.'.json');
+	    			
 	    		// Check to see if params have become corrupted
 	    		// Sometimes the details arent saved properly  		
-	    		if(empty($settings->params)) {
+	    		if(!empty($settings->params)) {
 	    			
 	    			// Adds a message if params are emoty
-	    		//	JFactory::getApplication()->enqueueMessage('Stored settings corrupt. Reverting to default settings. Please check your settings.');
+	    			//	JFactory::getApplication()->enqueueMessage('Stored settings corrupt. Reverting to default settings. Please check your settings.');
+	    			
+	    			// Load the default params
+	    			return self::get_json('settings/config/config-'.$id.'.json');
+	    			
+	    		}
+	    		
+	    		elseif(file_exists($default)) {
+	    		
+	    			$settings = self::get_json('settings/config/config-default.json');
+	    			
+	    			if(!empty($settings->params)) {
+	    				
+	    				// Adds a message if params are emoty
+	    				//	JFactory::getApplication()->enqueueMessage('Stored settings corrupt. Reverting to default settings. Please check your settings.');
+	    				
+	    				// Load the default params
+	    				return self::get_json('settings/config/config-default.json');
+	    				
+	    			}
+	    			
+	    			else {
+	    				return self::get_json('settings/default-config.json');
+	    			}
+	    		}
+	    		
+	    	} elseif(file_exists($default)) {
+	    	
+	    		$settings = self::get_json('settings/config/config-default.json');
+	    		
+	    		if(!empty($settings->params)) {
+	    			
+	    			// Adds a message if params are emoty
+	    			//	JFactory::getApplication()->enqueueMessage('Stored settings corrupt. Reverting to default settings. Please check your settings.');
 	    			
 	    			// Load the default params
 	    			return self::get_json('settings/config/config-default.json');
@@ -204,14 +271,34 @@ class zen
 	    		}
 	    		
 	    		else {
-	    			return self::get_json('settings/config/config-default.json');
+	    			return self::get_json('settings/default-config.json');
 	    		}
-	    		
 	    	} else {
 	    		return self::get_json('settings/default-config.json');
 	    	}
 
 		}	
+		
+		
+		
+		/**
+		* 	Checks if Com Ajax is installed
+		*	Required for the module admin
+		* 	
+		*/
+		
+		public static function com_ajax()
+			{
+				jimport( 'joomla.filesystem.file' );
+		
+				if(JFile::exists(JPATH_ADMINISTRATOR . '/components/com_ajax/ajax.php')) {
+					return 1;
+				} else {
+					return 0;
+				}
+		}
+		
+		
 		
 		
 

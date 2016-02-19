@@ -41,17 +41,9 @@
  }
  
  #zgfmessage {
- 	top: 0;
- 	background: #00AAE7;
- 	color: #fff;
  	margin: 30px 0 0 160px;
- 	padding: 28px;
- 	display: none;
  }
- 
-  #zgfmessage * {
-  	color: #fff;
-  }
+
  
  .uk-button {
  	margin-bottom: 20px;

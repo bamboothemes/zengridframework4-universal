@@ -13,17 +13,22 @@
 	// target: the helper function we are targetting eg compress, compile, save, delete, load
 	// target also needs to be added as a class so we can add the trigger the message and button states
 	// Target needs to match WP criteria 'wp_ajax_' . target; eg only taregt is specified
-	// Page_type: Wordpress specific that tells us what page this function is goign to rendera file for. Joomal can use template id for this.// Target refers to type of thing we are saving: theme, preset, layout, config
+	// Page_type: Wordpress specific that tells us what page this function is goign to rendera file for. Joomla can use template id for this.// Target refers to type of thing we are saving: theme, preset, layout, config
 	// Name: file name; config files get prefixed with 'config-$page_type'
 	
 	$.fn.send_ajax = function (template, url, data, action,id, target, name) {
 
+				
 		$.ajax({
+			'option': 'com_ajax',
+			'plugin': 'zentools2',
 		    url : url,
 		    method: 'post',
 		    context: document.body,
 		    dataType: 'text',
 		    data: {
+		    	'option' : 'com_ajax',
+		    	'plugin' : 'zengridframework',
 		    	content: data,
 		    	action: action,
 		    	template: template,
@@ -31,10 +36,16 @@
 		    	name: name,
 		    	id: id
 		    },
+		    
 		    beforeSend: function () {
+		    
 		      	 console.log(target + ' action triggered');
+		      	 $('#log pre').append('Save Action -- \n');
+		      	 $('#log pre').append(target + ' action triggered \n');
 		      	 
-		      	 if(target !=="layouts") {   	  
+		      	 
+		      	 if((target !=="layouts") && (target !=="compress")) {   	  
+			
 			      	  console.log('Check if compile required');
 			      	       	  
 			      	 // Check to see if we are compiling as well
@@ -54,7 +65,8 @@
 			      	 } else {
 			      	 
 			      	 	console.log('Compiling not required for this save');
-			      	 
+			      	 	$('#log pre').append('Compile not required \n');
+			      	 	
 			      	 	if(id==""){
 			      	 	
 			      	 	  	jQuery('#zgfmessage span').text(name);
@@ -70,15 +82,18 @@
 		      	 }	      	  
 		    },
 		    error: function (data) {
-		    	console.log('Error:' + JSON.stringify(data));
+		    	console.log(data);
+		    	console.log('Error:' + JSON.stringify(data) + '\n');
+		    	$('#log pre').append('Error:' + JSON.stringify(data) + '\n');
 		    },
 		    success: function (data) {
 		    	
-		    	if(target !=="layouts") { 
+		    	if((target !=="layouts") && (target !=="compress")) { 
 		    	 
 			    	 if($('#compile_required').val() == "1") {
 			    	
 			    		console.log('Checking to see if compiler has finished running');
+				    	$('#log pre').append('Checking to see if compiler has finished running. \n');
 				    	
 				    	// Display success message only if compiling of css has finished
 				    	var interval = setInterval(function(){
@@ -100,10 +115,11 @@
 				    			
 				    			// Finished compiler
 				    			console.log('Compiler has finished running');
+				    			$('#log pre').append('Compiler has finished running. \n');
 				    			
 				    			// Success message
 				    			console.log('Successfully saved ' + target + ':' + data); 
-				    			
+				    			$('#log pre').append('Successfully saved ' + target + ':' + data + '\n');
 				    			
 				    			// Since we updated the css and the theme settings have changed
 				    			// We need to save the theme again
@@ -125,14 +141,33 @@
 				    				$(this).attr('data-stored', newvalue);
 				    				console.log('Set the stored value for all items');
 				    				
+				    				
 				    			});
-				    			
+				    			$('#log pre').append('Set the stored value for all items.\n');
 				    			jQuery('#zgfmessage .' + target).fadeIn('normal', function() {
 				    				jQuery('#zgfmessage,#zgfmessage .' + target).delay(3000).fadeOut();
 				    			});	    
 				    								
 				    				// Clear interval
 				    			clearInterval(interval);
+				    			
+				    			// Check the Joomla toolbar
+				    			var clicked = $('button.zen-clicked').parent().attr('id');
+				    			
+				    			if(clicked == 'toolbar-save') {
+				    				// Clean intrval
+				    				clearInterval(interval);
+				    				
+				    				// if save and close
+				    				Joomla.submitbutton('style.save');
+				    			} else if(clicked == 'toolbar-apply')  {
+				    					
+				    				// Clear interval
+				    				clearInterval(interval);
+				    				
+				    				// if save
+				    				Joomla.submitbutton('style.apply');
+				    			}
 				    		
 				    		}
 				    				 	
@@ -144,14 +179,51 @@
 			    			jQuery('#zgfmessage,#zgfmessage .' + target).delay(3000).fadeOut();
 			    		});
 			    		
+			    		// Check the Joomla toolbar
+			    		var clicked = $('button.zen-clicked').parent().attr('id');
+			    		
+			    		if(clicked == 'toolbar-save') {
+			    			// Clean intrval
+			    			clearInterval(interval);
+			    			
+			    			// if save and close
+			    			Joomla.submitbutton('style.save');
+			    		} else if(clicked == 'toolbar-apply')  {
+			    				
+			    			// Clear interval
+			    			clearInterval(interval);
+			    			
+			    			// if save
+			    			Joomla.submitbutton('style.apply');
+			    		}
 			    	}
 			    } else {
 			    	// Success message
 			    	console.log('Successfully saved ' + target + ':' + data); 
+			    	$('#log pre').append('Successfully saved ' + target + ':' + data + '\n');
 			    	jQuery('#zgfmessage, #zgfmessage .' + target).fadeIn('normal', function() {
 			    		jQuery('#zgfmessage,#zgfmessage .' + target).delay(3000).fadeOut();
 			    	});
 			    	
+			    	// Check the Joomla toolbar
+			    	var clicked = $('button.zen-clicked').parent().attr('id');
+			    	
+			    	if(clicked == 'toolbar-save') {
+			    		// Clean intrval
+			    		clearInterval(interval);
+			    		
+			    		// if save and close
+			    		Joomla.submitbutton('style.save');
+			    	} else if(clicked == 'toolbar-apply')  {
+			    			
+			    		// Clear interval
+			    		clearInterval(interval);
+			    		
+			    		// if save
+			    		Joomla.submitbutton('style.apply');
+			    	}
+			    	
+			    				    	
 			    }
 		     	
 		    }

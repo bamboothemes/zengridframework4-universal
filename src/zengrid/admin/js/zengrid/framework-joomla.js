@@ -5,7 +5,12 @@ Copyright 2013 Jose Vargas. Licensed under GPL license. Based on Stefan Petre's 
 For usage and examples: colpick.com/plugin
  */
 
-(function ($) {
+jQuery(document).ready(function($){
+		
+		// Remove onclick behaviour in J admin
+		// We add it back later
+		$('#toolbar-apply button,#toolbar-save button').attr('onclick','').unbind('click');
+		
 		
 		setTimeout(function() {
 			 $('#system-message-container').fadeOut();
@@ -14,16 +19,14 @@ For usage and examples: colpick.com/plugin
 		
 		
 		// Das ist Smooth linking
-		jQuery('.subnavlink-item').smoothScroll({
+		$('.subnavlink-item').smoothScroll({
 			offset: 0,
 			easing: 'swing'
 		});
 		
-		jQuery('.subnavlink-item').click(function() {
+		$('.subnavlink-item').click(function() {
 			return false;
 		});
-		
-		
 		
 		$(window).scroll(function(){
 			var scrolled = $(window).scrollTop();
@@ -36,4 +39,4 @@ For usage and examples: colpick.com/plugin
 		
 		});
 		
-})(jQuery);
+});

@@ -11,7 +11,7 @@ defined('ZEN_ALLOW') or die();
 
 $styles = $zgf->get_files('settings/themes', '.json');
 
-if(defined(JOOMLA)) {
+if(JOOMLA) {
 	// Get a db connection.
 	$db = JFactory::getDbo();
 	 
@@ -41,15 +41,15 @@ if(defined(JOOMLA)) {
 	foreach ($results as $key => $template) {
 	
 		if($template->template == TEMPLATE) {
-			$options .= '<option value="config-'.$template->id.'">'.$template->title.'</option>';
+			$options .= '<option value="'.$template->id.'">'.$template->title.'</option>';
 		}
 	}
 	
 	?>
 		
-		<a href="#" class="uk-button-primary uk-button" id="apply-style">Load Saved Settings</a>
+		<a href="#" class="uk-button-primary uk-button" id="load-config">Load Saved Settings</a>
 		
-		<select id="style-preset">
+		<select id="page-type-selector">
 			<?php echo $options;?>
 		</select>
 <?php } ?>

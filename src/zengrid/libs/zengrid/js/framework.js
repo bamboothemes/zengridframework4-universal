@@ -104,12 +104,15 @@ jQuery(document).ready(function($) {
 	 
 	 $(document).on('click', '.zen-modal-trigger', function() {
 	 	var target = $(this).attr('data-target');
-	 	$('[data-id="'+ target +'"],.zen-modal-overlay').fadeToggle().addClass('active');
+	 	var content = $('[data-id="' + target + '"]').html();
+	 	$('#modal-place-holder').html(content);
+	 	$('#modal-place-holder,.zen-modal-overlay').fadeToggle().addClass('active');
 	 	return false;
 	 });
 	 
 	 $(document).on('click', '.zen-modal-overlay,.zen-modal-close', function() {
 	 	$('.zen-modal.active,.zen-modal-overlay').fadeToggle().removeClass('active');
+	 	$('#modal-place-holder').html('');
 	 	return false;
 	 });
 	 
@@ -164,11 +167,11 @@ jQuery(document).ready(function($) {
     	$(this).parent().fadeOut();
     });
     
-	
-});
-
-
-
+    
+    
+    
+    
+ });
 
 
 (function ($) {

@@ -7,16 +7,20 @@ For usage and examples: colpick.com/plugin
 
 (function ($) {
 		
-	$.fn.delete_theme = function () {
+	$.fn.delete_theme = function (url, template) {
 			
 		var theme = $('#cssfile').val();
 	
 		$.ajax({
-	        url : "admin-ajax.php",
+	        url : url,
 	        method: 'post',
 	        context: document.body,
 	        data: {
+	        	'option' : 'com_ajax',
+	        	'plugin' : 'zengridframework',
 	        	theme:theme,
+	        	content: theme,
+	        	template: template,
 	        	action: 'delete_theme',
 	        	admin:'1'
 	        },

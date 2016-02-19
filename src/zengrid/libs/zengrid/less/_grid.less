@@ -29,7 +29,7 @@
 	}
 	
 	
-	.zen-col{
+	.zg-col{
 	     .mixin-col;
 	     margin-bottom: @gutter-sml	     
 	}
@@ -85,7 +85,7 @@
 	// Sets all columns to full width
    // Widths get instantiated at browsers 
    // Beyond the global collapse point
-  	.zen-col {
+  	.zg-col {
   	    .stacked();
   	}
    
@@ -103,7 +103,7 @@
         
 		@one_col: 100% / @max_columns;
         
-        .zen-row .zen-col:first-child {
+        .zen-row .zg-col:first-child {
             .mixin-span_first;
         }
        
@@ -112,46 +112,46 @@
         Add your semantic classnames in alongside their corresponding spans here. e.g.
         
         */
-        .zen-col-1 {
+        .zg-col-1 {
             .mixin-span(1, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-2,
+        .zg-col-2,
         .one-sixth {
             .mixin-span(2, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-3,
+        .zg-col-3,
         .one-quarter {
             .mixin-span(3, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-4,
+        .zg-col-4,
         .one-third {
             .mixin-span(4, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-5 {
+        .zg-col-5 {
             .mixin-span(5, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-6,
+        .zg-col-6,
         .one-half {
             .mixin-span(6, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-7 {
+        .zg-col-7 {
             .mixin-span(7, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-8,
+        .zg-col-8,
         .two-thirds {
             .mixin-span(8, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-9,
+        .zg-col-9,
         .three-quarters {
             .mixin-span(9, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-10 {
+        .zg-col-10 {
             .mixin-span(10, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-11 {
+        .zg-col-11 {
             .mixin-span(11, @gutter-pc, @gutter_px, @padding, @max_columns);
         }
-        .zen-col-12,
+        .zg-col-12,
         .one-whole {
             .stacked()
         }
@@ -221,7 +221,7 @@
 	     		
 	    		.stack-tablets {
 	    		
-	    			.zen-col{
+	    			.zg-col{
 	    				.stacked() 
 	    			}
 	    		}
@@ -231,7 +231,7 @@
 	    	@media screen and (max-width: @phone-max-width) {
 	     		
 	    		.stack-phones {
-	    			.zen-col {
+	    			.zg-col {
 	    				 .stacked()
 	    			}
 	    		}
@@ -242,7 +242,7 @@
   .responsive-disabled,
   .no-change-phones,
   .no-change-tablets { 
-	   .zen-col { margin-left:0;}
+	   .zg-col { margin-left:0;}
 	           
 	           /* --- Gridpak variables ---*/ 
 	           @max_columns: 12;
@@ -253,7 +253,7 @@
 	   
 	   		@one_col: 100% / @max_columns;
 	           
-	           .zen-row .zen-col:first-child {
+	           .zen-row .zg-col:first-child {
 	               .mixin-span_first;
 	           }
 	          
@@ -262,46 +262,46 @@
 	           Add your semantic classnames in alongside their corresponding spans here. e.g.
 	           
 	           */
-	           .zen-col-1 {
+	           .zg-col-1 {
 	               .mixin-span(1, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-2,
+	           .zg-col-2,
 	           .one-sixth {
 	               .mixin-span(2, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-3,
+	           .zg-col-3,
 	           .one-quarter {
 	               .mixin-span(3, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-4,
+	           .zg-col-4,
 	           .one-third {
 	               .mixin-span(4, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-5 {
+	           .zg-col-5 {
 	               .mixin-span(5, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-6,
+	           .zg-col-6,
 	           .one-half {
 	               .mixin-span(6, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-7 {
+	           .zg-col-7 {
 	               .mixin-span(7, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-8,
+	           .zg-col-8,
 	           .two-thirds {
 	               .mixin-span(8, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-9,
+	           .zg-col-9,
 	           .three-quarters {
 	               .mixin-span(9, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-10 {
+	           .zg-col-10 {
 	               .mixin-span(10, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-11 {
+	           .zg-col-11 {
 	               .mixin-span(11, @gutter-pc, @gutter_px, @padding, @max_columns);
 	           }
-	           .zen-col-12,
+	           .zg-col-12,
 	           .one-whole {
 	               .stacked()
 	           }
@@ -376,55 +376,55 @@
 		
 			@marginlesscol: 8.3%;
 			
-			.zen-col {
+			.zg-col {
 				margin-left:0
 			}
 			
-			.zen-col-1 {
+			.zg-col-1 {
 			    width: 1 * @marginlesscol;
 			}
 			
-			.zen-col-2 {
+			.zg-col-2 {
 			    width: 2 * @marginlesscol;
 			}
 			
-			.zen-col-3 {
+			.zg-col-3 {
 			    width: 25%;
 			}
 			
-			.zen-col-4 {
+			.zg-col-4 {
 			    width: 33.3333%;
 			}
 			
-			.zen-col-5 {
+			.zg-col-5 {
 			    width: 5 * @marginlesscol;
 			}
 			
-			.zen-col-6 {
+			.zg-col-6 {
 			    width: 6 * @marginlesscol;
 			}
 			
-			.zen-col-7 {
+			.zg-col-7 {
 			    width: 7 * @marginlesscol;
 			}
 			
-			.zen-col-8 {
+			.zg-col-8 {
 			    width: 66.6666%;
 			}
 			
-			.zen-col-9 {
+			.zg-col-9 {
 			    width: 9 * @marginlesscol;
 			}
 			
-			.zen-col-10 {
+			.zg-col-10 {
 			    width: 10 * @marginlesscol;
 			}
 			
-			.zen-col-11 {
+			.zg-col-11 {
 			    width: 11 * @marginlesscol;
 			}
 			
-			.zen-col-12 {
+			.zg-col-12 {
 			    width: 12 * @marginlesscol;
 			}
 		}

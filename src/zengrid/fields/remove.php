@@ -20,9 +20,10 @@ $configs = zen::get_files('settings/config/', '.json');
 <?php foreach ($configs as $page) { 
 
 	$page = str_replace(array('config-','.json'), '', $page);
+	if($page !=="default") {
 ?>
 		<option value="<?php echo $page;?>"><?php echo $page;?></option>
-<?php } ?>
+<?php } }?>
 </select>
 
-<a href="#" class="uk-button uk-button-primary uk-button-danger" id="delete-config">Load Settings</a>
+<a href="#" class="uk-button uk-button-primary uk-button-danger" id="delete-config">Delete Configuration</a>

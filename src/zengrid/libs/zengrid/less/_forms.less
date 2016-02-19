@@ -67,7 +67,8 @@ textarea{
 input[type="checkbox"], input[type="radio"], input[type="submit"] {
 	min-height: 0;
 	height: auto;
-	width: auto
+	width: auto;
+	margin-right: 4px;
 }
 
 textarea {
@@ -76,7 +77,12 @@ textarea {
 
 
 // Input groups
-.input-group-addon {display:inline}
+.input-group-addon {
+	text-align: center;
+	display: inline-block;
+	padding: 0 10px;
+	height: @input-min-height
+}
 
 
 // Reset Input buttons
@@ -90,9 +96,9 @@ input.button {
 // Input / Selectes
 // -----------------------------------------------------------------------------*/
 input,select {
-	border-radius:@input-border-radius !important;
-	border: 1px solid @border-color  !important;
-	box-shadow:none !important;
+	border-radius:@input-border-radius;
+	border: 1px solid @border-color;
+	box-shadow:none;
 	margin-bottom: @gutter-sml;
 	height: @input-min-height;
 }

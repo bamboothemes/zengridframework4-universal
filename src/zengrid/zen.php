@@ -137,7 +137,7 @@ if(!class_exists('Zen4')) {
 		 */
 		public function loadModule($module, $style='zendefault') {
 			if(JOOMLA) {
-				return '<jdoc:include type="modules" name="'.$module.'" style="'.$style.'" />';
+				echo '<jdoc:include type="modules" name="'.$module.'" style="'.$style.'" />';
 			} else {
 			
 				if($style =="zentabs") {
@@ -173,19 +173,39 @@ if(!class_exists('Zen4')) {
 		 
 		public function countModules($module) {
 			
-			$widgets = get_option('sidebars_widgets');
 			
-			if($module == "breadcrumb") {
-				return 1;
-			}
-			elseif(isset($widgets[$module])) {
-				$count = count($widgets[$module]);
+			if(JOOMLA) {
+				return $this->joomla->countModules($module);
 				
-				if($count > 0) return 12/$count;
+			} else {
+				$widgets = get_option('sidebars_widgets');
+				
+				if($module == "breadcrumb") {
+					return 1;
+				}
+				elseif(isset($widgets[$module])) {
+					$count = count($widgets[$module]);
+					
+					if($count > 0) return 12/$count;
+				}
 			}
 		}
 		
 		
+		
+		/**
+		 * Get the menu function
+		 * 
+		 *	
+		 */
+		 
+		public function getmenu($type= null) {
+			if(WP){
+				return wp_nav_menu( array( 'theme_location' => $type, 'menu_id' => $type.'-menu' ) );
+			} else {
+				return '<jdoc:include type="modules" name="menu" style="simple" />';
+			}
+		}
 		
 		
 		
@@ -349,11 +369,20 @@ if(!class_exists('Zen4')) {
 						
 						$row = $this->layout->{$row}->{'positions'};
 					
-						foreach ($row as $module => $width) {
-						
-							if ( is_active_sidebar($module) ) {
-								return true;
-							}
+						if(JOOMLA) {
+							foreach ($row as $module => $width) {
+							
+								if ($this->joomla->countModules($module)) {
+									return true;
+								}
+							} 
+						} else {
+							foreach ($row as $module => $width) {
+							
+								if ( is_active_sidebar($module) ) {
+									return true;
+								}
+							} 
 						}
 					}
 				}
@@ -477,6 +506,31 @@ if(!class_exists('Zen4')) {
 		
 		
 		/**
+			 * Check system messages
+			 * Forked from T3
+			 *
+			 * @return  boolean  The system message queue has any message or not
+			 */
+			function hasMessage()
+			{
+				// Get the message queue
+				$app      = JFactory::getApplication();
+				$input    =  $app->input;
+		
+				if($input->getCmd('option') == 'com_content'){
+					$messages = $app->getMessageQueue();
+		
+					return !empty($messages);
+				}
+		
+				return true;
+			}
+			
+			
+			
+		
+		
+		/**
 		 * Load fonts css declaration
 		 * Used to load fotns if not using the fotn loader
 		 *
@@ -557,10 +611,13 @@ if(!class_exists('Zen4')) {
 					$fonts = str_replace(' ', '+', implode('%7C', $fontarray));
 					$fonts = str_replace(',', '%2C', $fonts);
 				
-					wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family='.$fonts);
-					wp_enqueue_style( 'googleFonts');
-					
-					//return wp_enqueue_style('//fonts.googleapis.com/css?family='.$fonts);		
+					if(JOOMLA) {
+						return $this->doc->addStyleSheet('//fonts.googleapis.com/css?family='.$fonts);	
+					} else {
+						wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family='.$fonts);
+						wp_enqueue_style( 'googleFonts');
+					}
+						
 				}
 			}	 
 			
@@ -574,7 +631,7 @@ if(!class_exists('Zen4')) {
 		    
 	
 		
-	
+		
 		/**
 		 * Clean Fonts
 		 * Used to prepare font names in Font Loader
@@ -589,6 +646,20 @@ if(!class_exists('Zen4')) {
 	
 	
 	
+		/**
+		 * 	Language attr
+		 *	
+		 *
+		 */
+	 
+		public function lang_attributes() {
+		
+			if(JOOMLA) {
+				return 'xmlns="http://www.w3.org/1999/xhtml" xml:lang="'.$this->joomla->language.'" lang="'.$this->joomla->language.'" dir="'.$this->joomla->direction.'"';
+			} else {
+				return language_attributes();
+			}
+		}
 	
 		/**
 		 * 	Body Classes
@@ -600,11 +671,57 @@ if(!class_exists('Zen4')) {
 					
 				$pageclass = array();
 				
-			
+				
 				$pageclass[] = 'template-'.self::getTemplateId();
 				
-				if(!JOOMLA) {
+				
+				if(WP) {
 					$pageclass[] = implode(' ', get_body_class());
+				} else {
+					$input = JFactory::getApplication()->input;
+					
+					if($input->getCmd('option', '')){
+						$pageclass[] = $input->getCmd('option', '');
+					}
+					if($input->getCmd('view', '')){
+						$pageclass[] = 'view-' . $input->getCmd('view', '');
+					}
+					if($input->getCmd('layout', '')){
+						$pageclass[] = 'layout-' . $input->getCmd('layout', '');
+					}
+					if($input->getCmd('task', '')){
+						$pageclass[] = 'task-' . $input->getCmd('task', '');
+					}
+					if($input->getCmd('Itemid', '')){
+						$pageclass[] = 'itemid-' . $input->getCmd('Itemid', '');
+					}
+			
+					if($this->params->framework_enable) {
+						$pageclass[] = $this->params->framework_version;
+					}
+					
+					$lang = JFactory::getLanguage();
+					$pageclass[] = str_replace(' ', '-', $lang->getTag());
+					
+					$menu = JFactory::getApplication()->getMenu();
+					
+					if($menu){
+						$active = $menu->getActive();
+						$default = $menu->getDefault();
+			
+						if ($active) {
+							if($default && $active->id == $default->id){
+								$pageclass[] = 'home';
+							}
+			
+							if ($active->params && $active->params->get('pageclass_sfx')) {
+								$pageclass[] = $active->params->get('pageclass_sfx');
+							}
+						}
+					}
+			
+					$pageclass[] = 'j'.str_replace('.', '', (number_format((float)JVERSION, 1, '.', '')));
+							
 				}
 				
 				if($this->params->framework_enable) {
@@ -663,11 +780,25 @@ if(!class_exists('Zen4')) {
 			
 			$hideMain = 0;
 			
-			if(	$this->params->hidefrontpage && is_home()) 
-			{
+			if(JOOMLA) {
+				$lang = JFactory::getLanguage();
+				$menu = $this->app->getMenu();
+				$hideMain = 0;
 				
-				$hideMain = 1;
-			} 
+				if(	$this->params->hidefrontpage && 
+					($menu->getActive() == $menu->getDefault( $lang->getTag()))) 
+				{
+					
+					$hideMain = 1;
+				} 
+			} else {			
+			
+				if(	$this->params->hidefrontpage && is_home()) 
+				{
+					
+					$hideMain = 1;
+				} 
+			}
 			
 			return $hideMain;
 		}
@@ -753,26 +884,26 @@ if(!class_exists('Zen4')) {
 		 
 		public function load_js() {
 		
-			$theme = TEMPLATE_PATH . '/js/template-'.$this->template_id.'.js';
-			
+			$theme = TEMPLATE_PATH . 'js/template-'.$this->template_id.'.js';
+
 			$path = self::template_path();
 			
 				//Load the combined js file
 				if($this->params->compressjs) {
 				
+					// Set the file extension
+					if($this->params->gzip_js) {
+						$ext = 'php';
+					} else {
+						$ext = 'js';
+					}
+					
 					// Check if unique js file exists
 					if (file_exists($theme)) {
 					
-						// Set the file extension
-						if($this->params->gzip_js) {
-							$ext = 'php';
-						} else {
-							$ext = 'js';
-						}
-						
 						// Load unique file
 						if(JOOMLA) {
-							$this->doc->addScript('/'.$path . 'js/template-'. $this->template_id .'.'. $ext);
+							$this->doc->addScript($path . 'js/template-'. $this->template_id .'.'. $ext);
 						} else {
 							wp_enqueue_script('template-js', '/'.$path . 'js/template-'.$this->template_id.'.'.$ext, array('jquery'),null);
 						}
@@ -780,9 +911,9 @@ if(!class_exists('Zen4')) {
 					} else {
 						if(JOOMLA) {
 							// Load the fallback
-							$this->doc->addScript('/'.$path . 'js/template.js');
+							$this->doc->addScript($path . 'js/template.'.$ext);
 						} else {
-							wp_enqueue_script('template-js', '/'.$path . 'js/template.js', array('jquery'),null);
+							wp_enqueue_script('template-js', '/'.$path . 'js/template.'.$ext, array('jquery'),null);
 						}
 					} 
 				}	
@@ -792,7 +923,7 @@ if(!class_exists('Zen4')) {
 					
 					foreach ($assets as $key => $asset) {
 						if(JOOMLA) {
-							$this->doc->addScript('/'.$path.'/js/'.$asset);
+							$this->doc->addScript($path.'/js/'.$asset);
 						} else {
 							wp_enqueue_script(basename($asset), '/'.$path.'js/'.$asset, array('jquery'),null);
 						}
@@ -800,7 +931,7 @@ if(!class_exists('Zen4')) {
 					
 					if($this->params->navcollapse_type =="toggle") {
 						if(JOOMLA) {
-							$this->doc->addScript('/'.$path.'/zengrid/libs/zengrid/js/meanmenu.js');
+							$this->doc->addScript($path.'/zengrid/libs/zengrid/js/meanmenu.js');
 						} else {
 							wp_enqueue_script('meanmenu', '/'.$path.'/zengrid/libs/zengrid/js/meanmenu.js', array('jquery'),null);
 						}
@@ -808,7 +939,7 @@ if(!class_exists('Zen4')) {
 					
 					if($this->params->navcollapse_type =="select") {
 						if(JOOMLA) {
-							$this->doc->addScript('/'.$path.'/zengrid/libs/zengrid/js/jquery.resmenu.min.js');
+							$this->doc->addScript($path.'/zengrid/libs/zengrid/js/jquery.resmenu.min.js');
 						} else {
 							wp_enqueue_script('resmenu.min', '/'.$path.'/zengrid/libs/zengrid/js/jquery.resmenu.min.js', array('jquery'),null);
 						}
@@ -817,7 +948,7 @@ if(!class_exists('Zen4')) {
 					if($this->params->enable_animations) {
 					
 						if(JOOMLA) {
-							$this->doc->addScript('/'.$path.'/zengrid/libs/zengrid/js/wow.min.js');
+							$this->doc->addScript($path.'/zengrid/libs/zengrid/js/wow.min.js');
 						} else {
 						
 							wp_enqueue_script('wow.min', '/'.$path.'/zengrid/libs/zengrid/js/wow.min.js', array('jquery'),null);
@@ -868,12 +999,19 @@ if(!class_exists('Zen4')) {
 						$theme = str_replace('theme.[example]-', '', $this->params->theme);
 						$theme = str_replace('presets/theme.[example]-', '', $this->params->theme);
 						
-						
-						// load the file
-						wp_enqueue_style($this->params->theme, '/'.self::template_path() . 'css/theme.'. $theme .'.'. $ext,'',null);
+						if(JOOMLA) {
+							// load the file
+							$this->doc->addStyleSheet(self::template_path() . 'css/theme.'. $theme .'.'. $ext);
+						} else {
+							wp_enqueue_style($this->params->theme, '/'.self::template_path() . 'css/theme.'. $theme .'.'. $ext,'',null);
+						}
 					}
 					else {
-						wp_enqueue_style($this->params->theme, '/'.self::template_path() . 'css/template.css','',null);
+						if(JOOMLA) {
+							$this->doc->addStyleSheet(self::template_path() . 'css/template.css');
+						} else {
+							wp_enqueue_style($this->params->theme, '/'.self::template_path() . 'css/template.css','',null);
+						}
 					}		
 				}
 				else { ?>
@@ -933,6 +1071,38 @@ if(!class_exists('Zen4')) {
 		public function custom_assets() {
 			$custom_assets = explode(',', $this->params->add_to_compressor);
 			return $custom_assets;
+		}
+		
+		
+		
+		/**
+		 * 	Loads a module
+		 *	Used for mega menu
+		 *
+		 */
+		 
+		public static function module($module) {
+			// load module
+			$id    = intval($module);
+			$db    = JFactory::getDbo();
+			$query = $db->getQuery(true);
+			$query
+				->select('m.id, m.title, m.module, m.position, m.content, m.showtitle, m.params')
+				->from('#__modules AS m')
+				->where('m.id = ' . $id)
+				->where('m.published = 1');
+			$db->setQuery($query);
+			$module = $db->loadObject();
+			
+			//check in case the module is unpublish or deleted
+			if ($module && $module->id) {
+				$style   = 'zendefault';
+				$content = JModuleHelper::renderModule($module, array(
+					'style' => $style
+				));
+				
+				return $content . "\n";
+			}
 		}
 		
 		

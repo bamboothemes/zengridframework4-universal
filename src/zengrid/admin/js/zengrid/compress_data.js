@@ -7,7 +7,7 @@ For usage and examples: colpick.com/plugin
 
 (function ($) {
 		
-	$.fn.compress_data = function (template) {
+	$.fn.compress_data = function (template,url) {
 			
 		var custom = $('#add_to_compressor').val();
 		
@@ -28,10 +28,12 @@ For usage and examples: colpick.com/plugin
 		var wowjs = $('#enable_animations').val();
 		
 		$.ajax({
-		    url : "admin-ajax.php",
+		    url : url,
 		    method: 'post',
 		    context: document.body,
 		    data: {
+		    	'option' : 'com_ajax',
+		    	'plugin' : 'zengridframework',
 		    	files: 	 files,
 		    	custom:	custom,
 		    	id: template_id,

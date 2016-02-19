@@ -8,15 +8,16 @@ For usage and examples: colpick.com/plugin
 (function ($) {
 		
 		// Load Layout Function
-		$.fn.set_layout_data = function (template) {
+		$.fn.set_layout_data = function (data,url,template) {
 
-			
-			
-			
 			// Empty the resize container
 			$('#resize-container').empty();
 			
-			var type = $.type(template);
+			
+			// If we are loading the layout from a  config file then we already have the object
+			// Whereas if it's from a layout file it's just the name
+			
+			var type = $.type(data);
 			
 			if(type =="string") {
 				// Get the layout to use
@@ -24,19 +25,29 @@ For usage and examples: colpick.com/plugin
 				
 				// Set the save box with the current name
 				$('#layout-name').val(layout);
+				
+				$('#log pre').append('Loading ' + layout + ' layout from file\n');
+				
 			} else {
-				layout = template;
+				layout = data;
+				
+				$('#log pre').append('Loading layout from config\n');
 			}
-
+			
+			console.log('template' + template);
+			console.log('data' + data);
 			$.ajax({
-			 	url : "admin-ajax.php",
+			 	url : url,
 			 	method: 'post',
 			 	context: document.body,
 			 	data: {
+			 		'option' : 'com_ajax',
+			 		'plugin' : 'zengridframework',
 			 		admin:'1',
 			 		action: 'set_layout',
 			 		template: template,
-			 		layout: layout
+			 		layout: data,
+			 		content: data
 			 	},
 			
 			 error: function (data) {

@@ -23,31 +23,56 @@ defined('ZEN_ALLOW') or die('Restricted access');
 		include_once FRAMEWORK_PATH . '/helpers/helper.php'; 
 		$zgf = new zen();
 		
+		// Get the zgf version
 		$zgfversion = $zgf->get_xml('zengrid/zen.xml');
+		
+		// list of assets to load
 		$admin_assets = $zgf->get_xml('zengrid/assets.xml');
 		
-		// I know we should enqueue this but doing that causes a FOUC
+		if(JOOMLA) {
+			// Get the document object
+			$document = JFactory::getDocument();
+			
+			// Checks to see if com_ajax is installed and zgf ajax plugin is published
+			include_once(FRAMEWORK_PATH . '/config/plugin_checks.php');
+		}
 		
-		echo "<link rel='stylesheet' href='".get_template_directory_uri()."/zengrid/admin/css/style.css' type='text/css' media='all' />";
-		echo "<link rel='stylesheet' href='".get_template_directory_uri()."/zengrid/admin/css/style-wp.css' type='text/css' media='all' />";
-		echo "<link rel='stylesheet' href='".get_template_directory_uri()."/zengrid/admin/css/colpick.css' type='text/css' media='all' />";
-		echo "<link rel='stylesheet' href='".get_template_directory_uri()."/zengrid/admin/css/font-awesome.min.css' type='text/css' media='all' />";
+		// I know we should enqueue this but doing that causes a FOUC
+		echo "<link rel='stylesheet' href='".ADMIN_MEDIA_URI."/css/style.css' type='text/css' media='all' />";
+		
+		if(WP) {
+			echo "<link rel='stylesheet' href='".ADMIN_MEDIA_URI."/css/style-wp.css' type='text/css' media='all' />";
+		}
+		
+		echo "<link rel='stylesheet' href='".ADMIN_MEDIA_URI."/css/colpick.css' type='text/css' media='all' />";
+		echo "<link rel='stylesheet' href='".ADMIN_MEDIA_URI."/css/font-awesome.min.css' type='text/css' media='all' />";
 		
 		
 		foreach ($admin_assets as $type => $group) {
 			foreach ($group as $file) {
 				if($type =="js") {
-					 wp_enqueue_script(basename($file), get_template_directory_uri()  . '/zengrid/admin/js/'.$file, array('jquery'),$zgfversion->version);
+					if(JOOMLA) {
+						$document->addScript(ADMIN_MEDIA_URI.'js/'.$file.'?version='.$zgfversion->version ); 
+					} else {
+						wp_enqueue_script(basename($file), get_template_directory_uri()  . '/zengrid/admin/js/'.$file, array('jquery'),$zgfversion->version);
+					}
 				}
 			}
 		}
+		
+		if(JOOMLA) {
+			// Jooml aneeds an extra js file
+			$document->addScript(ADMIN_MEDIA_URI.'js/zengrid/framework-joomla.js?version='.$zgfversion->version ); 
+		} 
+		
 		
 		// Config XML
 		$config = $zgf->get_xml('settings/settings.xml');
 		$templateDetails = $zgf->get_xml('templateDetails.xml');
 		$pages = $templateDetails->pages->page;
 		$settings = $zgf->getsettings();  
-		$configs = zen::get_files('settings/config/', '.json');
+		$configs = $zgf->get_files('settings/config/', '.json');
+		$last_saved_state = $zgf->lastsaved();
 		
 		?>
 		<div id="zgf">
@@ -65,43 +90,28 @@ defined('ZEN_ALLOW') or die('Restricted access');
 			<div id="template-toolbar" data-theme="<?php echo TEMPLATE;?>">
 				<h3 class="inline-heading"><?php echo $templateDetails->name;?> Template</h3>		
 				
-				<select id="page-type-selector">
-				<?php foreach ($configs as $page) { 
-				
-					$page = str_replace(array('config-','.json'), '', $page);
-				?>
-						<option value="<?php echo $page;?>"><?php echo $page;?></option>
-				<?php } ?>
-				</select>
-				<a href="#" class="uk-button-primary uk-button" id="load-config">Load Settings</a>
-				
-				<a href="#" class="uk-button-primary uk-button" id="save-config" style="float: right;">Save Settings</a>
-				<select id="save-configs" style="float: right;">
-				<?php foreach ($pages as $page) { ?>
-						<option value="<?php echo $page;?>"><?php echo $page;?></option>
-				<?php } ?>
-				</select>
+				<?php if(WP) { 
+						// Select box that lists styles in toolbar
+						include(TEMPLATE_PATH.'/zengrid/fields/wp-page-selector.php'); 
+					 } else { 
+					 	// Select bar that displays other instances of the template
+						include(TEMPLATE_PATH.'/zengrid/fields/styles.php');
+					} ?>
 			</div>
-			
-			
 			<div id="framework-options" class="basic">
 				<div class="uk-grid">
 				    <div id="zen-sidebar" class="uk-width-medium-1-5">
 					 <ul class="uk-nav" data-uk-tab="{connect:'#theme-settings'}">
 			
 			        		<?php // Sidebar Nav
-			
-			        			  foreach($config as $items) { 
+									foreach($config as $items) { 
 			        			  
 			        			  	$safename = strtolower(str_replace(' ', '-', $items['name']));?>
 			        			  	
 			        			  	<li id="<?php echo $safename; ?>" data-id="<?php echo $safename; ?>">
-			
-			        					<a name="<?php echo $safename; ?>" href="#<?php echo $safename; ?>"><span class="<?php echo $items['icon'];?>"></span><?php echo $items['name']; ?></a>
-			
-			        				</li>
-			
-			        		<?php }	?>
+										<a name="<?php echo $safename; ?>" href="#<?php echo $safename; ?>"><span class="<?php echo $items['icon'];?>"></span><?php echo $items['name']; ?></a>
+									</li>
+							<?php }	?>
 						</ul>
 				    </div>
 					<div class="uk-width-medium-5-5">
@@ -168,25 +178,47 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				
 				var template = $('#template-toolbar').attr('data-theme');
 				var page_type = $('#page-type-selector').val();
+				
+				<?php if(JOOMLA) {?>
+				var url = '<?php echo JURI::root();?>administrator/index.php?option=com_ajax&plugin=zengridramework2&format=raw';
+				<?php } else { ?>
 				var url = 'admin-ajax.php';
+				<?php } ?>
 				var time = '<?php echo date('Y-m-d-H-i-s');?>';
 				
 				// On page load set the current theme
 				$('#cssfiles,#style-name').val('<?php echo $settings->params->theme;?>');
 				
 				
+			
 				$('#load-config').click(function() {
-					var page_type = $('#page-type-selector').val(); 				
-					$(document).set_config(template, time,'<?php echo TEMPLATE_PATH_RELATIVE;?>', page_type);
-					$('#save-configs option[value="' + page_type + '"]').attr('selected', 'selected');
+					var page_type = $('#page-type-selector').val();				
+					$(document).set_config(template, time,'<?php echo TEMPLATE_PATH_RELATIVE;?>', page_type,url);
+					$('#save-config-selector option[value="' + page_type + '"]').attr('selected', 'selected');
 				});
 				
-				
-				$('#save-config').click(function() {
+				$('#save-config,#toolbar-apply button,#toolbar-save button').click(function() {
+					
 					var data = $(document).get_config();
-					var page_type = $('#save-configs').val();  
-					//console.log(data);
+					var page_type = get_page_type();
+					
+					$(this).addClass('zen-clicked');
+					
 					$(document).send_ajax(template, url, data, 'save', page_type, 'config', 'config');
+					
+						var config_exists = $("#delete-configs-selector option[value='"+page_type+"']").length;
+					
+					 	if(config_exists < 1) {
+				    	 	// Append the new preset to the presetlist
+				    	 	if(page_type !=="default") {
+								$('#page-type-selector,#delete-configs-selector').append($('<option>', {
+								    value: page_type,
+								    text: page_type,
+								    selected: 1
+							}));
+						}
+					}
+					
 				});
 				
 				$('#save-theme').click(function() {
@@ -198,7 +230,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					
 					// Add theme name to the data
 					data.theme = name;
-					
+					$('#compile_required').val(1);
 					$(document).send_ajax(template, url, data, 'save', '', 'themes', 'theme.' +name);
 					
 				});
@@ -208,35 +240,59 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					var data = $(document).get_layout();
 					var name = $('#layout-name').val();
 					$(document).send_ajax(template, url, data, 'save','', 'layouts', name);
+					return false;
 				});
 				
 				
 				// Load layout
 				$('#load-layout').click(function() {
-					$(document).set_layout_data(template);
+					// Data used for loading layouts from config
+					var data = null;
+					$(document).set_layout_data(data,url,template);
 				});
 				
 				// Delete Theme
 				$('#delete-theme').click(function() {
-					$(document).delete_theme();
+					$(document).delete_theme(url, template);
 				});
 				
 				
 				// Delete Config
 				$('#delete-config').click(function() {
-					$(document).delete_config();
+					$(document).delete_config(url);
 				});
-				
 				
 				
 				// Compress JS
 				$('#compresser').click(function() {
 					var data = $(document).get_compress();
-					console.log(data);
-					var page_type = $('#page-type-selector').val();  
-					//console.log(data);
+					var page_type = get_page_type();
 					$(document).send_ajax(template, url, data, 'compress', page_type, 'compress', page_type);
+					return false;
 				});
 				
+				
+				// Destory Chosen for the framework
+				if(jQuery().chosen) {
+					$('#zgf select').chosen('destroy');			
+				}
+				
+				
+				function get_page_type(){
+					<?php if(WP) { ?>
+						var page_type = $('#save-config-selector').val();
+					<?php } else { ?>
+						function getUrlParameters(name) {
+						    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+						    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+						        results = regex.exec(location.search);
+						    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+						}
+						
+						var page_type = getUrlParameters('id');
+					<?php }?>
+					
+					return page_type;
+				}
 			});	
 		</script>

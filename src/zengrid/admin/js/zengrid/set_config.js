@@ -7,21 +7,20 @@ For usage and examples: colpick.com/plugin
 
 (function ($) {
 		
-		$.fn.set_config = function (template, time, theme_path, page_type) {
+		$.fn.set_config = function (template, time, theme_path, page_type,url) {
 	
-			
 			// Retrieve the appropriate json file	        	
-	     	$.getJSON( '../' + theme_path + '/settings/config/config-' + page_type + '.json?v=' + time, function( data ) {
+	     	$.getJSON( '../' + theme_path + 'settings/config/config-' + page_type + '.json?v=' + time, function( data ) {
 	     	 
-	     	 
-	     	 // Check to see if the preset being used uses the new nested objects of colors and settings
-	     	 // We have to revert it back to the old way because there is no way to update old themes to the new format until the user saves them.
+	     	 console.log(page_type);
+	     	// Check to see if the preset being used uses the new nested objects of colors and settings
+	     	// We have to revert it back to the old way because there is no way to update old themes to the new format until the user saves them.
 	     	 
 	     	// Check if we have valid data
 	     	if (typeof(data)) {
-	     	
+	     		
 	     		// Set the theme
-	     		var template =  data.params.theme;
+	     		var theme =  data.params.theme;
 	     		
 	     		$('#zgfmessage .settings span').text(page_type);
 	     		
@@ -29,20 +28,24 @@ For usage and examples: colpick.com/plugin
 	     		// Current theme
 	     		var cssfile = $('input#theme').val();
 	     		
+	     		console.log('Setting ' + theme);
+	     		
 	     		if(template!==cssfile) {
 		     		// Make sure a css file exists for this theme
 		     		// By compiling it.
-		     		console.log('theme has changed to ' + template);
-		     		$('input#style-name').val(template);
-		     		$('select#cssfile option[value="'+ template+'"]').attr("selected","selected");
+		     		console.log('theme has changed to ' + theme);
+		     		$('input#style-name').val(theme);
+		     		$('select#cssfile option[value="'+ theme+'"]').attr("selected","selected");
 		     		 
 		     		//$('#compile_required').val('1');
-		     		$(document).set_theme_data(template, time,theme_path);
+		     		$(document).set_theme_data(theme, time,theme_path);
 		     	}
 		     	
 		     	
+		     	console.log('Setting Layout');
+		     	
 				// Set the layout for this config
-		     	$(document).set_layout_data(data.layout);
+		     	$(document).set_layout_data(data.layout,url,template);
 	     	 	
 	     	 	
 	     	 	// Parse through the json object and populate fields
@@ -51,6 +54,7 @@ For usage and examples: colpick.com/plugin
 	     	 	// Theme 
 	     	 	
      	 		setTimeout(function() {
+     	 			console.log('Setting Params');
      	 			$.each( data.params, function( key, val ) {
      	 			
      	 				// Inputs
@@ -60,7 +64,7 @@ For usage and examples: colpick.com/plugin
      	 				// Checkboxes
      	 				// Check if checked and set to 1
      	 				if($('input#' + key).is(':checkbox')) {
-     	 						console.log(key + val);
+     	 					
      	 						var toggle = $('#' + key).attr('id');
      	 						
      	 						// Set value to 0

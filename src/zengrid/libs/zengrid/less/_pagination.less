@@ -15,7 +15,8 @@
 	Pagination
 \*------------------------------------*/
 
-.pagination{
+.pagination,
+.pagenav{
 
 	.flatlist();
 	
@@ -49,6 +50,11 @@
 		
 		&.active {
 			a {
+			
+				background: @btn-primary-bg;
+				border: 1px solid @btn-primary-border;
+				color:@btn-primary-color-hover;
+			
 				&:hover {
 					background: @btn-primary-bg;
 					border: 1px solid @btn-primary-border;
@@ -86,6 +92,13 @@
 	
 }
 
+
+
+.pagenav li a {
+	span {
+		display:none
+	}
+}
 
 // Article index
 .article-index,

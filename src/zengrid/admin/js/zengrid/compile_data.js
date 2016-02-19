@@ -6,11 +6,14 @@ Compile Data Function
 	$.fn.compile_data = function (template, url, data, action,id, target, name) {
 
 		$.ajax({
+			
 		    url : url,
 		    method: 'post',
 		    context: document.body,
 		    dataType: 'text',
 		    data: {
+		    	'option' : 'com_ajax',
+		    	'plugin' : 'zengridframework',
 		    	content: data,
 		    	action: action,
 		    	template: template,
@@ -29,10 +32,14 @@ Compile Data Function
 		    },
 		    error: function (data) {
 		    	console.log('Error:' + JSON.stringify(data));
+		    	$('#log').append('Compile Data');
+		    	$('#log').append('Error:' + JSON.stringify(data));
 		    },
 		    success: function (data) {	
 		    	$('#compile_required').val('0');
-		    	console.log('Finished compiling:' + data);    	
+		    	console.log('Finished compiling:' + data); 
+		    	$('#log').append('Compile Data');
+		    	$('#log').append('Error:' + JSON.stringify(data));   	
 		    }
 		 });
 	}

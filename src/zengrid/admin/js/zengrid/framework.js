@@ -24,7 +24,8 @@ jQuery(document).ready(function ($) {
 		 }
 		 
 		 $('select#layout_preset option[value="'+ layout+'"]').attr("selected","selected");
-			 	
+		
+		
 	});
 	
 	
@@ -506,7 +507,7 @@ jQuery(document).ready(function ($) {
 	
 	/*
 	*	
-	*	Advanced options toggle
+	*	Remove Chosen
 	*	
 	*
 	*/

@@ -24,7 +24,7 @@ if(isset($_POST['theme'])) {
 			if(file_exists($base.'.map')) { unlink($base.'.map'); }
 			if(file_exists(TEMPLATE_PATH.'settings/themes/theme.'.$theme.'.json')) { unlink(TEMPLATE_PATH.'settings/themes/theme.'.$theme.'.json'); }
 			
-			return 'The '.$theme.' and assets have bene deleted';
+			return 'The '.$theme.' and assets have been deleted';
 			
 		} else {
 			return 'No theme to delete';
