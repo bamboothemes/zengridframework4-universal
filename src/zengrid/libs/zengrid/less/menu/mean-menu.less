@@ -45,7 +45,11 @@ a.meanmenu-reveal {
 	font-weight: 700;
 	
 	&:hover {
-		color:@navbar-default-link-hover-color
+		color:@navbar-default-link-hover-color;
+		
+		span {
+			background: @navbar-default-link-hover-color;
+		}	
 	}
 }
 
@@ -60,6 +64,12 @@ a.meanmenu-reveal {
 	}
 }
 
+
+.mean-menu-open {
+	.mean-nav {
+		margin-bottom: @gutter
+	}
+}
 .mean-container .mean-nav {
 	float: left;
 	width: 100%;
@@ -89,14 +99,16 @@ a.meanmenu-reveal {
 	margin: 0;
 	text-align: left;
 	cursor:pointer;
-	color: @text-color;
-	border-top: 1px solid #383838;
-	border-top: 1px solid rgba(255,255,255,0.05);
+	color: @navbar-default-link-color;
+	border-top: 1px solid lighten(@navbar-default-bg, 8%);
+	border-top: 1px solid darken(@navbar-default-bg, 8%);
 	text-decoration: none;
 	text-transform: uppercase;
-	
+	display: block;
+	width: 100%;
+		
 	&:hover {
-		color:@link-hover-color
+		color: @navbar-default-link-hover-color
 	}
 }
 
@@ -104,12 +116,13 @@ a.meanmenu-reveal {
 .mean-container .mean-nav ul li li span.zen-menu-heading {
 	width: 80%;
 	padding: 0.9em 10%;
-	border-top: 1px solid #f1f1f1;
-	border-top: 1px solid rgba(255,255,255,0.05);
-	opacity: 0.75;
-	filter: alpha(opacity=75);
+	border-top: 1px solid lighten(@navbar-default-bg, 4%);
+	border-top: 1px solid darken(@navbar-default-bg, 4%);
 	text-shadow: none !important;
 	visibility: visible;
+	
+	
+
 }
 
 .mean-container .mean-nav ul li.mean-last a,
@@ -160,6 +173,13 @@ a.meanmenu-reveal {
 	color:@link-hover-color
 }
 
+.mean-container .mean-nav ul li .expand {
+	position: absolute;
+	z-index: 1;
+	right: @gutter;
+	color: @navbar-default-link-color
+}
+
 .mean-container .mean-push {
 	float: left;
 	width: 100%;
@@ -182,18 +202,23 @@ a.meanmenu-reveal {
 }
 
 
-.mean-remove {
-	display: none !important;
+.mean-container a.meanmenu-reveal.meanclose .zen-icon {
+	background: none;
+	color: @navbar-default-link-color;
+	
+	&:hover {
+		color: @navbar-default-link-hover-color;
+	}
 }
 
-.mean-container a.meanmenu-reveal.meanclose .zen-icon {
-	background: none
+.mean-remove {
+	display: none !important;
 }
 
 .mean-container .zen-menu-caption {
 	font-size:11px;
 	font-style:italic;
-	color:#999;
+	color: @dropdown-header-color;
 	margin-left:10px;
 	
 }
@@ -221,4 +246,11 @@ a.meanmenu-reveal {
 			}
 		}
 	}
-	
+
+
+// Offcanvas modules
+
+.mean-menu-open .mean-bar .off-canvas-body {
+	background: @navbar-default-bg;
+	padding-top: 0;
+}
