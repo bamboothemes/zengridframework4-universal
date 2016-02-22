@@ -11,7 +11,7 @@
  
  
 // Extends the default slidebars.less
-.sb-slidebar {
+.off-canvas-inner {
 	background: @off-canvas-bg;
 	color: @off-canvas-text;
 	
@@ -19,16 +19,29 @@
 		color:  @off-canvas-text;
 	}
 	
-	.zen-nav.zen-nav-stacked li {
-		a,span {
-			color: @off-canvas-link;
-			
-			&:hover {
-				color: @off-canvas-link-hover
-			}
-		}
-	}
+	ul {
 	
+		.simplelist();
+		
+		ul {
+			margin-bottom:0;
+		}
+		
+		li {
+		
+			a,span {
+				color: @off-canvas-link;
+				
+				&:hover {
+					color: @off-canvas-link-hover
+				}
+			}
+			
+			li {
+				margin-left: 16px
+			}
+		}	
+	}
 	.zen-nav {
 		ul {
 			font-size: 90%
@@ -38,6 +51,9 @@
 	h1,h2,h3,h4,h5,h6 {
 		color: @off-canvas-heading;
 		
+		span {
+			color: @off-canvas-heading
+		}
 		a {
 			color:  @off-canvas-heading;
 			
