@@ -26,7 +26,7 @@ $icons = !empty($this->print) || $canEdit || $params->get('show_print_icon') || 
 $url = JRoute::_(ContentHelperRoute::getArticleRoute($this->item->id, $this->item->catid));
 $uri = JUri::getInstance();
 
-JHtml::_('behavior.caption');
+//JHtml::_('behavior.caption');
 JHtml::_('bootstrap.tooltip');
 ?>
 

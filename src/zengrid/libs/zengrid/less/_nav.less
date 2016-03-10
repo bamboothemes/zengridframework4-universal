@@ -75,6 +75,10 @@
 			
 		li {
 			
+			a {
+				display: inline-block
+			}
+			
 			a,span {
 				color: @text-color;
 				padding: @button-padding;
@@ -90,15 +94,13 @@
 			a,span {
 				color: @link-color;
 				border: 1px solid @border-color;
-				border-width:  1px 1px 0 1px;
-				background: @body-bg;
+				border-bottom-color: @spotlight-bg;
 			}
 			
 			a:focus {
 				color: @link-color;
 				border: 1px solid @border-color;
 				border-width:  1px 1px 0 1px;
-				background: @body-bg;
 			}
 		}
 		
@@ -107,7 +109,7 @@
 			border-bottom: 1px solid @border-color;
 			float: left;
 			width: 100%;
-			margin-top: 9px;
+			margin-top: -1px
 		}
 		
 		&.zen-nav-tab-pills {
@@ -186,7 +188,7 @@
 			display: block;
 			padding: @button-padding 0;
 			
-			a,span {
+			a:not(.btn),span {
 				padding: @button-padding 0;
 				color:  @stacked-link-color;
 			}

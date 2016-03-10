@@ -78,13 +78,13 @@ defined('ZEN_ALLOW') or die('Restricted access');
 		<div id="zgf">
 			<a id="top-page" name="top-page"></a>
 			<div id="zgfmessage" class="message-box">
-				<div class="config" style="display: none;">Settings for <span></span> configuration have been updated.</div>
-				<div class="layouts" style="display: none;">The <span></span> layout has been saved.</div>
-				<div class="themes" style="display: none;">The <span></span> theme has been saved.</div>
-				<div class="compile" style="display: none;">Updating css for the <span></span> theme.</div>
-				<div class="delete-theme" style="display: none;">The <span></span> theme and it's assets have been deleted.</div>
-				<div class="compress" style="display: none;">Javascript for the <span></span> configuration have been compressed.</div>
-				<div class="settings" style="display: none;">Loading stored settings from <span></span> configuration.</div>
+				<div class="config" style="display: none;"><p><strong>Message:</strong></p>Settings for <span></span> configuration have been updated.</div>
+				<div class="layouts" style="display: none;"><p><strong>Message:</strong></p>The <span></span> layout has been saved.</div>
+				<div class="themes" style="display: none;"><p><strong>Message:</strong></p>The <span></span> theme has been saved.</div>
+				<div class="compile" style="display: none;"><p><strong>Message:</strong></p>Updating css for the <span></span> theme.</div>
+				<div class="delete-theme" style="display: none;"><p><strong>Message:</strong></p>The <span></span> theme and it's assets have been deleted.</div>
+				<div class="compress" style="display: none;"><p><strong>Message:</strong></p>Javascript for the <span></span> configuration have been compressed.</div>
+				<div class="settings" style="display: none;"><p><strong>Message:</strong></p>Loading stored settings from <span></span> configuration.</div>
 			</div>
 			
 			<div id="template-toolbar" data-theme="<?php echo TEMPLATE;?>">
@@ -180,7 +180,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				var page_type = $('#page-type-selector').val();
 				
 				<?php if(JOOMLA) {?>
-				var url = '<?php echo JURI::root();?>administrator/index.php?option=com_ajax&plugin=zengridramework2&format=raw';
+				var url = '<?php echo JURI::root();?>administrator/index.php?option=com_ajax&plugin=zengridframework&format=raw';
 				<?php } else { ?>
 				var url = 'admin-ajax.php';
 				<?php } ?>
@@ -189,6 +189,8 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				// On page load set the current theme
 				$('#cssfiles,#style-name').val('<?php echo $settings->params->theme;?>');
 				
+				// Set Theme Data
+				$(document).set_theme_data(template, time, '<?php echo TEMPLATE_PATH_RELATIVE;?>');
 				
 			
 				$('#load-config').click(function() {
@@ -221,7 +223,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					
 				});
 				
-				$('#save-theme').click(function() {
+				$('#save-theme,#compile-toolbar').click(function() {
 					// Get the data
 					var data = $(document).get_theme();
 					
@@ -247,7 +249,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				// Load layout
 				$('#load-layout').click(function() {
 					// Data used for loading layouts from config
-					var data = null;
+					var data = 'preset';
 					$(document).set_layout_data(data,url,template);
 				});
 				
@@ -270,6 +272,15 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					$(document).send_ajax(template, url, data, 'compress', page_type, 'compress', page_type);
 					return false;
 				});
+				
+				
+				// When the theme is changed
+				$(document).on('change', '#cssfile', function() {	
+					// set_theme_data: template, time, theme path
+					$('#compile_required').val('1');
+					$(document).set_theme_data(template, time,'<?php echo TEMPLATE_PATH_RELATIVE;?>');
+				});
+				
 				
 				
 				// Destory Chosen for the framework

@@ -11,11 +11,11 @@
      
        
       // Add the icons where necesary
-      $('.zen-accordion li.parent span').append('<span class="zen-icon zen-icon-' + settings.closeicon + '"></span>');
+      $('.zen-accordion li.parent span').not('.zen-icon,.zen-menu-caption').prepend('<span class="zen-icon zen-icon-' + settings.closeicon + '"></span>');
       
       // Open First
       if(settings.openfirst) {
-       		$(this).parent().parent().find('ul:first').slideDown().parent().addClass('open').find('.zen-icon').removeClass('zen-icon-'+ settings.closeicon).addClass('zen-icon-'+ settings.openicon);
+       		$('.zen-accordion').find('ul:first').slideDown().parent().addClass('open').find('.zen-icon').removeClass('zen-icon-'+ settings.closeicon).addClass('zen-icon-'+ settings.openicon);
       }
        
       $(document).on('click', '.zen-accordion > li.parent > span', function() {

@@ -84,23 +84,24 @@ jQuery(function() {";
 					<button id="smartsearch-btn" name="Search" type="submit" class="btn btn-primary disabled"><span class="fa fa-search"></span> <?php echo JText::_('JSEARCH_FILTER_SUBMIT');?></button>
 				<?php endif; ?>
 				<?php if ($this->params->get('show_advanced', 1)) : ?>
-					<a href="#advancedSearch" data-toggle="collapse" class="btn btn-default"><span class="fa fa-list"></span> <?php echo JText::_('COM_FINDER_ADVANCED_SEARCH_TOGGLE'); ?></a>
+					<a href="#advancedSearch" data-toggle="collapse" class="btn btn-default zen-slide-trigger"><span class="fa fa-list"></span> <?php echo JText::_('COM_FINDER_ADVANCED_SEARCH_TOGGLE'); ?></a>
+				<?php endif; ?>
+				<?php if ($this->params->get('show_advanced', 1)) : ?>
+					<div id="advancedSearch" class="zen-slide-content collapse<?php if ($this->params->get('expand_advanced', 0)) echo ' in'?>">
+						<hr />
+						<?php if ($this->params->get('show_advanced_tips', 1)) : ?>
+							<div class="advanced-search-tip">
+								<?php echo JText::_('COM_FINDER_ADVANCED_TIPS'); ?>
+							</div>
+							<hr />
+						<?php endif; ?>
+						<div id="finder-filter-window">
+							<?php echo JHtml::_('filter.select', $this->query, $this->params); ?>
+						</div>
+					</div>
 				<?php endif; ?>
 			</div>
 		</fieldset>
 
-	<?php if ($this->params->get('show_advanced', 1)) : ?>
-		<div id="advancedSearch" class="collapse<?php if ($this->params->get('expand_advanced', 0)) echo ' in'?>">
-			<hr />
-			<?php if ($this->params->get('show_advanced_tips', 1)) : ?>
-				<div class="advanced-search-tip">
-					<?php echo JText::_('COM_FINDER_ADVANCED_TIPS'); ?>
-				</div>
-				<hr />
-			<?php endif; ?>
-			<div id="finder-filter-window">
-				<?php echo JHtml::_('filter.select', $this->query, $this->params); ?>
-			</div>
-		</div>
-	<?php endif; ?>
+	
 </form>

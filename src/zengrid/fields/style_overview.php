@@ -54,11 +54,3 @@ foreach ($cssfiles as $key => $css)
 		</select>
 	</div>
 </div>
-<br />
-<br />
-<?php $admintools = ROOT_PATH.'/components/com_admintools/views/blocks/tmpl/default.php';
-if(file_exists($admintools)) { ?>
-	<p class="uk-alert uk-alert-warning">
-		<strong>Admintools Pro Installed</strong><br />
-		Please review the warning on the overview panel in your template settings.</p>
-<?php } ?>

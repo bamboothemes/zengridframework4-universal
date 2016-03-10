@@ -20,8 +20,6 @@
 
 				
 		$.ajax({
-			'option': 'com_ajax',
-			'plugin': 'zentools2',
 		    url : url,
 		    method: 'post',
 		    context: document.body,

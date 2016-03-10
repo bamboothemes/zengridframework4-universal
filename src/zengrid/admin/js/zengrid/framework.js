@@ -85,7 +85,7 @@ jQuery(document).ready(function ($) {
 	$('#theme-settings .zen-select').each(function () {
 		var toggle = $(this).attr('id');
 		
-		if($(this).val() == -1) {
+		if($(this).val() === -1) {
 			$('.' + toggle).fadeIn();	
 		} else {
 			$('.' + toggle).fadeOut();
@@ -106,7 +106,7 @@ jQuery(document).ready(function ($) {
 	$('#theme-settings .zen-select').change(function () {
 		var toggle = $(this).attr('id');
 		
-		if($(this).val() == -1) {
+		if($(this).val() === -1) {
 			$('.' + toggle).fadeIn();	
 		} else {
 			$('.' + toggle).fadeOut();
@@ -136,7 +136,6 @@ jQuery(document).ready(function ($) {
 		if(!active) {
 			$(this).fadeOut();
 			var id = $(this).attr('id');
-			console.log(id);
 			$('.unused-modules div[data-id="' + id + '"]').fadeIn().addClass('active').parent().addClass('active');
 		}
 	});
@@ -148,7 +147,7 @@ jQuery(document).ready(function ($) {
 	      containment: "#resize-container",
 	      handles: 'e',
 	      
-	      resize: function( event, ui ) {
+	      resize: function() {
 	      	$(this).attr('class','').addClass('resizable ui-widget-content ui-resizable');
 	      	
 	      	var width = Math.round($(this).width() / 50);
@@ -189,7 +188,7 @@ jQuery(document).ready(function ($) {
 	 		
 	 		$('div[data-id="'+ id +'"]').not('.unused-modules').removeClass('active').hide();
 	  		
-	 		if($('.unused-modules[data-id="' + target + '"] div:visible').length == 0)
+	 		if($('.unused-modules[data-id="' + target + '"] div:visible').length === 0)
 	 		{
 	 			$(this).parent().removeClass('has-content');
 	 		} 
@@ -243,7 +242,7 @@ jQuery(document).ready(function ($) {
 	
 	var advanced_settings = $('#advanced_setting').val();
 	
-	if(advanced_settings =='1') {
+	if(advanced_settings ==='1') {
 		$('#framework-options').addClass('pro').removeClass('basic');
 		$('.toggle-advanced').text('Hide Advanced Options');
 	
@@ -310,7 +309,7 @@ jQuery(document).ready(function ($) {
 		var value = $(this).val();
 		var firstletter = value.charAt(0);
 		
-		if(firstletter == "@") {
+		if(firstletter === "@") {
 			var other = value.substring(1, value.length)
 			other = $('input#' + other).val();
 				$(this).css({'border-right-color': '#' +other});
@@ -333,13 +332,13 @@ jQuery(document).ready(function ($) {
 		var firstletter = value.charAt(0);
 		
 		
-		if(firstletter == "@") {
+		if(firstletter === "@") {
 			var other = value.substring(1, value.length)
 			other = $('input#' + other).val();
 			
 			var firstletter = other.charAt(0);
 				
-				if(firstletter == "@") {
+				if(firstletter === "@") {
 					other = other.substring(1, value.length)
 					other = $('input#' + other).val();
 				}
@@ -365,16 +364,16 @@ jQuery(document).ready(function ($) {
 		
 		var firstletter = val.substring(0, 3);
 			
-			if(firstletter == "dar" || firstletter == "lig") {
+			if(firstletter === "dar" || firstletter === "lig") {
 				
 				
-				if(firstletter == "dar") {
+				if(firstletter === "dar") {
 					var other = val.substring(8, val.length);
 					other = other.split(',');
 				}
 				
 				
-				if(firstletter == "lig") {
+				if(firstletter === "lig") {
 					var other = val.substring(9, val.length);
 					other = other.split(',');
 				}
@@ -384,7 +383,7 @@ jQuery(document).ready(function ($) {
 				var percentage = other[1].slice(0,-2);
 					percentage = parseFloat(percentage) / 100.0;
 					
-					if(firstletter == "dar") {
+					if(firstletter === "dar") {
 						percentage = '-' + percentage;
 					}
 				
@@ -414,28 +413,28 @@ jQuery(document).ready(function ($) {
 			// da - r- ken  and li - g -hten
 			var firstletter = value.charAt(2);
 			
-			if(firstletter == "r") {
+			if(firstletter === "r") {
 				
 				var other = value.substring(8, value.length);
 		
 					other = other.split(',');
 			}
 			
-			if(firstletter == "g") {
+			if(firstletter === "g") {
 				
 				var other = value.substring(9, value.length);
 					other = other.split(',');
 			}
 			
 			
-			if(firstletter == "r" || firstletter == "g") {
+			if(firstletter === "r" || firstletter === "g") {
 				
 				// Change % into a decimal    
 							
 				var percentage = other[1].slice(0,-2);
 					
 					
-					if(firstletter == "r") {
+					if(firstletter === "r") {
 						percentage = 1 / percentage;
 						percentage = '-' + percentage;
 					} else {
@@ -469,8 +468,8 @@ jQuery(document).ready(function ($) {
 	// Set the active sidebar item
 	var active_item = $('#active_tab').val();
 	
-	if(active_item == "") {
-		active_item ="overview"
+	if(active_item === "") {
+		active_item ="overview";
 	}
 	
 	
@@ -507,11 +506,26 @@ jQuery(document).ready(function ($) {
 	
 	/*
 	*	
-	*	Remove Chosen
-	*	
+	*	Sets a default for the theme option if required
+	*	Updates on change
 	*
 	*/
 	
+	var cssfile = $('input#theme').val();
 	
+	  if(cssfile ==="") {
+	  	cssfile = $('#cssfile').val();
+	 		$('input#theme').val(cssfile);
+	  }
+	  
+	  $('select#cssfile option[value="'+ cssfile+'"]').attr("selected","selected");
+	  
+	  $("#style-name").val(cssfile);
+	  
+	  $('select#cssfile').change(function () {
+	  	var cssfile = $(this).val();
+	  	$('input#theme').val(cssfile);
+	  	
+	  });
 	
 });

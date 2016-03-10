@@ -89,6 +89,9 @@ jQuery(document).ready(function($) {
 	 //
 	 //
 	 
+	 // Open items on load
+	 $('.zen-slide-content.open').slideDown();
+	 
 	 $(document).on('click', '.zen-slide-trigger', function() {
 	 	$(this).next('.zen-slide-content').slideToggle();
 	 	return false;

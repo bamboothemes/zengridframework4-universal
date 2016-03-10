@@ -102,12 +102,11 @@
 		});
 		
 		files.rowstyles = rowstyles;
-			
 		theme.settings = settings;
 		theme.colors = colors;
 		theme.files = files;
 
-	
+		console.log(theme);
 		return theme;
 	} 	
 })(jQuery);

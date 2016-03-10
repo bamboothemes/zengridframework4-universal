@@ -57,12 +57,18 @@ textarea{
 	border:1px solid @input-border;
 	max-width:100%;
 	margin-bottom: @gutter-sml;
+	min-height:  @input-min-height;
+	border-radius: @input-border-radius !important;
 	
 	&:hover {
 		background:lighten(@border-color, 5%);
 	}
 }
 
+
+.uneditable-input {
+	min-height:  @input-min-height;
+}
 
 input[type="checkbox"], input[type="radio"], input[type="submit"] {
 	min-height: 0;
@@ -77,11 +83,16 @@ textarea {
 
 
 // Input groups
-.input-group-addon {
-	text-align: center;
-	display: inline-block;
-	padding: 0 10px;
-	height: @input-min-height
+.input-group-btn > .btn {
+	min-height: @input-min-height;
+	border-radius:0;
+	margin-left: 0
+}
+
+.input-group {
+	input {
+		border-radius:0
+	}
 }
 
 

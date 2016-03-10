@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 $class = ' class="first"';
 if (count($this->children[$this->category->id]) > 0 && $this->maxLevel != 0) :
 ?>
-<ul class="list-striped list-condensed list-unstyled">
+<ul class="list-striped">
 	<?php foreach($this->children[$this->category->id] as $id => $child) : ?>
 		<?php
 		if($this->params->get('show_empty_categories') || $child->numitems || count($child->getChildren())) :

@@ -41,6 +41,12 @@
  		.box-sizing(border-box);
  	}
  	
+ 	.form-search {
+ 		input {
+ 			float: left;
+ 			margin-right: 10px
+ 		}
+ 	}
  	
  	.input-prepend.input-append .add-on:first-child, 
  	.input-prepend.input-append .btn:first-child {
@@ -49,7 +55,8 @@
  	}
  	
  	input {
- 		width:auto
+ 		width:auto;
+ 		
  	}
  	
  	.media-preview .icon-eye {
@@ -75,6 +82,10 @@
  		}
  	}
  	
+ 	.page-header {
+ 		margin-top: 0
+ 	}
+ 	
  	.input-prepend.input-append {
  		.btn {
  			line-height: (@input-min-height - 2);
@@ -94,6 +105,16 @@
  			padding-bottom:0
  		}
  	}
+ 	
+ 	
+ 	.pagination ul > li > a, .pagination ul > li > span {
+ 		line-height: inherit;
+ 	}
+ 	
+ 	.pager li a {
+ 		line-height:  @input-min-height;
+ 	}
+ 
  }
  
  
@@ -119,6 +140,46 @@
  	}
  }
  
+ .bootstrap3 {
+ 	.row {
+ 		margin: 0
+ 	}
+ 	
+ 	.navbar-form {
+ 		margin-bottom: 0
+ 	}
+ 	
+ 	.pagination {
+ 		li {
+ 			margin-right: 0;
+ 			
+ 			a {
+ 				border-left: 0
+ 			}
+ 			
+ 			&:first-child {
+ 				a {
+ 					border-left: @border-width @border-style @border-color
+ 				}
+ 			}
+ 		}
+ 	}
+ 	
+ 	.nav-pills {
+ 		label,
+ 		.label,
+ 		.badge {
+ 			margin-bottom: 0
+ 		}
+ 	}
+ 	
+ 	.list-group-item {
+ 		.badge {
+ 			margin: -6px -6px 0 0
+ 		}
+ 	}
+ }
+ 
  
  // Nav
  .navbar-nav,
@@ -131,7 +192,9 @@
  
  
  .nav-tabs {
- 
+ 	
+ 	margin-left:  0;
+ 	
  	.dropdown-menu {
  		
  		border:0;
@@ -146,6 +209,21 @@
  			margin:0;
  		}
  	}
+ 	
+ 	.dropdown-menu {
+ 		a {
+ 			color:@navbar-default-link-color;
+ 			
+ 			&:hover {
+ 				color:@navbar-default-link-hover-color;
+ 			}
+ 		}
+ 	}
+ }
+ 
+ .tab-content {
+ 	margin-bottom: @gutter;
+ 	clear: both
  }
  
  
@@ -224,7 +302,48 @@
  }
  
  
- .nav-tabs > li > a:hover, .nav-tabs > li > a:focus {
- 	.btn-active() !important
+ // Support for l;egacy nav-tabs
+ .nav-tabs {
+ 	
+ 	border-bottom: 0;
+ 	float: left;
+ 	width: 100%;
+ 	margin-bottom: 0;
+ 	    
+ 	 li {
+ 	 	
+ 	 	a {
+ 	 		display: inline-block
+ 	 	}
+ 	 	
+ 	 	a,span {
+ 	 		color: @text-color;
+ 	 		padding: @button-padding;
+ 	 		
+ 	 		&:hover {
+ 	 			color: @link-hover-color
+ 	 		}
+ 	 	}
+ 	 }
+ 	 
+ 	 li.active {
+ 	 	
+ 	 	a,span {
+ 	 		color: @link-color;
+ 	 		border: 1px solid @border-color;
+ 	 		border-bottom-color: @spotlight-bg;
+ 	 	}
+ 	 	
+ 	 	a:focus {
+ 	 		color: @link-color;
+ 	 		border: 1px solid @border-color;
+ 	 		border-width:  1px 1px 0 1px;
+ 	 		background: @spotlight-bg
+ 	 	}
+ 	 }
+ 
  }
-
+ 
+ .tab-pane {
+ 	border-top: 0;
+ }

@@ -12,6 +12,7 @@
 // Sets up the base scaffold for the main containers
 .zen-slide-trigger {
 	cursor: pointer;
+	border: 1px solid @border-color;
 	.transition();
 	
 	&.block {
@@ -41,4 +42,8 @@
 
 .zen-slide-content {
 	display: none;
+	
+	&.border {
+		border-top: 0;
+	}
 }

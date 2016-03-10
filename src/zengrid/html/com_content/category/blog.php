@@ -10,7 +10,7 @@
 defined('_JEXEC') or die;
 
 
-JHtml::_('behavior.caption');
+//JHtml::_('behavior.caption');
 ?>
 <div class="blog<?php echo $this->pageclass_sfx;?>" itemscope itemtype="http://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading', 1)) : ?>
@@ -120,8 +120,8 @@ JHtml::_('behavior.caption');
 <script>
 	jQuery(document).ready(function($) {
 			$('.item-image .caption').each(function() {
-					var caption = $(this).attr('title');
-					$(this).parent().append('<p class="img_caption">' + caption + '</p>');
+				var caption = $(this).attr('title');
+				$(this).parent().append('<p class="img_caption">' + caption + '</p>');
 			});
 	}); 
 </script>

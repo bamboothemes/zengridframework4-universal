@@ -49,7 +49,7 @@ if ($params->get('show_label', 1))
 
 if ($params->get('show_button'))
 {
-	$button = '<button class="btn btn-primary hasTooltip ' . $suffix . ' finder' . $suffix . ' form-button-'. $params->get('button_pos', 'left').'" type="submit" title="' . JText::_('MOD_FINDER_SEARCH_BUTTON') . '"><span class="fa-search fa zen-icon zen-icon-search icon-search icon-white"></span></button>';
+	$button = '<button class="btn btn-primary hasTooltip ' . $suffix . ' finder-button' . $suffix . ' form-button-'. $params->get('button_pos', 'left').'" type="submit" title="' . JText::_('MOD_FINDER_SEARCH_BUTTON') . '"><span class="fa-search fa zen-icon zen-icon-search icon-search icon-white"></span></button>';
 
 	switch ($params->get('button_pos', 'left'))
 	{
@@ -144,7 +144,7 @@ JFactory::getDocument()->addScriptDeclaration($script);
 ?>
 
 <form id="mod-finder-searchform" action="<?php echo JRoute::_($route); ?>" method="get" class="form-search">
-	<div class="finder<?php echo $suffix; ?>">
+	<div class="search finder<?php echo $suffix; ?>">
 		<?php
 		// Show the form fields.
 		echo $output;

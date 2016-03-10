@@ -19,10 +19,10 @@ For usage and examples: colpick.com/plugin
 			
 			var type = $.type(data);
 			
-			if(type =="string") {
+			if(data =="preset") {
 				// Get the layout to use
 				layout = $('#layout_preset').val();
-				
+				data = layout;
 				// Set the save box with the current name
 				$('#layout-name').val(layout);
 				
@@ -33,6 +33,8 @@ For usage and examples: colpick.com/plugin
 				
 				$('#log pre').append('Loading layout from config\n');
 			}
+			
+		
 			
 			console.log('template' + template);
 			console.log('data' + data);

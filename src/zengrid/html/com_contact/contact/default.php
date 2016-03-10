@@ -55,17 +55,11 @@ $cparams = JComponentHelper::getParams('com_media');
 	<?php endif; ?>
 	
 	<?php if ($this->params->get('presentation_style') == 'sliders') : ?>
-		<div class="panel-group" id="slide-contact">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a class="accordion-toggle" data-toggle="zg-collapse" data-parent="#slide-contact" href="#basic-details">
-						<?php echo JText::_('COM_CONTACT_DETAILS');?>
-						</a>
-					</h4>
-				</div>
-				<div id="basic-details" class="panel-zg-collapse zg-collapse in">
-					<div class="panel-body">
+		<h3 class="zen-slide-trigger panel-heading">
+			<span class="zen-icon zen-icon-angle-up zen-right"></span>
+			<?php echo JText::_('COM_CONTACT_DETAILS');?>
+		</h3>
+		<div class="zen-slide-content open">
 	<?php endif; ?>
 	<?php if ($this->params->get('presentation_style') == 'tabs'):?>
 		<ul class="zen-nav zen-nav-tabs" id="myTab">
@@ -106,8 +100,6 @@ $cparams = JComponentHelper::getParams('com_media');
 	<?php endif; ?>
 	<?php if ($this->params->get('presentation_style')=='sliders'):?>
 					</div>
-				</div>
-			</div>
 	<?php endif; ?>
 	<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
 			</div>
@@ -115,16 +107,12 @@ $cparams = JComponentHelper::getParams('com_media');
 	<?php if ($this->params->get('show_email_form') && ($this->contact->email_to || $this->contact->user_id)) : ?>
 
 		<?php if ($this->params->get('presentation_style')=='sliders'):?>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a class="accordion-toggle" data-toggle="zg-collapse" data-parent="#slide-contact" href="#display-form">
-						<?php echo JText::_('COM_CONTACT_EMAIL_FORM');?>
-						</a>
-					</h4>
-				</div>
-				<div id="display-form" class="panel-zg-collapse zg-collapse">
-					<div class="panel-body">
+			<h3 class="zen-slide-trigger panel-heading">
+				<span class="zen-icon zen-icon-angle-down zen-right"></span>
+				<?php echo JText::_('COM_CONTACT_EMAIL_FORM');?></h3>
+				
+			<div class="zen-slide-content">
+
 		<?php endif; ?>
 		<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
 			<div id="display-form" class="tab-pane">
@@ -135,8 +123,6 @@ $cparams = JComponentHelper::getParams('com_media');
 		<?php  echo $this->loadTemplate('form');  ?>
 		<?php if ($this->params->get('presentation_style')=='sliders'):?>
 					</div>
-				</div>
-			</div>
 		<?php endif; ?>
 		<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
 			</div>
@@ -149,16 +135,13 @@ $cparams = JComponentHelper::getParams('com_media');
 		
 	<?php if ($this->params->get('show_articles') && $this->contact->user_id && $this->contact->articles) : ?>
 		<?php if ($this->params->get('presentation_style')=='sliders'):?>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a class="accordion-toggle" data-toggle="zg-collapse" data-parent="#slide-contact" href="#display-articles">
-						<?php echo JText::_('JGLOBAL_ARTICLES');?>
-						</a>
-					</h4>
-				</div>
-				<div id="display-articles" class="panel-zg-collapse zg-collapse">
-					<div class="panel-body">
+			<h3 class="zen-slide-trigger">
+				<span class="zen-icon zen-icon-angle-down zen-right"></span>
+				<?php echo JText::_('JGLOBAL_ARTICLES');?></h3>
+				
+			<div class="zen-slide-content">
+			
+			
 		<?php endif; ?>
 		<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
 			<div id="display-articles" class="tab-pane">
@@ -168,8 +151,7 @@ $cparams = JComponentHelper::getParams('com_media');
 		<?php endif; ?>
 			<?php echo $this->loadTemplate('articles'); ?>
 		<?php if ($this->params->get('presentation_style')=='sliders'):?>
-					</div>
-				</div>
+
 			</div>
 		<?php endif; ?>
 		<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
@@ -178,16 +160,11 @@ $cparams = JComponentHelper::getParams('com_media');
 	<?php endif; ?>
 	<?php if ($this->params->get('show_profile') && $this->contact->user_id && JPluginHelper::isEnabled('user', 'profile')) : ?>
 		<?php if ($this->params->get('presentation_style')=='sliders'):?>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a class="accordion-toggle" data-toggle="zg-collapse" data-parent="#slide-contact" href="#display-profile">
-						<?php echo JText::_('COM_CONTACT_PROFILE');?>
-						</a>
-					</h4>
-				</div>
-				<div id="display-profile" class="panel-zg-collapse zg-collapse">
-					<div class="panel-body">
+			<h3 class="zen-slide-trigger">
+				<span class="zen-icon zen-icon-angle-down zen-right"></span>
+				<?php echo JText::_('COM_CONTACT_PROFILE');?></h3>
+				
+			<div class="zen-slide-content">
 		<?php endif; ?>
 		<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
 			<div id="display-profile" class="tab-pane">
@@ -197,8 +174,6 @@ $cparams = JComponentHelper::getParams('com_media');
 		<?php endif; ?>
 		<?php echo $this->loadTemplate('profile'); ?>
 		<?php if ($this->params->get('presentation_style')=='sliders'):?>
-					</div>
-				</div>
 			</div>
 		<?php endif; ?>
 		<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
@@ -207,16 +182,11 @@ $cparams = JComponentHelper::getParams('com_media');
 	<?php endif; ?>
 	<?php if ($this->contact->misc && $this->params->get('show_misc')) : ?>
 		<?php if ($this->params->get('presentation_style')=='sliders'):?>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h4 class="panel-title">
-						<a class="accordion-toggle" data-toggle="zg-collapse" data-parent="#slide-contact" href="#display-misc">
-						<?php echo JText::_('COM_CONTACT_OTHER_INFORMATION');?>
-						</a>
-					</h4>
-				</div>
-				<div id="display-misc" class="panel-zg-collapse zg-collapse">
-					<div class="panel-body">
+			<h3 class="zen-slide-trigger">
+				<span class="zen-icon zen-icon-angle-down zen-right"></span>
+				<?php echo JText::_('COM_CONTACT_OTHER_INFORMATION');?></h3>
+				
+			<div class="zen-slide-content">
 		<?php endif; ?>
 		<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
 			<div id="display-misc" class="tab-pane">
@@ -239,41 +209,13 @@ $cparams = JComponentHelper::getParams('com_media');
 					</dl>
 				</div>
 		<?php if ($this->params->get('presentation_style')=='sliders'):?>
-					</div>
-				</div>
 			</div>
 		<?php endif; ?>
 		<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
 			</div>
 		<?php endif; ?>
 	<?php endif; ?>
-	<?php if ($this->params->get('presentation_style')=='sliders'):?>
-			<script type="text/javascript">
-				(function($){
-					$('#slide-contact').zg-collapse({ parent: false, toggle: true, active: 'basic-details'});
-				})(jQuery);
-			</script>
-		</div>
-	<?php endif; ?>
 	<?php if ($this->params->get('presentation_style') == 'tabs') : ?>
 		</div>
 	<?php endif; ?>
 </div>
-
-<script>
-
-	jQuery(document).ready(function($) {
-		
-		<?php if ($this->params->get('presentation_style')=='sliders'):?>
-			$('.contact .panel-heading').click(function () {
-			
-				//$('.contact .zg-collapse').removeClass('in');
-				$(this).next().toggleClass('in');
-				
-				return false;
-				
-			});
-		<?php endif;?>
-		
-	});
-</script>

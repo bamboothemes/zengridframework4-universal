@@ -558,10 +558,17 @@ ol > li > ul {
 	margin: 30px 0 0 0px;
 	padding: 28px;
 	display: none;
+	text-align: center;
+	
+	
 }
 
  #zgfmessage * {
  	color: #fff;
+ }
+ 
+  #zgfmessage p {
+ 	margin: 0
  }
  
 /*

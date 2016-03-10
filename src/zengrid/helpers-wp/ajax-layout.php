@@ -163,6 +163,7 @@ defined( 'ZEN_ALLOW' ) or die( 'Restricted access' );
 				
 				// Get positions
 				$positions= $row->positions;
+				
 				if(is_object($positions)) {
 				
 			

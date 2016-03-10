@@ -10,11 +10,13 @@
  */
  
  
-// Extends the default slidebars.less
-.off-canvas-inner {
+ .off-canvas-body {
+ 	padding: @gutter;
 	background: @off-canvas-bg;
 	color: @off-canvas-text;
-	
+	clear: both;
+
+		
 	p {
 		color:  @off-canvas-text;
 	}
@@ -88,9 +90,4 @@
 	&:hover {
 		color: @off-canvas-link-hover
 	}
-}
-
-
-.off-canvas-inner {
-	padding: @gutter
 }

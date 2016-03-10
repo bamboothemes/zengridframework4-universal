@@ -17,36 +17,13 @@ $config = $zgf->get_xml('settings/settings.xml');
 // Get Params
 $settings = $zgf->getsettings()->params;
 
-// Check for admintools pro
-$admintools = ROOT_PATH.'/components/com_admintools/views/blocks/tmpl/default.php';
 
 // Template name
 if (!defined('TEMPLATE')) {
 	define( 'TEMPLATE', basename(dirname(dirname(dirname(__FILE__)))));
 }
 
-if(file_exists($admintools)) { ?>
-	<p class="uk-alert uk-alert-warning">
-		<strong>Admintools Pro Installed</strong><br />
-		It looks like you have Admintools installed. Admintools has a feature which blocks access to php files using the <strong>template=mytemplate</strong> functionality. Enabling this option will prevent the template from being able to compile less to css or save changes. <br /><br />We advise disabling this function in the template during development. Once you have finished developing your site it is safe to re-enable this functionality.<br /><br/>However if you need to use the Admintool security functionality during development you can add an exception for your template in the following areas:<br/><br />
-			1. Enter your template folder in the htaccess maker options under the "Allow direct access, including .php files, to these directories" option. The path required for this option will be:<br/><br/>
-		templates/<?php echo TEMPLATE;?>/
-		<br/><br />
-		2. Allow access to the template=<?php echo TEMPLATE;?> parameter in the Web Application fire Wall settings. <br /><br />
-		a. To access these settings navigate to Admintools in your Joomla admin via components > admintools. <br />
-		b. Click on the Web Application Firewall options.<br />
-		c. Click on the Configure WAF button.<br/>
-		d. Navigate to the Visual fingerprinting protection tab.<br />
-		e. Set the Block tmpl=foo system template switch to no.<br/>
-		f. Set the Block template=foo site template switch to no.
-		<br />
-		<br />
-		For more information please review the <a href="http://docs.joomlabamboo.com/zen-grid-framework-4/overview/Using-ZGFv4-themes-with-Admintools-pro.html">Zen Grid Framework v4 documentation</a>.
-		</p>
-<?php }
-?>
-
-<?php if(isset($settings->compile_required)) {
+if(isset($settings->compile_required)) {
 	if($settings->compile_required) {?>
 		<p class="uk-alert uk-alert-warning">
 			<strong>Compile less to css required - Theme panel</strong><br />

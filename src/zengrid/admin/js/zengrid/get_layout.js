@@ -40,13 +40,22 @@
  		    var effect = $('select#' + row +  '_animation').val();
  		   
  		    if(effect !=="inherit") {
-	 			classes += effect+ ' zen-animate';
+ 		    	if(typeof effect !=="undefined") {
+	 				classes += effect+ ' zen-animate';
+	 			}
+	 		}
+	 		
+	 		// Row style
+	 		var rowstyle = $('select#'+row + '_row_style').val();
+	 		
+	 		if(typeof rowstyle !=="undefined") {
+	 			classes += ' ' + $('select#'+row + '_row_style').val();
 	 		}
 	 		
 	 		layout[row]['classes']['classes'] = classes;
 	 		
 	 	});
-	console.log(layout);
+
 		return layout;
 	} 	
 })(jQuery);

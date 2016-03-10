@@ -1,0 +1,43 @@
+/** 
+ *------------------------------------------------------------------------------
+ * @package       Zen Grid Framework ##version##
+ *------------------------------------------------------------------------------
+ * @copyright   ##copyright##
+ * @license     ##license## 
+ * @Link:       http://www.joomlabamboo.com
+ * @packaged: 	##updated##
+ *------------------------------------------------------------------------------
+ */
+.cols-2 > li {
+  width: 45% !important;
+  float: left;
+  margin-right: 5%;
+}
+.cols-2 > li li {
+  width: 100%!important;
+}
+.cols-2 > li .cols-2 > li {
+  width: 45% !important;
+}
+.cols-3 > li {
+  width: 31% !important;
+  float: left;
+  margin-right: 2.3%;
+}
+.cols-3 > li li {
+  width: 100%!important;
+}
+.cols-3 > li .cols-3 > li {
+  width: 31% !important;
+}
+.cols-4 > li {
+  width: 21% !important;
+  float: left;
+  margin-right: 4%;
+}
+.cols-4 > li li {
+  width: 100%!important;
+}
+.cols-4 > li .cols-4 > li {
+  width: 21% !important;
+}

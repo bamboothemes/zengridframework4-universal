@@ -15,7 +15,7 @@ $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 ?>
 <?php if (empty($this->items)) : ?>
-	<p><?php echo JText::_('COM_CONTACT_NO_ARTICLES'); ?></p>
+	<p><?php echo JText::_('COM_CONTACT_NO_CONTACTS'); ?></p>
 <?php else : ?>
 
 	<form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>"
@@ -46,7 +46,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 			</fieldset>
 		<?php endif; ?>
 
-		<ul class="category list-striped list-unstyled">
+		<ul class="category">
 			<?php foreach ($this->items as $i => $item) : ?>
 
 				<?php if (in_array($item->access, $this->user->getAuthorisedViewLevels())) : ?>

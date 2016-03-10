@@ -114,7 +114,7 @@ if (version_compare(JVERSION, '3.0', 'ge')) {
 			</div>
 
 			<?php $usersConfig = JComponentHelper::getParams('com_users'); ?>
-			<ul class="stacked">
+			<ul class="zen-nav">
 				<?php if ($usersConfig->get('allowUserRegistration')) : ?>
 				<li>
 					<a href="<?php echo JRoute::_('index.php?option=com_users&view=registration'); ?>">

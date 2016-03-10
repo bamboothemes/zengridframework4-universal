@@ -25,15 +25,18 @@
 			margin-left:0 !important
 		}
 		
-		.input-group-addon {
-			float:left;
-			width:8%;
-			line-height:@input-min-height;
-		}
-		
 		input {
 			text-indent:12px;
-			width:90%
+			width:90%;
+			padding: 8px;
+		}
+		
+		h1,h2,h3,h4,h5,h6,p {
+			color:  @dropdown-header-color
+		}
+		
+		input[type="submit"] {
+			width: 100%
 		}
 		
 		input[type="checkbox"], 
@@ -45,7 +48,21 @@
 			width:100%;
 			float:left
 		}
+		
+		ul {
+			margin: 0 0 10px!important;
+			min-width:0;
+		}
+		
+		.btn {
+			text-align: center;
+			background: rgba(0,0,0,0.2);
+			margin-top: 10px;
 			
+			&:hover {
+				background: rgba(0,0,0,0.4);
+			}
+		}	
 	}
 	
 }

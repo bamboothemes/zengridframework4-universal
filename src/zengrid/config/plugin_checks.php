@@ -24,6 +24,6 @@ if(!$zgf->com_ajax()) { ?>
 if(empty($plugin)) { ?>
 	
 	<p></p>
-	<p class="alert alert-danger"><strong>Zentools2 Ajax plugin is not published.</strong><br /> This plugin is required for some of the functionality of this module. <br />Visit the <a href="index.php?option=com_plugins&view=plugins&filter.search=zengridframework">plugin manager</a> to publish this plugin now.</p>
+	<p class="alert alert-danger"><strong>The Zen Grid Framework Ajax plugin is not published.</strong><br /> This plugin is required for some of the functionality of this module. <br /><a href="http://www.joomlabamboo.com/download-document/717-zen-grid-framework-ajax-plugin">Download the Zen Grid Framework Ajax plugin</a>.<br />Visit the <a href="index.php?option=com_plugins&view=plugins&filter.search=zengridframework">plugin manager</a> to publish this plugin now.</p>
 	<p></p><br />
 <?php }  
