@@ -8,7 +8,7 @@ For usage and examples: colpick.com/plugin
 (function ($) {
 		
 		$.fn.set_theme_data = function (template, time, theme_path) {
-	
+
 			var theme = $('#cssfile').val();
 				theme = 'theme.' + theme;
 				
@@ -36,8 +36,7 @@ For usage and examples: colpick.com/plugin
 	     	 
 	     	 // Check to see if the preset being used uses the new nested objects of colors and settings
 	     	 // We have to revert it back to the old way because there is no way to update old themes to the new format until the user saves them.
-	     	 
-	     	 
+
 	     	 if(data.settings) {
 	     	 
 	     	 	var flattenObject = function(ob) {
@@ -152,11 +151,28 @@ For usage and examples: colpick.com/plugin
 	 	    			}
 	     	    	}
 
+					if($(target).is('select')) {
+						// Check if checked and set to 1
+						if(val == "") {
+							$(target + ' option[data-state="inherit"]').attr('selected', 1);
+						}						
+					}
+						     	    	
+	    
+
 	     	    	if(key == "framework_version") {
 	     	    		$('#framework_version').val(val);
 	     	    		$('.framework_list').removeClass('active');
 	     	    		$('#'+val).addClass('active')
 	     	    	}
+	     	    	
+	     	    	if(key == "childtheme") {
+	     	    	
+	     	    		if(val="") {
+	     	    			$(target + ' option[value="none"]').attr('selected', 1);
+	     	    		}
+	     	    	}
+	     	    	
 	     	    	
 	     	    	if(key == "framework_files") {
 	     	    		

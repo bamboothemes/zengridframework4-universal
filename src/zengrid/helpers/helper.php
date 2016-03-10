@@ -37,7 +37,7 @@ class zen
 
 	     }
 
-	    public function render($type,$description,$label,$options, $name,$class, $value, $tag, $compile,$target,$folder,$show_empty)
+	    public function render($type,$description,$label,$options, $name,$class, $value, $tag, $compile,$target,$folder,$show_empty,$hide_label)
 	    {
 	       	$path = TEMPLATE_PATH . 'zengrid/fields/'.$type.'.php';
 			

@@ -21,6 +21,7 @@
 @import "fonts.less";
 @import "resizable.less";
 @import "animation.less";
+@import "layout.less";
 //@import "wp.less";
 //@import "themer.less";
 
@@ -778,11 +779,11 @@ body, html {overflow-x:hidden}
 	position:absolute;
 	margin-top:-10px;
 	font-size:90%;
-	
-	a {
-		text-transform:uppercase;
-		font-size:90%
-	}
+}
+
+.button-title {
+	text-transform:uppercase;
+	font-size:80%
 }
 
 #compile {
@@ -872,6 +873,9 @@ h2#Style{
 		}
 }
 
+#framework-options ul {
+	padding-left: 0;
+}
 
 #framework-options ul.sub-list  {
 	li {

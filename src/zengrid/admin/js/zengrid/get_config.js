@@ -15,25 +15,30 @@
 		
 		// Create the params object
 		config['params']={};	
-			
+		
+		config['params']['theme']= $('select#cssfile').val();
+		
 		// Add any relevant settings to the params
 		// Theme data is not stored here
 		
-		$('#theme-settings input,#theme-settings textarea,#theme-settings select').not('[data-compile="1"]').not('.zt-picker').not('.exclude').each(function(i) {
+		$('#theme-settings input,#theme-settings textarea,#theme-settings select').not('[data-compile="1"]').not('.zt-picker').not('.exclude').not('[data-animate="1"]').each(function(i) {
 	    	
 	    	id = $(this).attr('id');
 	   
 	    	if(typeof id !=="undefined") {
 	    	
 	    		if($(this).is('select')) {
-	    			   	value = $('select#' + id).val(); 	    	
-					} else {
-	    	  	    	value = $(this).val();
+	    			   	value = $('select#' + id).val(); 
+	    			   		    	
+				} else {
+	    	  	    
+	    	  	    value = $(this).val();
 	    	
 	    	    	if(value=='on') {
 	    	    		value="1";
 	    	    	}			    	    	
 	    	    }
+	    	    
 	    	
 	    		// Add the value to the params
 	    		config['params'][id] = value;

@@ -7,17 +7,25 @@
 */
 
 // No Direct Access
-defined('ZEN_ALLOW') or die(); ?>
+defined('ZEN_ALLOW') or die(); 
+
+if($value == "0") {
+	$value = 'none';
+}elseif($value == "transparent") {
+	$value = 'transparent';
+} else {
+	$value = '#'.$value;
+}
+?>
 
 
 <div id="<?php echo $name;?>-color" class="color-wrap compile <?php echo $class;?>">
 	<label><strong><?php echo $label;?></strong></label>
-	<input type="text" class="zt-picker setting" id="<?php echo $name;?>" data-default="<?php echo str_replace('#', '', $value);?>" value="<?php echo str_replace('#', '', $value);?>" style="border-color:#<?php echo $value;?>"></input>
+	<input type="text" data-stored="<?php echo $value;?>" data-compile="1" class="zt-picker setting" id="<?php echo $name;?>" data-default="<?php echo str_replace('#', '', $value);?>" value="<?php echo str_replace('#', '', $value);?>" style="border-color:<?php echo $value;?>"></input>
 </div>
-	
+
 <script>
 	jQuery(document).ready(function($) {
-	
 	
 		$('input#<?php echo $name;?>').colpick({
 		 		
@@ -40,8 +48,13 @@ defined('ZEN_ALLOW') or die(); ?>
 		 		    if(!bySetColor) $(el).val(hex);
 		 		
 		 		    // Copied from the livepreview.php
-		 		    $('iframe#preview').contents().find("#tester").val('#' + hex).change();
-		 		    $('iframe#preview').contents().find("body").removeClass('live-preview').addClass('live-preview');
+		 		   
+		 		   <?php if($name =="body-bg") { ?>
+
+					$('#resize-container').css({'background-color': '#' +hex});
+		 		    <?php } ?>
+		 		    
+		 
 		 		
 		 		}
 		 	}).keyup(function(){

@@ -139,6 +139,14 @@ defined('ZEN_ALLOW') or die('Restricted access');
 	        									$folder = $field['folder'];
 	        									$show_empty = $field['show_empty'];
 	        									
+	        									
+	        									if(isset($field['hide_label'])) {
+	        										$hide_label = $field['hide_label'];
+	        									} else {
+	        										$hide_label = 0;
+	        									}
+	        									
+	        									
 	        									if(isset($settings->params->{$name})) {
 	        										if($settings->params->{$name} !=="") {
 	        											$value = $settings->params->{$name};
@@ -157,7 +165,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 	        									}
 	        								
 	        									// Determine the field typr and render the appropriate field
-	        									echo $zgf->render($type,$description,$label,$options, $name,$class, $value, $tag, $compile,$target, $folder,$show_empty); ?>
+	        									echo $zgf->render($type,$description,$label,$options, $name,$class, $value, $tag, $compile,$target, $folder,$show_empty, $hide_label); ?>
 			        					</li>	
 				        			<?php } ?>
 				        		</ul>
@@ -177,7 +185,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				// Save functions save state - uses get functions to get the data to save
 				
 				var template = $('#template-toolbar').attr('data-theme');
-				var page_type = $('#page-type-selector').val();
+				var page_type = get_page_type();
 				
 				<?php if(JOOMLA) {?>
 				var url = '<?php echo JURI::root();?>administrator/index.php?option=com_ajax&plugin=zengridframework&format=raw';
@@ -187,10 +195,14 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				var time = '<?php echo date('Y-m-d-H-i-s');?>';
 				
 				// On page load set the current theme
-				$('#cssfiles,#style-name').val('<?php echo $settings->params->theme;?>');
+				<?php if(isset($settings->params->theme)) { ?>
+					$('#cssfiles,#style-name').val('<?php echo $settings->params->theme;?>');
+				<?php } ?>
 				
 				// Set Theme Data
 				$(document).set_theme_data(template, time, '<?php echo TEMPLATE_PATH_RELATIVE;?>');
+				
+				$(document).set_config(template, time,'<?php echo TEMPLATE_PATH_RELATIVE;?>', page_type,url);
 				
 			
 				$('#load-config').click(function() {
@@ -205,7 +217,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					var page_type = get_page_type();
 					
 					$(this).addClass('zen-clicked');
-					
+					$('#compile_required').val(1);
 					$(document).send_ajax(template, url, data, 'save', page_type, 'config', 'config');
 					
 						var config_exists = $("#delete-configs-selector option[value='"+page_type+"']").length;
@@ -232,7 +244,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					
 					// Add theme name to the data
 					data.theme = name;
-					$('#compile_required').val(1);
+					
 					$(document).send_ajax(template, url, data, 'save', '', 'themes', 'theme.' +name);
 					
 				});
@@ -247,11 +259,21 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				
 				
 				// Load layout
-				$('#load-layout').click(function() {
+				$('#layout_preset').change(function() {
 					// Data used for loading layouts from config
 					var data = 'preset';
 					$(document).set_layout_data(data,url,template);
 				});
+				
+				
+				// Master file
+				$('#layout_file').on('change', function() {
+					// Data used for loading layouts from config
+					var data = 'preset';
+					$(document).set_layout_data(data,url,template);
+				});
+				
+				
 				
 				// Delete Theme
 				$('#delete-theme').click(function() {

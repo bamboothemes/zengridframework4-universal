@@ -61,6 +61,7 @@ if(!class_exists('Zen4')) {
 		public function get_json($path) {
 			$file = TEMPLATE_PATH .$path;
 			$settings = file_get_contents($file);
+			$settings = stripslashes($settings);
 			return json_decode($settings);
 		}
 		
@@ -173,7 +174,6 @@ if(!class_exists('Zen4')) {
 		 
 		public function countModules($module) {
 			
-			
 			if(JOOMLA) {
 				return $this->joomla->countModules($module);
 				
@@ -203,7 +203,10 @@ if(!class_exists('Zen4')) {
 			if(WP){
 				return wp_nav_menu( array( 'theme_location' => $type, 'menu_id' => $type.'-menu' ) );
 			} else {
-				return '<jdoc:include type="modules" name="menu" style="simple" />';
+		
+				if($this->joomla->countModules('menu')) {
+					return '<jdoc:include type="modules" name="menu" style="simple" />';
+				}
 			}
 		}
 		
@@ -352,6 +355,7 @@ if(!class_exists('Zen4')) {
 		 
 		public function checkSpotlight($row) {
 			
+			
 			if(isset($this->layout->{$row})) {
 			
 				if($this->params->mobile_detect) {
@@ -369,21 +373,29 @@ if(!class_exists('Zen4')) {
 						
 						$row = $this->layout->{$row}->{'positions'};
 					
-						if(JOOMLA) {
+						
 							foreach ($row as $module => $width) {
-							
-								if ($this->joomla->countModules($module)) {
+								
+								if($module == "panel-trigger") {
 									return true;
 								}
-							} 
-						} else {
-							foreach ($row as $module => $width) {
-							
-								if ( is_active_sidebar($module) ) {
+								
+								if($module == "offcanvas-trigger") {
 									return true;
 								}
+								
+								if(JOOMLA) {
+									if ($this->joomla->countModules($module)) {
+										return true;
+									}
+								}
+								else {
+									if ( is_active_sidebar($module) ) {
+										return true;
+									}
+								
 							} 
-						}
+						} 
 					}
 				}
 			} 

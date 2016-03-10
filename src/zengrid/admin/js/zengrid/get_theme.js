@@ -30,12 +30,14 @@
 			if(value !=="") {
 				colors[id] = value;
 			} 
+			
+	
 		      		
 		});
 		
 		
 		// Get all params that need to be sent through the compiler
-		$('input[data-compile="1"],input[data-compile="both"],select[data-compile="both"],select[data-compile="1"]').each(function() {
+		$('input[data-compile="1"],input[data-compile="both"],select[data-compile="both"],select[data-compile="1"]').not('.zt-picker').not('.exclude').each(function() {
 			
 			// Get the value
 			var value = $(this).val();
@@ -52,7 +54,7 @@
 		
 		
 		// Which files are included
-		var framework_files = $('li[data-name="framework_files_group"] input').val();
+		var framework_files = $('input#framework_files_group').val();
 			framework_files = framework_files.slice(0,-1);
 		
 		files.framework_files = framework_files;
@@ -88,20 +90,13 @@
 		settings.framework_version = $('#framework_version').val();
 		settings.theme = $('#style-name').val();
 		
-		var framework_files = $('li[data-name="framework_files_group"] input').val();
-		settings.framework_files = framework_files.slice(0,-1);
-			
-		// Get rows styles
-		var rowstyles = {};
 		
-		// Loop through row style settings to see what's being used
-		$('[data-rowstyle="1"]').each(function() {
-			var value = $(this).val();
-			var id = $(this).parent().attr('data-name');
-			rowstyles[id] = value;
-		});
 		
-		files.rowstyles = rowstyles;
+		// Child themes
+		files.childtheme = $('#childtheme').val();
+		
+		
+		
 		theme.settings = settings;
 		theme.colors = colors;
 		theme.files = files;

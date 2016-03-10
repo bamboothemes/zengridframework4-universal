@@ -20,7 +20,7 @@ jQuery(document).ready(function ($) {
 		   	 	    value: layout,
 		   	 	    text: layout,
 		   	 	    selected: 1
-		   	 	}));
+		   	}));
 		 }
 		 
 		 $('select#layout_preset option[value="'+ layout+'"]').attr("selected","selected");
@@ -166,11 +166,51 @@ jQuery(document).ready(function ($) {
 	*
 	*/
 	
-	 $('.module-row .icon-eye').live('click',function() {
+	 $(document).on('click', '.module-row .icon-eye',function() {
 	 
 	 	var id = $(this).parent().parent().attr('id');
+	 		
+	 	// Hide the item
 	 	$(this).parent().parent().hide().attr('data-active', 0);
-	 	$('div[data-id="' + id + '"]').show().addClass('active').parent().addClass('has-content');
+	 	
+	 	// Make the current row active
+	 	$('div[data-id="' + id + '-row"]').show().addClass('active').parent().addClass('has-content');
+	 	
+	 	// Get the position so we can position the side-drawer here
+	 	var top_position = $('#resize-container #' + id).parent().offset();
+	 	top_position = top_position.top;
+	 	console.log(top_position);
+	 	
+	 	// Fade Out the sidedarawer if it exists
+	 	$('.side-drawer').fadeOut();
+	 	
+	 	// Remove all other active items
+	 	$('.resize-row').removeClass('active');
+	 	
+	 	// Add active class to current item
+	 	$(this).parent().addClass('active');
+	 	
+	 	// Active the sidebar settings for this row		
+	 	var row = $(this).parent().parent().parent().attr('data-row');
+	 		row = row.replace('-row', '');
+	 	$('[data-id="' + row + '_settings"].side-drawer').css({"top":top_position - 300}).fadeIn();
+	 	
+	 	
+	 	// Make the unused item appear in the unused area
+	 	$('[data-id="' + id + '"]').show();
+	 	
+	 	// Is the row empty
+	 	// Check to see if any items are active in the row
+	 	var count = 0;
+	 		console.log(row);
+	 	$('[data-row="' + row + '-row"] [data-active="1"]').each(function(){
+	 		count ++;
+	 	});
+	 		
+	 	if(count === 0) {
+	 		$('[data-row="' + row + '-row"]').addClass('empty-row');
+	 	}
+	 	
 	 });
 	 
 	 
@@ -181,19 +221,13 @@ jQuery(document).ready(function ($) {
 	*
 	*/
 	
-	 $('.unused-modules div').live('click', function() {
-	  		var target = $(this).parent().attr('data-id');
-	 		var id = $(this).attr('data-id');
+	 $(document).on('click', '.unused-modules div', function() {
+	  		var id = $(this).attr('data-id');
+	  		var row = $(this).parent().attr('data-id');
+	  		console.log(row);
+	 		$(this).hide(); 		
+	 		$('[data-row="' + row + '-row"] #' + id).show().attr('data-active', 1).parent().removeClass('empty-row');
 	 		
-	 		
-	 		$('div[data-id="'+ id +'"]').not('.unused-modules').removeClass('active').hide();
-	  		
-	 		if($('.unused-modules[data-id="' + target + '"] div:visible').length === 0)
-	 		{
-	 			$(this).parent().removeClass('has-content');
-	 		} 
-	 		
-	 		$('.module-row #' + id).show().attr('data-active', 1);
 	 });
 	 
 	 
@@ -201,11 +235,11 @@ jQuery(document).ready(function ($) {
 	 
 	 /*
 	 *	
-	 *	Make items stack int he layout tool
+	 *	Make items stack in the layout tool
 	 *
 	 */
 	 
-	 jQuery('.stack-positions').live('click', function() {
+	 jQuery(document).on('click','.stack-positions', function() {
 		$(this).toggleClass('active');
 		return false;
 	});
@@ -221,10 +255,12 @@ jQuery(document).ready(function ($) {
 	*/
 	
 	
-	$('[data-compile="1"],[data-compile="both"]').on('blur', function() {
+	$(document).on('blur', '[data-compile="1"],[data-compile="both"]', function() {
 	
 		var stored = $(this).attr('data-stored');
 		var current = $(this).val();
+		
+		
 		if(stored !== current ) {
 			$('#compile_required').val(1);
 			var name = $(this).attr('id');
@@ -281,7 +317,7 @@ jQuery(document).ready(function ($) {
 		$('.info,.checkbox-info,.textarea-info').show();
 	}
 	
-	jQuery('#hide_info').live('click', function() {
+	jQuery(document).on('#hide_info','click', function() {
 		   			
 		var hide_value = $('input#hide_info').val();
 		
@@ -511,21 +547,82 @@ jQuery(document).ready(function ($) {
 	*
 	*/
 	
-	var cssfile = $('input#theme').val();
+	// On load
+	set_theme_name();
 	
-	  if(cssfile ==="") {
-	  	cssfile = $('#cssfile').val();
-	 		$('input#theme').val(cssfile);
-	  }
-	  
-	  $('select#cssfile option[value="'+ cssfile+'"]').attr("selected","selected");
-	  
-	  $("#style-name").val(cssfile);
-	  
-	  $('select#cssfile').change(function () {
-	  	var cssfile = $(this).val();
-	  	$('input#theme').val(cssfile);
-	  	
-	  });
+	
+	// On theme save
+	$('#save-theme').click(function() {
+		
+		var newtheme = $('input#style-name').val();
+		
+		var new_theme_exists = $("#cssfile option[value='"+newtheme +"']").length;
+			
+		if(new_theme_exists < 1) {
+
+		  	// Append the new preset to the presetlist
+		   	$('select#cssfile').append($('<option>', {
+		   	 	    value: newtheme,
+		   	 	    text: newtheme,
+		   	 	    selected: 1
+		   	}));
+		}
+	});
+	
+	
+	
+	function set_theme_name() {
+		
+		var theme = $('input#theme').val();
+		
+		// Just iun case the theme value is empty
+		 if(theme ==="") {
+		  	theme = $('#cssfile').val();
+		 	$('input#theme').val(theme);
+		}
+		  
+		$('select#cssfile option[value="'+ theme +'"]').attr("selected","selected");
+		  
+		$("#style-name").val(theme);
+	}
+	
+	$('select#cssfile').change(function () {
+		var theme  = $(this).val();
+		$('input#theme').val(theme);
+		
+	});
+	
+	
+	// Select states
+	$('#theme-settings .zen-select').each(function () {
+		
+		
+		var toggle = $(this).attr('id');
+		
+		if($(this).val() == -1) {
+			$('.' + toggle).fadeIn();
+			
+		}
+		
+		else {
+			$('.' + toggle).fadeOut();
+		}
+	});
+	
+	
+	// Select states
+	$('#theme-settings .zen-select').change(function () {
+		
+		var toggle = $(this).attr('id');
+		
+		if($(this).val() == -1) {
+			$('.' + toggle).fadeIn();
+			
+		}
+		
+		else {
+			$('.' + toggle).fadeOut();
+		}
+	});	
 	
 });

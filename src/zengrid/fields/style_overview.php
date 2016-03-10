@@ -43,14 +43,24 @@ foreach ($cssfiles as $key => $css)
 		}
 	}
 } ?>	
-<br />
-<br />
-<div class="compile-included">
-	<p>Select a theme</p>
-	<div id="cssfiles-wrap">
-		<p class="<?php echo $class;?>"><strong><?php echo $label;?></strong></p>
-		<select id="cssfile" class="exclude">
+
+<select id="cssfile" class="exclude">
 			<?php echo $available_css;?>
-		</select>
-	</div>
-</div>
+</select>
+
+
+
+
+<input class="uk-form uk-form-large exclude" id="style-name" value="New-Style">
+	<a href="#" id="save-theme" class="compiler uk-button uk-button-primary loader">
+		<span class="loading-spinner loading-spinner-large">
+			<span></span>
+		</span>
+		<span class="button-title">Save Theme</span>
+	</a>
+<a href="#" id="delete-theme" class="uk-button uk-button-danger loader uk-align-right uk-button-mini">
+	<span class="loading-spinner loading-spinner-large">
+		<span></span>
+	</span>
+	<span class="button-title">Delete Theme</span>
+</a>

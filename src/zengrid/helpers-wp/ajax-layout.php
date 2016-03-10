@@ -40,7 +40,13 @@ defined( 'ZEN_ALLOW' ) or die( 'Restricted access' );
 	if(file_exists(TEMPLATE_PATH . 'custom/positions.json')) {
 		$default_layout = $zgf->get_json('custom/positions.json');
 	} else {
-		$default_layout = $zgf->get_json('settings/layouts/positions.json');
+		if(isset($settings->params->layout_file)) {
+			$positions = explode('.', $settings->params->layout_file);
+			$positions = $positions[0];
+			$default_layout = $zgf->get_json('settings/layouts/positions/'.$positions.'.json');
+		} else {
+			$default_layout = $zgf->get_json('settings/layouts/positions/default.json');
+		}
 	}
 	
 	foreach ($default_layout as $key => $row) { 

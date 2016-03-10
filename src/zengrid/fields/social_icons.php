@@ -61,7 +61,7 @@ $icons = array('500px','user','envelope','envelope-o','search','adn','android','
 				return false;	
 			});			
 		
-			$('#remove-network').live('click', function() {		
+			$(document).on('click', '#remove-network', function() {		
 				$(this).parent().remove();		
 			return false;	});	
 		});

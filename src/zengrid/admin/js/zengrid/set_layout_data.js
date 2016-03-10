@@ -34,10 +34,8 @@ For usage and examples: colpick.com/plugin
 				$('#log pre').append('Loading layout from config\n');
 			}
 			
-		
+			var positions = "default";
 			
-			console.log('template' + template);
-			console.log('data' + data);
 			$.ajax({
 			 	url : url,
 			 	method: 'post',
@@ -49,13 +47,14 @@ For usage and examples: colpick.com/plugin
 			 		action: 'set_layout',
 			 		template: template,
 			 		layout: data,
-			 		content: data
+			 		content: positions
 			 	},
 			
 			 error: function (data) {
 			 		console.log(data);
 			 },
 			 	success: function (data) {
+			 		
 			 		$('#resize-container').append(data);
 			
 			 		$( ".resizable" ).each(function() {
@@ -64,14 +63,7 @@ For usage and examples: colpick.com/plugin
 			 			$(this).find('.ui-widget-header span.col-count').text();
 			 			$(this).find('.ui-widget-header span.col-count').text(width).parent().parent().addClass('grid-'+ width).attr('data-width', width);
 			 			
-			 			if($(this).attr('data-active')) {
-			 				
-			 			} else {
-			 				var id = $(this).attr('id');
-			 				$('.unused-modules div[data-id="' + id + '"]').fadeIn().addClass('active').parent().addClass('active');
-			 			}
 			 		});
-			 		
 			 		
 			 		$( ".resizable" ).resizable({
 			 		      grid: 40,
@@ -87,10 +79,13 @@ For usage and examples: colpick.com/plugin
 			 		      	$(this).find('.ui-widget-header span.col-count').text(width).parent().parent().addClass('grid-'+ width).attr('data-width', width);
 			 		      	
 			 		      }
-			 		 });
+			 		}); 
+			 		
+			 		$( "#resize-container .module-row" ).sortable({
+			 		      placeholder: "placeholder",
+			 		      connectWith: ".connectedSortable"
+			 		    });
 			 	}
 			});
 		} 
-		
-		
 })(jQuery);

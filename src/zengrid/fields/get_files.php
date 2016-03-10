@@ -23,13 +23,13 @@ if($show_empty =="0") {
 	}
 }
 
+
 if($display) {
 ?>
 
 
-<p class="<?php echo $class;?>">
-	<?php echo $label;?>
-</p>
+<?php if(!$hide_label) { echo $label; }?>
+
 
 <select id="<?php echo $name;?>" class="zen-select <?php echo $class;?>" value="<?php echo $value;?>">
 	<?php foreach ($layouts as $key => $option) {

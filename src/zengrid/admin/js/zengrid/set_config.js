@@ -11,8 +11,8 @@ For usage and examples: colpick.com/plugin
 	
 			// Retrieve the appropriate json file	        	
 	     	$.getJSON( '../' + theme_path + 'settings/config/config-' + page_type + '.json?v=' + time, function( data ) {
-	     	 
-	     	 console.log(page_type);
+	     	
+	     	
 	     	// Check to see if the preset being used uses the new nested objects of colors and settings
 	     	// We have to revert it back to the old way because there is no way to update old themes to the new format until the user saves them.
 	     	 
@@ -41,12 +41,11 @@ For usage and examples: colpick.com/plugin
 		     		$(document).set_theme_data(theme, time,theme_path);
 		     	}
 		     	
-		     	
 		     	console.log('Setting Layout');
 		     	
 				// Set the layout for this config
 		     	$(document).set_layout_data(data.layout,url,template);
-	     	 	
+	     	 
 	     	 	
 	     	 	// Parse through the json object and populate fields
 	     	 	// We set a small delay here to account for any load delay with loading theme values
@@ -54,47 +53,74 @@ For usage and examples: colpick.com/plugin
 	     	 	// Theme 
 	     	 	
      	 		setTimeout(function() {
-     	 			console.log('Setting Params');
+     	 			
      	 			$.each( data.params, function( key, val ) {
      	 			
      	 				// Inputs
      	 				$('input#' + key).val(val).attr('data-stored', val);	  
      	 				
-     	 				
      	 				// Checkboxes
      	 				// Check if checked and set to 1
      	 				if($('input#' + key).is(':checkbox')) {
      	 					
-     	 						var toggle = $('#' + key).attr('id');
-     	 						
-     	 						// Set value to 0
-     	 						$('#' + key).val('');
-     	 						
-     	 						// Check if checked and set to 1
-     	 						if(val == 1) {
-     	 							$('.' + toggle).fadeIn().parent().fadeIn();
-     	 							$('input#' + key).prop('checked', 'true').val(1);
-     	 						}
-     	 						
-     	 						if(val == "" || val == 0) {
-     	 							$('.' + toggle).fadeOut().parent().fadeOut();
-     	 							$('input#' + key).prop('checked', false).val(0);
-     	 						}
-     	 					}
+ 	 						var toggle = $(this).attr('id');
+ 	 						
+ 	 						// Set value to 0
+ 	 						$(this).val('');
+ 	 						
+ 	 						// Check if checked and set to 1
+ 	 						if($(this).is(':checked')) {
+ 	 							$(this).val(1);
+ 	 							$('.' + toggle).fadeIn().parent().show();
+ 	 						}
+ 	 						else {
+ 	 							$(this).val(0);
+ 	 							$('.' + toggle).fadeOut().parent().hide();
+ 	 							
+ 	 						}
+     	 				}
      	 				
      	 							
      	 				// Selects
      	 				$('select#' + key + ' option[value="'+ val +'"]').attr("selected","selected"); 
      	 				
+     	 				if(key === "theme") {
+     	 					$('#cssfiles,#style-name').val(val);
+     	 				}
      	 			});	
+     	 			
+     	 			// If no items active in the layout
+     	 			// Set stack positions etc
+     	 			$.each( data.layout, function( row,value ) {
+     	 				
+     	 				var classes = value.classes.classes;
+     	 				    classes = classes.split(' ');
+	     	 				
+     	 				$.each( classes, function( index, classname) {
+     	 					// Selects
+     	 					
+     	 					$('[data-id="'+row+'_settings"].side-drawer [data-id="'+classname+'"]').addClass('active');
+     	 						
+     	 				});
+     	 				
+     	 				// Check to see if any items are active in the row
+     	 				var count = 0;
+     	 				
+     	 				$('#'+ row + '-row [data-active="1"]').each(function(){
+     	 					count ++;
+     	 				});
+     	 				
+     	 				if(count === 0) {
+     	 					$('#'+ row + '-row').addClass('empty-row');
+     	 				}
+	     	 		});
+     	 			
      	 		}, 1500);
      	 		
      	 		jQuery('#zgfmessage,#zgfmessage .settings').fadeIn('normal', function() {
      	 			jQuery('#zgfmessage,#zgfmessage .settings').delay(2000).fadeOut();
      	 		});
-	     	 			 
-		     	 		 
-		     }
+	     	}
 	     });
 	};			
 })(jQuery);

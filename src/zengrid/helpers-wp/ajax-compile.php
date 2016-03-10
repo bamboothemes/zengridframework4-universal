@@ -36,8 +36,7 @@ defined( 'ZEN_ALLOW' ) or die( 'Restricted access' );
 	$compressed = $settings['compresscss'];
 	$animate = $settings['animate'];
 	$animations = $extra_files['animations'];
-	$rowstyles = $extra_files['rowstyles'];
-
+	
 	
 	
 	/**
@@ -271,27 +270,7 @@ defined( 'ZEN_ALLOW' ) or die( 'Restricted access' );
 			
 	
 	
-	/**
-	 * Row Styles CSS
-	 *
-	 *
-	 */
 	
-		if(is_array($rowstyles)) {
-			$rowstyles = array_filter($rowstyles);
-			$row_styles = TEMPLATE_PATH . '/less/styles';
-			$row_path = 'styles';
-			if(is_dir($row_styles)) {
-				
-				foreach ($rowstyles as $key => $row_file) {
-				
-					$files[] = $row_path.'/'.$row_file.'.less';
-						
-				}
-			}	
-		
-		}
-		
 		
 	
 	/**
