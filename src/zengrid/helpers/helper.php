@@ -1,11 +1,11 @@
 <?php
 /**
- * @package     ##package##
- * @subpackage  ##subpackage##
- * @author      ##author##
- * @copyright   ##copyright##
- * @license     ##license##
- * @version     ##version##
+ * @package     Zen Grid Framework v4, 1.4.1
+ * @subpackage  Updated: March 10 2016
+ * @author      Joomlabamboo http://www.joomlabamboo.com
+ * @copyright   Copyright (C) Joomlabamboo, March 10 2016
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later;
+ * @version     1.4.1
  */
 
 // No Direct Access
@@ -100,10 +100,11 @@ class zen
 	    */
 	    
 	   public function get_image_dir_files() {
-	   	   	$folder = ROOT_PATH.'/images/';
+	   	   	$folder = ROOT_PATH.'/images';
 	   	  
 	   	   	if(is_dir($folder)) {
-	   	   		$files = self::files($folder, '.', false, false,array('.svn', 'CVS','.DS_Store','__MACOSX','index.html'));
+	   	   		$files = self::files($folder, '.', true, true,array('.svn', 'CVS','.DS_Store','__MACOSX','index.html'));
+
 	   	   		return $files;
 	   	   	} else {
 	   	   		return null;
@@ -220,6 +221,7 @@ class zen
 	    	
 	    	$settings = TEMPLATE_PATH .'settings/config/config-'.$id.'.json';
 	    	$default = TEMPLATE_PATH .'settings/config/config-default.json';
+	    	
 	    	
 	    	if(file_exists($settings)) {
 	    	

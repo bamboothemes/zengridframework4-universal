@@ -1,11 +1,11 @@
 /** 
  *------------------------------------------------------------------------------
- * @package       Zen Grid Framework ##version##
+ * @package       Zen Grid Framework 1.4.1
  *------------------------------------------------------------------------------
- * @copyright   ##copyright##
- * @license     ##license## 
+ * @copyright   Copyright (C) Joomlabamboo, March 10 2016
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
  * @Link:       http://www.joomlabamboo.com
- * @packaged: 	##updated##
+ * @packaged: 	March 10 2016
  *------------------------------------------------------------------------------
  */
 
@@ -24,7 +24,7 @@
 	padding: @base-padding 0;
 }
 
-.row-padding-sml-vert {
+.row-padding-vert-sml {
 	padding: @base-padding / 2 0
 }
 
@@ -33,30 +33,46 @@
 }
 
 .row-margin {
-	margin: @base-padding @gutter-pc;
+	.zen-spotlight {
+		margin: @base-padding 0;
+	}
 }
 
 .row-margin-sml {
-	margin: @base-padding / 2 @gutter-pc / 2
+	margin: @base-padding / 2 0;
 }
 
-.row-margin-vert {
-	margin: @base-padding 0;
+
+.row-margin-bottom {
+	margin: 0 0 @base-padding;
 }
 
-.row-margin-sml-vert {
-	margin: @base-padding / 2 0
+.row-margin-top {
+	margin: @base-padding 0 0 0;
 }
 
-.row-margin-sml-vert-norm-hor {
-	margin: @base-padding / 2 @gutter-pc
+
+.row-margin-bottom-sml {
+	margin: 0 0 @base-padding / 2;
 }
+
+.row-margin-top-sml {
+	margin: @base-padding / 2 0 0 0;
+}
+
+
 
 .row-margin-none {
 	margin: 0;
 	
-	.zg-col {
-		margin: 0
+	.moduletable {
+		margin-bottom: 0
+	}
+	
+	@media screen and (min-width:@grid-collapse) {
+		.zg-col {
+			margin-bottom: 0
+		}
 	}
 }
 
@@ -84,7 +100,13 @@
 	}
 }
 
-.container-padding-sml-vert {
+.container-padding-hor {
+	.zen-spotlight {
+		padding: 0 @gutter-pc;
+	}
+}
+
+.container-padding-vert-sml {
 	.zen-spotlight {
 		padding: @base-padding / 2 0
 	}
@@ -96,9 +118,43 @@
 	}
 }
 
+
+
 .container-margin {
 	.zen-spotlight {
-		margin: @base-padding @gutter-pc;
+		margin: @base-padding 0;
+	}
+}
+
+.container-margin-sml {
+	.zen-spotlight {
+		margin: @base-padding / 2 0;
+	}
+}
+
+
+.container-margin-bottom {
+	.zen-spotlight {
+		margin: 0 0 @base-padding;
+	}
+}
+
+.container-margin-top {
+	.zen-spotlight {
+		margin: @base-padding 0 0 0;
+	}
+}
+
+
+.container-margin-bottom-sml {
+	.zen-spotlight {
+		margin: 0 0 @base-padding / 2;
+	}
+}
+
+.container-margin-top-sml {
+	.zen-spotlight {
+		margin: @base-padding / 2 0 0 0;
 	}
 }
 
@@ -107,34 +163,15 @@
 		margin: 0;
 		
 		.zg-col {
-			margin: 0
+			margin-bottom: 0
 		}
 	}
 }
 
-.container-margin-sml {
-	.zen-spotlight {
-		margin: @base-padding / 2 @gutter-pc / 2
-	}
-}
 
-.container-margin-vert {
-	.zen-spotlight {
-		margin: @base-padding 0;
-	}
-}
 
-.container-margin-sml-vert {
-	.zen-spotlight {
-		margin: @base-padding / 2 0
-	}
-}
 
-.container-margin-sml-vert-norm-hor {
-	.zen-spotlight {
-		margin: @base-padding / 2 @gutter-pc
-	}
-}
+
 
 .container-padding-none {
 	.zen-spotlight {

@@ -1,11 +1,11 @@
 /** 
  *------------------------------------------------------------------------------
- * @package       Zen Grid Framework ##version##
+ * @package       Zen Grid Framework 1.4.1
  *------------------------------------------------------------------------------
- * @copyright   ##copyright##
- * @license     ##license## 
+ * @copyright   Copyright (C) Joomlabamboo, March 10 2016
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
  * @Link:       http://www.joomlabamboo.com
- * @packaged: 	##updated##
+ * @packaged: 	March 10 2016
  *------------------------------------------------------------------------------
  */
 /*
@@ -6903,12 +6903,12 @@ a.uk-thumbnail:focus {
 }
 /** 
  *------------------------------------------------------------------------------
- * @package       Zen Grid Framework ##version##
+ * @package       Zen Grid Framework 1.4.1
  *------------------------------------------------------------------------------
- * @copyright   ##copyright##
- * @license     ##license## 
+ * @copyright   Copyright (C) Joomlabamboo, March 10 2016
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
  * @Link:       http://www.joomlabamboo.com
- * @packaged: 	##updated##
+ * @packaged: 	March 10 2016
  *------------------------------------------------------------------------------
  */
 #zen-sidebar {
@@ -6951,12 +6951,12 @@ a.uk-thumbnail:focus {
 }
 /** 
  *------------------------------------------------------------------------------
- * @package       Zen Grid Framework ##version##
+ * @package       Zen Grid Framework 1.4.1
  *------------------------------------------------------------------------------
- * @copyright   ##copyright##
- * @license     ##license## 
+ * @copyright   Copyright (C) Joomlabamboo, March 10 2016
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
  * @Link:       http://www.joomlabamboo.com
- * @packaged: 	##updated##
+ * @packaged: 	March 10 2016
  *------------------------------------------------------------------------------
  */
 @font-face {
@@ -6976,10 +6976,8 @@ a.uk-thumbnail:focus {
   }
 }
 */
-#zen-sidebar [class^="icon-"]:before,
-#zen-sidebar [class*=" icon-"]:before,
-#resize-container [class^="icon-"]:before,
-#resize-container [class*=" icon-"]:before {
+#framework-options [class^="icon-"]:before,
+#framework-options [class*=" icon-"]:before {
   font-style: normal;
   font-weight: normal;
   speak: none;
@@ -7001,8 +6999,7 @@ a.uk-thumbnail:focus {
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
-#zen-sidebar,
-#resize-container {
+#zgf {
   /* '' */
   /* '' */
   /* '' */
@@ -7016,82 +7013,85 @@ a.uk-thumbnail:focus {
   /* '' */
   /* '' */
 }
-#zen-sidebar .icon-menu:before,
-#resize-container .icon-menu:before {
+#zgf .icon-menu:before {
   content: '\e800';
   font-family: "fontello";
 }
-#zen-sidebar .icon-layout:before,
-#resize-container .icon-layout:before {
+#zgf .icon-layout:before {
   content: '\e801';
   font-family: "fontello";
 }
-#zen-sidebar .icon-cog:before,
-#resize-container .icon-cog:before {
+#zgf .icon-cog:before {
   content: '\e802';
   font-family: "fontello";
 }
-#zen-sidebar .icon-book-open:before,
-#resize-container .icon-book-open:before {
+#zgf .icon-book-open:before {
   content: '\e803';
   font-family: "fontello";
 }
-#zen-sidebar .icon-feather:before,
-#resize-container .icon-feather:before {
+#zgf .icon-feather:before {
   content: '\e804';
   font-family: "fontello";
 }
-#zen-sidebar .icon-water:before,
-#resize-container .icon-water:before {
+#zgf .icon-water:before {
   content: '\e805';
   font-family: "fontello";
 }
-#zen-sidebar .icon-tablet:before,
-#resize-container .icon-tablet:before {
+#zgf .icon-tablet:before {
   content: '\e806';
   font-family: "fontello";
 }
-#zen-sidebar .icon-mobile:before,
-#resize-container .icon-mobile:before {
+#zgf .icon-mobile:before {
   content: '\e807';
   font-family: "fontello";
 }
-#zen-sidebar .icon-desktop:before,
-#resize-container .icon-desktop:before {
+#zgf .icon-desktop:before {
   content: '\e808';
   font-family: "fontello";
 }
-#zen-sidebar .icon-laptop:before,
-#resize-container .icon-laptop:before {
+#zgf .icon-laptop:before {
   content: '\e809';
   font-family: "fontello";
 }
-#zen-sidebar .icon-fontsize:before,
-#resize-container .icon-fontsize:before {
+#zgf .icon-fontsize:before {
   content: '\e80a';
   font-family: "fontello";
 }
-#zen-sidebar .icon-twitter:before,
-#resize-container .icon-twitter:before {
+#zgf .icon-twitter:before {
   content: '\e80c';
   font-family: "fontello";
 }
-#resize-container .icon-mobile:before,
-#resize-container .icon-tablet:before,
-#resize-container .icon-laptop:before,
-#resize-container .icon-desktop:before {
-  font-size: 2em;
-  background: #fafafa;
-  padding: 0 10px 0 0;
+#zgf .icon-mobile:before,
+#zgf .icon-tablet:before,
+#zgf .icon-laptop:before,
+#zgf .icon-desktop:before,
+#zgf span.stack-positions-label {
+  font-size: 1.3em;
+  padding: 10px;
+  margin-right: 10px!important;
+  width: 40px !important;
+  text-align: center;
+  border-radius: 2px;
+}
+#zgf .stack-position div {
+  margin-bottom: 15px;
+}
+#zgf a {
+  text-decoration: none;
+  margin-right: 8px;
+}
+#zgf span.stack-positions-label {
+  font-size: 11px;
+  width: 64px !important;
 }
 /** 
  *------------------------------------------------------------------------------
- * @package       Zen Grid Framework ##version##
+ * @package       Zen Grid Framework 1.4.1
  *------------------------------------------------------------------------------
- * @copyright   ##copyright##
- * @license     ##license## 
+ * @copyright   Copyright (C) Joomlabamboo, March 10 2016
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
  * @Link:       http://www.joomlabamboo.com
- * @packaged: 	##updated##
+ * @packaged: 	March 10 2016
  *------------------------------------------------------------------------------
  */
 #zgf #resize-container {
@@ -7250,10 +7250,9 @@ a.uk-thumbnail:focus {
   top: 42px;
 }
 #zgf .stack-position span {
-  margin-right: 0px;
   margin-top: 8px;
   text-align: center;
-  width: 30px;
+  width: 70px;
   display: inline-block;
 }
 #zgf .stack-positions {
@@ -7275,12 +7274,12 @@ a.uk-thumbnail:focus {
 }
 /** 
  *------------------------------------------------------------------------------
- * @package       Zen Grid Framework ##version##
+ * @package       Zen Grid Framework 1.4.1
  *------------------------------------------------------------------------------
- * @copyright   ##copyright##
- * @license     ##license## 
+ * @copyright   Copyright (C) Joomlabamboo, March 10 2016
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
  * @Link:       http://www.joomlabamboo.com
- * @packaged: 	##updated##
+ * @packaged: 	March 10 2016
  *------------------------------------------------------------------------------
  */
 .loader.active .loading-spinner.loading-spinner-large > span {
@@ -7370,16 +7369,17 @@ a.uk-thumbnail:focus {
 }
 /** 
  *------------------------------------------------------------------------------
- * @package       Zen Grid Framework ##version##
+ * @package       Zen Grid Framework 1.4.1
  *------------------------------------------------------------------------------
- * @copyright   ##copyright##
- * @license     ##license## 
+ * @copyright   Copyright (C) Joomlabamboo, March 10 2016
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later; 
  * @Link:       http://www.joomlabamboo.com
- * @packaged: 	##updated##
+ * @packaged: 	March 10 2016
  *------------------------------------------------------------------------------
  */
+body,
 html {
-  background: #fff;
+  overflow: auto !important;
 }
 #design-toolbar {
   clear: both;
@@ -7491,7 +7491,21 @@ html {
   width: 100%;
 }
 #framework-options .side-drawer .bevel {
-  display: none;
+  margin: 10px 0;
+  position: relative;
+  background: #fff;
+}
+#framework-options .side-drawer .bevel:after {
+  content: "";
+  height: 1px;
+  background: #ddd;
+  position: absolute;
+  margin-top: 1px;
+  left: 0;
+  float: left;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 #framework-options .side-drawer h2 {
   margin: 0 0 30px;
@@ -7775,6 +7789,78 @@ html {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+#framework-options .side-drawer .half {
+  margin-right: 10px;
+}
+#framework-options .side-drawer .half p {
+  margin-bottom: 0;
+}
+#framework-options .side-drawer .half input {
+  width: 100%;
+}
+#framework-options .side-drawer .border-rule {
+  float: left;
+  width: 100%;
+}
+#framework-options .side-drawer .border-rule .border-widths {
+  position: relative;
+  height: 40px;
+  width: 40px;
+  float: left;
+  margin-right: 10px;
+}
+#framework-options .side-drawer .border-rule .bw {
+  background: #ddd;
+  height: 8px;
+  display: inline;
+  width: 8px;
+  float: left;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1;
+}
+#framework-options .side-drawer .border-rule .bw.active {
+  background: #00a8e6;
+  z-index: 2;
+}
+#framework-options .side-drawer .border-rule .north {
+  width: 40px;
+  height: 8px;
+  top: 0;
+  left: 0;
+}
+#framework-options .side-drawer .border-rule .south {
+  width: 40px;
+  height: 8px;
+  bottom: 0;
+  left: 0;
+}
+#framework-options .side-drawer .border-rule .east {
+  height: 40px;
+  width: 8px;
+  top: 0;
+  right: 0;
+}
+#framework-options .side-drawer .border-rule .west {
+  height: 40px;
+  width: 8px;
+  top: 0;
+  left: 0;
+}
+#framework-options .side-drawer .border-rule input {
+  width: 40px;
+  float: left;
+  margin-right: 10px;
+  height: 40px;
+}
+#framework-options .side-drawer .border-rule .zt-picker {
+  width: 80px;
+}
+#framework-options .side-drawer .border-rule select {
+  width: 100px;
+  float: left;
+  height: 40px;
 }
 #jform_params_scripts-lbl,
 #jform_params_options-lbl {

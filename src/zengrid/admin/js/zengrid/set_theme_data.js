@@ -73,12 +73,19 @@ For usage and examples: colpick.com/plugin
 	     	    	// Remove leading #
 	     	    	val = val.replace('#', '');
 	     	    	
+	     	    	// If its an image file name we remove the folder name
+	     	    	
+	     	    	val = val.replace(/\"..\/..\/../g, '').replace(/"/g, '');
+	     	    	
+	     	    	console.log(val);
+	     	    	
 	     	    	// Set the value if its not null
 	     	    	if(val!=="") {
 	     	    		$(target).val(val).attr('data-stored', val);
 	     	    		
 	     	    	}
 	     	    	
+	     	    	// Colors
 	     	    	if($(target).hasClass('zt-picker')) {
 	     	    	
 	     	    		if(val == "") {
@@ -132,6 +139,8 @@ For usage and examples: colpick.com/plugin
 	     	    		}
 	     	    	}
 	     	    	
+	     	    	
+	     	    	// Checkbox
 	     	    	if($(target).is(':checkbox')) {
 	     	    			
 	 	    			var toggle = $(target).attr('id');
@@ -151,30 +160,21 @@ For usage and examples: colpick.com/plugin
 	 	    			}
 	     	    	}
 
+					// Select
 					if($(target).is('select')) {
 						// Check if checked and set to 1
 						if(val == "") {
 							$(target + ' option[data-state="inherit"]').attr('selected', 1);
-						}						
+						}				
 					}
 						     	    	
-	    
-
-	     	    	if(key == "framework_version") {
+	       	    	if(key == "framework_version") {
 	     	    		$('#framework_version').val(val);
 	     	    		$('.framework_list').removeClass('active');
 	     	    		$('#'+val).addClass('active')
 	     	    	}
 	     	    	
-	     	    	if(key == "childtheme") {
-	     	    	
-	     	    		if(val="") {
-	     	    			$(target + ' option[value="none"]').attr('selected', 1);
-	     	    		}
-	     	    	}
-	     	    	
-	     	    	
-	     	    	if(key == "framework_files") {
+	        	    if(key == "framework_files") {
 	     	    		
 	     	    		// Reset Framework files
 	     	    		$('input.framework_files').removeAttr('checked').val(0);
@@ -187,7 +187,30 @@ For usage and examples: colpick.com/plugin
 	     	    		
 	     	    		});	    		
 	     	    	}
+	     	    	
+	     	    	
 	     	  });
+	     	  
+	     	  $('.border-rule').each(function() {
+	     	  		var rule = $(this);
+	     	  		var widths = $(this).find('.border-widths-value').val();
+	     	  		
+	     	  		if(widths !=="") {
+		     	  		
+		     	  		widths = widths.split(' ');
+		     	  		
+		     	  		console.log(widths);
+		     	  		$(widths).each(function(i, width) {
+		     	  			if(width !=="0") {
+		     	  				console.log('widths-values' + i);
+		     	  				$(rule).find('[data-key="' + i + '"]').addClass('active');
+		     	  			}
+		     	  		});
+		     	  	}
+	     	  });
+	     	  
+	     	  $('#compile_required').val('0');
+	     	  	console.log('compile' + $('#compile_required').val());
 	     });
 	};			
 })(jQuery);

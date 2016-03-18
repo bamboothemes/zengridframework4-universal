@@ -22,12 +22,6 @@ $config = $zgf->get_xml('settings/themer.xml');
 // Read settings
 $settings = $zgf->getsettings();
 
-// Current layout
-// Config of layout preset may be different to actual stored layout in the config
-$current_layout = $settings->params->layout_preset;
-
-// Items used in config
-$used_items = $settings->layout; 
 
 
 // Users can override the positions available by adding 
@@ -45,9 +39,6 @@ if(file_exists(TEMPLATE_PATH . 'custom/positions.json')) {
 	}
 }
 
-
-// Items used in config
-$used_items = $settings->layout;
 
 
 $colors = array('row-background','container-background', 'text-color', 'heading-color', 'link-color','link-hover-color');
@@ -154,7 +145,7 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 		<div class="settings-close">x close</div>
 		<div class="settings-options">
 			<ul>
-				<li class="active" data-id="display"><a href="#display">Display</a><li data-id="style"><a href="#style">Row Style</a></li></li>
+				<li class="active" data-id="display"><a href="#display">Display</a><li data-id="style"><a href="#style">Style</a></li></li>
 			</ul>
 		</div>
 		<div class="settings-params">
@@ -176,7 +167,12 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 									$name = $key.'-'.$block['name'];
 									$type = (string)$block['type'];
 									$description = $block['description'];
-									$label = '@'.$name;
+									
+									if(isset($block['label'])) {
+										$label = $block['label'];
+									} else {
+										$label = '@'.$name;
+									}
 									$class = $block['class'];
 									$tag = $block['tag'];
 									$compile = $block['compile'];
@@ -254,6 +250,20 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 	    						<a href="#" class="stack-positions" data-id="stack-phones">Stack</a>
 	    						<a href="#" class="stack-positions" data-id="hidden-phones">Hide</a>
 	    						<a href="#" class="stack-positions" data-id="no-change-phones">No Change</a>
+	    					</div>
+	    					
+	    					<div>
+	    						<span class="stack-positions-label">Nav Collapse</span>
+	    						<a class="stack-positions" data-id="stack-navcollapse" href="#">Stack</a>
+	    						<a class="stack-positions" data-id="hidden-navcollapse" href="#">Hide</a>
+	    					</div>
+	    					
+	    					
+	    					<div>
+	    						<span class="stack-positions-label">Grid collapse</span>
+	    						<a class="stack-positions" data-id="stack-gridcollapse" href="#">Stack</a>
+	    						<a class="stack-positions" data-id="hidden-gridcollapse" href="#">Hide</a>
+	    						<a class="stack-positions" data-id="no-change-gridcollapse" href="#">No Change</a>
 	    					</div>
 	    				</div>
     				</div>

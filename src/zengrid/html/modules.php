@@ -131,11 +131,7 @@ function modChrome_zentabs($module, $params, $attribs)
 				echo '</div>';
 			}
 			echo '</div>';
-			echo '<script type="text/javascript">';
-			echo 'jQuery(document).ready(function(){';
-				echo 'jQuery("#tab'.$temp->id.' a:first").tab("show")';
-				echo '});';
-			echo '</script>';
+	
 			$modulecount--;
 	
 		} else {

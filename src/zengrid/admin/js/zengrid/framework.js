@@ -588,6 +588,7 @@ jQuery(document).ready(function ($) {
 	
 	$('select#cssfile').change(function () {
 		var theme  = $(this).val();
+			theme = theme.replace('presets/theme.[example]-', '');
 		$('input#theme').val(theme);
 		
 	});

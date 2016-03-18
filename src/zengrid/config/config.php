@@ -1,11 +1,11 @@
 <?php
 /**
- * @package		##package##
- * @subpackage	##subpackage##
- * @author		##author##
- * @copyright 	##copyright##
- * @license		##license##
- * @version		##version##
+ * @package		Zen Grid Framework v4, 1.4.1
+ * @subpackage	Updated: March 10 2016
+ * @author		Joomlabamboo http://www.joomlabamboo.com
+ * @copyright 	Copyright (C) Joomlabamboo, March 10 2016
+ * @license		http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later;
+ * @version		1.4.1
  */
 
 // no direct access
@@ -184,6 +184,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				// Load functions load from previously saved state
 				// Save functions save state - uses get functions to get the data to save
 				
+				
 				var template = $('#template-toolbar').attr('data-theme');
 				var page_type = get_page_type();
 				
@@ -204,7 +205,6 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				
 				$(document).set_config(template, time,'<?php echo TEMPLATE_PATH_RELATIVE;?>', page_type,url);
 				
-			
 				$('#load-config').click(function() {
 					var page_type = $('#page-type-selector').val();				
 					$(document).set_config(template, time,'<?php echo TEMPLATE_PATH_RELATIVE;?>', page_type,url);
@@ -217,9 +217,10 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					var page_type = get_page_type();
 					
 					$(this).addClass('zen-clicked');
-					$('#compile_required').val(1);
+					
 					$(document).send_ajax(template, url, data, 'save', page_type, 'config', 'config');
 					
+					<?php if(WP) { ?>
 						var config_exists = $("#delete-configs-selector option[value='"+page_type+"']").length;
 					
 					 	if(config_exists < 1) {
@@ -229,9 +230,10 @@ defined('ZEN_ALLOW') or die('Restricted access');
 								    value: page_type,
 								    text: page_type,
 								    selected: 1
-							}));
+								}));
+							}
 						}
-					}
+					<?php } ?>
 					
 				});
 				
@@ -244,6 +246,9 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					
 					// Add theme name to the data
 					data.theme = name;
+					
+					
+					$('#compile_required').val(1);
 					
 					$(document).send_ajax(template, url, data, 'save', '', 'themes', 'theme.' +name);
 					

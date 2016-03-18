@@ -9,4 +9,4 @@
 // No Direct Access
 defined('ZEN_ALLOW') or die(); ?>
 
-<div class="bevel"></div>
+<h3><?php echo $label;?></h3>

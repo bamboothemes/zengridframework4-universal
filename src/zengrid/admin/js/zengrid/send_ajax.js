@@ -108,7 +108,7 @@
 				    			// Fade out the comoile message
 				    			$('#zgfmessage .compile').hide();
 				    			
-				    			// Reste the compiel required value
+				    			// Reset the compile required value
 				    			$('#compile_required').val('0');
 				    			
 				    			// Finished compiler

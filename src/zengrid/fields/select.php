@@ -9,18 +9,20 @@
 // No Direct Access
 defined('ZEN_ALLOW') or die(); ?>
 
-
+<?php if($class !=="") {?>
+<div class="<?php echo $class;?>">
+<?php } ?>
 <?php if(!$hide_label) { ?>
-<p class="uk-article-lead <?php echo $class;?>">
-	<?php echo $label;?>
+<p>
+	<strong><?php echo $label;?></strong>
 </p>
 <?php } ?>
-
+<?php if($description !=="") {?>
 <p class="checkbox-info <?php echo $class;?>">
 	<?php echo $description;?>
 </p>
-
-<select id="<?php echo $name;?>" data-compile="<?php echo $compile;?>" class="zen-select <?php echo $class;?>" value="<?php echo $value;?>">
+<?php } ?>
+<select id="<?php echo $name;?>" data-compile="<?php echo $compile;?>" class="zen-select" value="<?php echo $value;?>">
           
 	<?php foreach ($options as $key => $option) {
 		
@@ -35,3 +37,6 @@ defined('ZEN_ALLOW') or die(); ?>
 	
 </select>
 <p></p><p></p>
+<?php if($class !=="") {?>
+</div>
+<?php } ?>

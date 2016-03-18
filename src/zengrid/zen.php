@@ -1,11 +1,11 @@
 <?php
 /**
- * @package     ##package##
- * @subpackage  ##subpackage##
- * @author      ##author##
- * @copyright   ##copyright##
- * @license     ##license##
- * @version     ##version##
+ * @package     Zen Grid Framework v4, 1.4.1
+ * @subpackage  Updated: March 10 2016
+ * @author      Joomlabamboo http://www.joomlabamboo.com
+ * @copyright   Copyright (C) Joomlabamboo, March 10 2016
+ * @license     http://www.gnu.org/licenses/gpl.html GNU General Public License version 2 or later;
+ * @version     1.4.1
  */
 
 // Check to ensure this file is within the rest of the framework
@@ -380,11 +380,23 @@ if(!class_exists('Zen4')) {
 									return true;
 								}
 								
-								if($module == "offcanvas-trigger") {
+								elseif($module == "offcanvas-trigger") {
 									return true;
 								}
 								
-								if(JOOMLA) {
+								elseif($module == "off-canvas-trigger-mobile") {
+									return true;
+								}
+								
+								elseif($module == "mobile-menu") {
+									return true;
+								}
+								
+								elseif($module == "social") {
+									return true;
+								}
+								
+								elseif(JOOMLA) {
 									if ($this->joomla->countModules($module)) {
 										return true;
 									}

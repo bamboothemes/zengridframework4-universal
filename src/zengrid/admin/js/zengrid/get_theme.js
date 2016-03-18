@@ -30,9 +30,6 @@
 			if(value !=="") {
 				colors[id] = value;
 			} 
-			
-	
-		      		
 		});
 		
 		
@@ -47,8 +44,18 @@
 	
 			// Create delimited list of variables
 			if(value !=="") {
-				settings[id] = value;
-			} 
+				if($(this).hasClass('image-name')) {
+					if(value !== null) {
+						if(value !== "inherit") {
+							settings[id] = '"../../..' + value + '"';
+						} else {
+							settings[id] = "";
+						}
+					}
+				} else {
+					settings[id] = value;
+				}
+			}	 
 			    		
 		});
 		
