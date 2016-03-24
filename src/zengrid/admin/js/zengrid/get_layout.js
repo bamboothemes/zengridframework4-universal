@@ -42,7 +42,7 @@
  		    $('[data-id="' + modulerow +  '_settings"] .stack-position a.active').each(function() {
  		    	var row_class = $(this).attr('data-id');
  		    	
- 		    	console.log(row_class);
+ 		    	//console.log(row_class);
  		    	classes += row_class+ ' ';
  		    });
  		    
@@ -89,6 +89,13 @@
 				 	classes += ' ' + $('select#'+modulerow + '-container_margin').val();
 				}
 			}
+			
+			
+			// Fullwidth
+			var row_fullwidth = $('#' + modulerow +  '-container-fullwidth').val();
+	 		if(row_fullwidth) {
+	 			classes += ' zg-fullwidth';
+	 		}
 	 		
 	 		layout[modulerow]['classes']['classes'] = classes;
 	 		

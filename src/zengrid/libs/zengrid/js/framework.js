@@ -4,6 +4,19 @@ jQuery(document).ready(function($) {
 	$('#menu .menu-item-has-children').addClass('deeper parent');
 	
 	
+	// Make all justified menus the full width of the container
+	$('.zen-menu.zen-menu-horizontal .first-level > li.justify').hover(function() {
+		var container_width = $(this).parent().parent().parent().parent().parent().parent().width();
+		
+		// Right aligned menu
+		var offset = $(this).parent().parent().parent().parent().position();
+		var parent_offset = $(this).parent().parent().parent().parent().parent().parent().position();
+		var offset = offset.left - parent_offset.left;
+		
+		console.log(offset);
+		$(this).find('ul:first').css({"width":container_width,"margin-left": -offset});	
+	});	
+	
 	// Dropdown Menu
 	$("#menu.zen-menu-fading ul li.parent").hover(function(){
 		 $(this).children("ul").fadeIn("fast");

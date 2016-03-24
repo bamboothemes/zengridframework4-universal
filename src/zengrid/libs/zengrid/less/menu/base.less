@@ -27,7 +27,7 @@
 	margin: 0;
 	
 	
-	li {
+	> li {
 		list-style-type: none;
 		margin:0;
 	
@@ -50,9 +50,9 @@
 		&.current-menu-item {
 		
 			 > a,
-			 .zen-menu-heading {
+			 > .zen-menu-heading {
 				
-				color: @navbar-default-link-active-color;
+				color: @navbar-default-link-active-color !important;
 				
 				&:hover {
 					
@@ -71,11 +71,12 @@
 					height: 0;
 					float:left;
 					content:"";
-					margin-top:@navbar-height / 2;
+					margin-top:@navbar-height / 2.2;
 					margin-right:8px;
 					border-style: solid;
-					border-width: 4px 4px 0 4px;
-					border-color: @navbar-default-link-color transparent transparent transparent;
+					border-width: 2px;
+					border-color: @navbar-default-link-color;
+					border-radius:100px;
 				}
 			}
 			
@@ -83,7 +84,7 @@
 				> a,
 				> .zen-menu-heading {
 					&:before {
-						border-color: @navbar-default-link-active-color transparent transparent transparent;
+						border-color: @navbar-default-link-active-color;
 					}	
 				}
 			}

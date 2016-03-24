@@ -34,28 +34,28 @@
 		
 		
 		// Get all params that need to be sent through the compiler
-		$('input[data-compile="1"],input[data-compile="both"],select[data-compile="both"],select[data-compile="1"]').not('.zt-picker').not('.exclude').each(function() {
+		$('[data-compile="theme"],[data-compile="both"],[data-compile="layout"]').not('.zt-picker').not('.exclude').each(function() {
 			
-			// Get the value
-			var value = $(this).val();
-			
-			// Get the id
-			var id = $(this).attr('id'); 
-	
-			// Create delimited list of variables
-			if(value !=="") {
-				if($(this).hasClass('image-name')) {
-					if(value !== null) {
-						if(value !== "inherit") {
-							settings[id] = '"../../..' + value + '"';
-						} else {
-							settings[id] = "";
+				// Get the value
+				var value = $(this).val();
+				
+				// Get the id
+				var id = $(this).attr('id'); 
+		console.log(id + ' - ' + value);
+				// Create delimited list of variables
+				if(value !=="") {
+					if($(this).hasClass('image-name')) {
+						if(value !== null) {
+							if(value !== "inherit") {
+								settings[id] = '"../../..' + value + '"';
+							} else {
+								settings[id] = "";
+							}
 						}
+					} else {
+						settings[id] = value;
 					}
-				} else {
-					settings[id] = value;
-				}
-			}	 
+				}	 
 			    		
 		});
 		
@@ -108,7 +108,7 @@
 		theme.colors = colors;
 		theme.files = files;
 
-		console.log(theme);
+		//console.log(theme);
 		return theme;
 	} 	
 })(jQuery);

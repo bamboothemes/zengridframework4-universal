@@ -23,17 +23,7 @@ if (!defined('TEMPLATE')) {
 	define( 'TEMPLATE', basename(dirname(dirname(dirname(__FILE__)))));
 }
 
-if(isset($settings->compile_required)) {
-	if($settings->compile_required) {?>
-		<p class="uk-alert uk-alert-warning">
-			<strong>Compile less to css required - Theme panel</strong><br />
-			Before you saved your theme settings you made some changes that will not display on the front end of your site unless you compile less to css. Click the compile less button in the toolbar to save your changes to the theme's css files.
-		</p>
-<?php } 
-} ?>
-
-
-<?php if(isset($settings->devmode)) {
+if(isset($settings->devmode)) {
 		 	if($settings->devmode) {?>
 		<p class="uk-alert uk-alert-warning">
 			<strong>Dev mode enabled - Settings panel</strong><br />
@@ -42,10 +32,8 @@ if(isset($settings->compile_required)) {
 <?php } 
 
 }
-?>
 
-
-<?php if(isset($settings->font_awesome_type)) {
+ if(isset($settings->font_awesome_type)) {
 	if($settings->font_awesome_type =="min") {?>
 		<p class="uk-alert uk-alert-warning">
 			<strong>Font Awesome library setting set to minimum - Theme panel</strong><br />
@@ -159,25 +147,4 @@ if(isset($settings->compile_required)) {
 		<strong>One Page mode is enabled - Menu panel</strong><br />
 		When the one page option is enabled the main menu is transformed into a static menu that refers the user to links on the current page. None of the standard Joomla menu settings will apply here and the names of the menu items can be added under the menus > one page template settings.
 	</p>
-<?php } }?>
-
-
-
-<p></p><p></p>
-<div class="bevel"></div>
-<div class="clearfix"></div>
-<br />
-<br />
-<h3>Settings with empty values</h3>
-<p>The following settings have empty values which may or may not impact the running of your template.<br /> Check the items below to see if you need to set values for these settings.</p>
-<p class="uk-alert uk-alert-warning">
-<?php foreach ($settings as $key => $setting) {
-	if($setting =="") {
-		echo '<strong>'.$key.'</strong>';
-		echo $setting;
-		echo '<br />';
-	}
-}
-?>
-</p>
-	
+<?php } }?>	

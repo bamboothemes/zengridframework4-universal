@@ -33,9 +33,9 @@ if(file_exists(TEMPLATE_PATH . 'custom/positions.json')) {
 	if(isset($settings->params->layout_file)) {
 		$positions = explode('.', $settings->params->layout_file);
 		$positions = $positions[0];
-		$default_layout = $zgf->get_json('settings/layouts/positions/'.$positions.'.json');
+		$default_layout = $zgf->get_json('settings/positions.json');
 	} else {
-		$default_layout = $zgf->get_json('settings/layouts/positions/default.json');
+		$default_layout = $zgf->get_json('settings/positions.json');
 	}
 }
 
@@ -46,97 +46,94 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 
 
 <div class="layout-container">
-		<div class="browser-toolbar">		
-			<div class="buttons clearfix">
-				<span class="left white"></span>
-				<span class="left white"></span>
-				<span class="left white"></span>
-				<span class="title">
-					
-				</span>
-			</div>
+	<div class="browser-toolbar">		
+		<div class="buttons clearfix">
+			<span class="left white"></span>
+			<span class="left white"></span>
+			<span class="left white"></span>
+			<span class="title"></span>
 		</div>
-		
-		<div id="general-settings" data-id="general-settings" class="side-drawer" style="display: block;">
-				<div class="settings-title">General Settings</div>
-				<div class="settings-options">
-					<ul>
-						<?php foreach ($config->children() as $section =>$fields) { 
-							 
-								 	$name = $fields['name'];
-								 	if($name !="row_styles") {
-								 	?><li <?php if($name=="style") {?>class="active"<?php } ?> data-id="<?php echo $name;?>"><a href="#<?php echo $name;?>"><?php echo ucfirst($name);?></a></li><?php } 
-						 	} ?>
-					</ul>
-				</div>
-				<div class="settings-params">
-					<?php foreach ($config->children() as $section =>$fields) { 
-					
-					 $name = $fields['name'];
-					
-					 if($name !="row_styles") {
-					 ?>
-						
-					<div data-target="<?php echo $name; ?>" class="tab-panel <?php if($name=="style") {?>active<?php } ?>">
-					<?php foreach ($fields as $key => $group) { ?>
-								
-								<div class="zen-toggle <?php echo $group['class'];?>">
-									<h3><?php echo $group['label'];?></h3>
-								</div>
-								
-								<div class="zen-toggle-content">
-										<?php foreach ($group as $field) { 
-								
-											$type = (string)$field['type'];
-											$description = $field['description'];
-											$label = $field['label'];
-											$name = $field['name'];
-											$class = $field['class'];
-											$tag = $field['tag'];
-											$compile = $field['compile'];
-											$target = $field['target'];
-											$folder = $field['folder'];
-											$show_empty = $field['show_empty'];
-											
-											
-											if(isset($field['hide_label'])) {
-												$hide_label = $field['hide_label'];
-											} else {
-												$hide_label = 0;
-											}
-											
-											
-											if(isset($settings->params->{$name})) {
-												if($settings->params->{$name} !=="") {
-													$value = $settings->params->{$name};
-												}
-												else {
-													$value = $field['default'];
-												}
-											} else {
-												$value = $field['default'];
-											}
-											
-											$options = array();
-									
-											foreach ($field->children() as $child) {
-												$options[] = $child;
-											}
-										
-											// Determine the field typr and render the appropriate field
-											echo $zgf->render($type,$description,$label,$options, $name,$class, $value, $tag, $compile,$target, $folder,$show_empty, $hide_label);
-										}	?>
-									</div>	
-																
-									<?php	}
-										 ?>
-								</div>
-						<?php 	} 
-						
-						} ?>
+	</div>
+	<div id="general-settings" data-id="general-settings" class="side-drawer" style="display: block;">
+		<div class="settings-title">General Settings</div>
+		<div class="settings-options">
+			<ul>
+				<?php foreach ($config->children() as $section =>$fields) { 
+					 
+						 	$name = $fields['name'];
+						 	if($name !="row_styles") {
+						 	?><li <?php if($name=="style") {?>class="active"<?php } ?> data-id="<?php echo $name;?>"><a href="#<?php echo $name;?>"><?php echo ucfirst($name);?></a></li><?php } 
+				 	} ?>
+			</ul>
+		</div>
+		<div class="settings-params">
+			<?php foreach ($config->children() as $section =>$fields) { 
+			
+			 $name = $fields['name'];
+			
+			 if($name !="row_styles") {
+			 ?>
 				
-					</div>
-				</div> 
+			<div data-target="<?php echo $name; ?>" class="tab-panel <?php if($name=="style") {?>active<?php } ?>">
+			<?php foreach ($fields as $key => $group) { ?>
+						
+						<div class="zen-toggle <?php echo $group['class'];?>">
+							<h3><?php echo $group['label'];?></h3>
+						</div>
+						
+						<div class="zen-toggle-content">
+								<?php foreach ($group as $field) { 
+						
+									$type = (string)$field['type'];
+									$description = $field['description'];
+									$label = $field['label'];
+									$name = $field['name'];
+									$class = $field['class'];
+									$tag = $field['tag'];
+									$compile = $field['compile'];
+									$target = $field['target'];
+									$folder = $field['folder'];
+									$show_empty = $field['show_empty'];
+									
+									
+									if(isset($field['hide_label'])) {
+										$hide_label = $field['hide_label'];
+									} else {
+										$hide_label = 0;
+									}
+									
+									
+									if(isset($settings->params->{$name})) {
+										if($settings->params->{$name} !=="") {
+											$value = $settings->params->{$name};
+										}
+										else {
+											$value = $field['default'];
+										}
+									} else {
+										$value = $field['default'];
+									}
+									
+									$options = array();
+							
+									foreach ($field->children() as $child) {
+										$options[] = $child;
+									}
+								
+									// Determine the field typr and render the appropriate field
+									echo $zgf->render($type,$description,$label,$options, $name,$class, $value, $tag, $compile,$target, $folder,$show_empty, $hide_label);
+								}	?>
+							</div>	
+														
+							<?php	}
+								 ?>
+						</div>
+				<?php 	} 
+				
+				} ?>
+		
+			</div>
+		</div> 
 	
 		
 		<?php foreach ($default_layout as $key => $row) { ?>
@@ -316,57 +313,37 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 		</script>
 		
 		<?php } ?>
-	
-	
-	<?php // Compare keys with default layout with used layouts
-	
-	// Users can override the positions available by adding 
-	// customs/positions.json. Let's check to see if they have done that
-	
-	if(file_exists(TEMPLATE_PATH . 'custom/positions.json')) {
-		$default_layout = $zgf->get_json('custom/positions.json');
-	} else {
-		if(isset($settings->params->layout_file)) {
-			$positions = explode('.', $settings->params->layout_file);
-			$positions = $positions[0];
-			$default_layout = $zgf->get_json('settings/layouts/positions/'.$positions.'.json');
-		} else {
-			$default_layout = $zgf->get_json('settings/layouts/positions/default.json');
-		}
-	}
-	
-	
-	echo '<div id="resize-container" class="advanced"></div>';
-	
-	?>
+		
+		 
+		 <div id="resize-container" class="advanced"></div>
 
- <script>
- 	jQuery(document).ready(function($) {
- 		
- 		 
- 		 $('.zen-toggle.first').next('.zen-toggle-content').slideDown();
- 		 
- 		$('.zen-toggle').click(function() {
- 			$(this).next('.zen-toggle-content').slideToggle();
- 		});
- 		
- 		$('.settings-close').click(function() {
- 			$(this).parent().fadeOut();
- 			$('[data-id="general-settings"].side-drawer').fadeIn();
- 		});
- 		
-
- 		
- 		$('[data-id="general-settings"] .settings-options li').click(function() {
- 			$('[data-id="general-settings"] .settings-options li').removeClass('active');
- 			$(this).addClass('active');
- 			var target = $(this).attr('data-id');
- 			$('[data-id="general-settings"] .tab-panel').removeClass('active');
- 			$('[data-id="general-settings"] [data-target="' + target + '"]').addClass('active');
- 			return false;
- 		});
- 		
-});
- 
- </script>
+		 <script>
+		 	jQuery(document).ready(function($) {
+		 		
+		 		 
+		 		 $('.zen-toggle.first').next('.zen-toggle-content').slideDown();
+		 		 
+		 		$('.zen-toggle').click(function() {
+		 			$(this).next('.zen-toggle-content').slideToggle();
+		 		});
+		 		
+		 		$('.settings-close').click(function() {
+		 			$(this).parent().fadeOut();
+		 			$('[data-id="general-settings"].side-drawer').fadeIn();
+		 		});
+		 		
+		
+		 		
+		 		$('[data-id="general-settings"] .settings-options li').click(function() {
+		 			$('[data-id="general-settings"] .settings-options li').removeClass('active');
+		 			$(this).addClass('active');
+		 			var target = $(this).attr('data-id');
+		 			$('[data-id="general-settings"] .tab-panel').removeClass('active');
+		 			$('[data-id="general-settings"] [data-target="' + target + '"]').addClass('active');
+		 			return false;
+		 		});
+		 		
+		});
+		 
+		 </script>
  

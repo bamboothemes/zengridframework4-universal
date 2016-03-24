@@ -57,7 +57,7 @@ defined('ZEN_ALLOW') or die();
 			foreach ($framework_list as $key => $file) {
 					$name = str_replace('.less', '', $file);
 					echo '<label class="zen-checkbox '.$class.'">';
-					echo '<input class="'.$class.' framework_files" data-id="'.$name.'" type="checkbox" value="'.$value.'"';
+					echo '<input data-stored="'.$value.'" class="'.$class.' framework_files" data-id="'.$name.'" type="checkbox" value="'.$value.'"';
 					if($value == '1') { echo 'checked';}
 					echo '/>';
 					echo $name;

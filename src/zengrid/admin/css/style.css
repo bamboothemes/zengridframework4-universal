@@ -7620,8 +7620,7 @@ html {
   float: left;
   margin: 0 20px 20px 0;
 }
-.layout-container,
-#style-guide {
+.layout-container {
   width: 687px;
   margin: 0;
   font-size: 13px;
@@ -7629,6 +7628,7 @@ html {
   border-width: 0 1px 1px;
   border: 1px solid #e1e1e1;
   float: left;
+  margin-left: -50px;
   position: relative;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
 }
@@ -7789,6 +7789,12 @@ html {
   position: absolute;
   top: 10px;
   right: 10px;
+}
+#top-left-row,
+#top-right-row {
+  clear: none !important;
+  width: 50%;
+  float: left;
 }
 #framework-options .side-drawer .half {
   margin-right: 10px;

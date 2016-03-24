@@ -10,7 +10,7 @@
 defined('ZEN_ALLOW') or die(); ?>
 
 <label class="zen-checkbox <?php echo$class;?>">
-	<input class="<?php echo$class;?>" data-compile="<?php echo $compile;?>" id="<?php echo$name;?>" type="checkbox" value="<?php echo$value;?>"
+	<input data-stored="<?php echo $value;?>" class="<?php echo$class;?>" data-compile="<?php echo $compile;?>" id="<?php echo$name;?>" type="checkbox" value="<?php echo$value;?>"
 	<?php if($value == '1') { echo 'checked';}?>>
 		<strong><?php echo $label; ?></strong>
 </label>

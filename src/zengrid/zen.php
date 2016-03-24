@@ -372,15 +372,18 @@ if(!class_exists('Zen4')) {
 					if(isset($this->layout->{$row}->{'positions'})) {
 						
 						$row = $this->layout->{$row}->{'positions'};
-					
-						
+				
 							foreach ($row as $module => $width) {
 								
 								if($module == "panel-trigger") {
 									return true;
 								}
+					
+								if($module == "maincontent") {
+									return true;
+								}
 								
-								elseif($module == "offcanvas-trigger") {
+								elseif($module == "off-canvas-trigger") {
 									return true;
 								}
 								
@@ -388,7 +391,16 @@ if(!class_exists('Zen4')) {
 									return true;
 								}
 								
-								elseif($module == "mobile-menu") {
+								elseif($module == "select-menu") {
+									return true;
+								}
+								
+								elseif($module == "toggle-menu") {
+									return true;
+								}
+								
+								elseif($module == "one-page-menu") {
+								
 									return true;
 								}
 								
@@ -405,7 +417,7 @@ if(!class_exists('Zen4')) {
 									if ( is_active_sidebar($module) ) {
 										return true;
 									}
-								
+							
 							} 
 						} 
 					}
@@ -758,14 +770,11 @@ if(!class_exists('Zen4')) {
 					$pageclass[] = 'responsive-disabled';
 				}
 				
-				if($this->params->onepage) {
-					$pageclass[] = 'one-page';
-				}
-				
+			
 				// Get the layout type being used eg lrm, mlr etc
 				$main = self::getMainLayout($this->layout->main->positions);
-				$pageclass[] = 'layout-' . $main[0];
-				$pageclass[] = 'rendered-' . $main[1];
+				$pageclass[] = 'layout-' . $main['layout'];
+				$pageclass[] = 'rendered-' . $main['rendered'];
 				
 				// Add collapse menu type
 				$pageclass[] = $this->params->navcollapse_type.'-menu';
@@ -1283,6 +1292,7 @@ if(!class_exists('Zen4')) {
 			$main_offset="";
 			$layout_type="";
 			$rendered_layout="";
+			$source_order = 0;
 			
 			foreach ($main_layout as $module => $layout) {
 					
@@ -1292,23 +1302,26 @@ if(!class_exists('Zen4')) {
 						
 					} elseif ($module == "sidebar1") {
 						$layout_type.="l";
+						
 						$sidebar1= $this->countModules('sidebar1')?1:0;
 						
 						if($sidebar1) {
 							$rendered_layout .='l';
+							$source_order = 1;
 						}
 						
-					} else {
+					} elseif ($module == "sidebar2"){
 						$layout_type.="r";
 						$sidebar2= $this->countModules('sidebar2')?1:0;
 						
 						if($sidebar2) {
 							$rendered_layout .='r';
+							$source_order = 1;
 						}
 					}
 			}	
 			
-			return array($layout_type, $rendered_layout, $sidebar1, $sidebar2);
+			return array('layout' => $layout_type, 'rendered' => $rendered_layout, 'sidebar1' => $sidebar1, 'sidebar2' => $sidebar2,'source_order' => $source_order);
 		}
 		
 		

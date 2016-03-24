@@ -201,7 +201,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				<?php } ?>
 				
 				// Set Theme Data
-				$(document).set_theme_data(template, time, '<?php echo TEMPLATE_PATH_RELATIVE;?>');
+				//$(document).set_theme_data(template, time, '<?php echo TEMPLATE_PATH_RELATIVE;?>');
 				
 				$(document).set_config(template, time,'<?php echo TEMPLATE_PATH_RELATIVE;?>', page_type,url);
 				
@@ -246,7 +246,6 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					
 					// Add theme name to the data
 					data.theme = name;
-					
 					
 					$('#compile_required').val(1);
 					
@@ -308,13 +307,10 @@ defined('ZEN_ALLOW') or die('Restricted access');
 					$(document).set_theme_data(template, time,'<?php echo TEMPLATE_PATH_RELATIVE;?>');
 				});
 				
-				
-				
 				// Destory Chosen for the framework
 				if(jQuery().chosen) {
 					$('#zgf select').chosen('destroy');			
 				}
-				
 				
 				function get_page_type(){
 					<?php if(WP) { ?>

@@ -22,7 +22,7 @@ defined('ZEN_ALLOW') or die(); ?>
 	<?php echo $description;?>
 </p>
 <?php } ?>
-<select id="<?php echo $name;?>" data-compile="<?php echo $compile;?>" class="zen-select" value="<?php echo $value;?>">
+<select id="<?php echo $name;?>" data-compile="<?php echo $compile;?>" data-stored="<?php echo $value;?>" class="zen-select" value="<?php echo $value;?>">
           
 	<?php foreach ($options as $key => $option) {
 		

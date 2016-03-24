@@ -134,7 +134,7 @@
 			display:block;
 			
 			ul {
-				display:none
+				display:none !important
 			}
 		}
 		
@@ -147,10 +147,16 @@
 	&.stacked-menu {
 		#menu {
 			ul {
-				li {
-					width:100%
+				li,a {
+					width:100%;
+					display: block;
+					float: left !important;
+					text-align: left;
 				}
-
+				
+				li {
+					border-bottom: 1px solid rgba(0,0,0,0.1)
+				}
 			}
 		}
 	}

@@ -25,7 +25,7 @@ $current_layout = $settings->params->layout_preset;
 
 ?>
 <h2>Stored Layout</h2>
-<select id="layout_preset" style="float: left;margin-bottom: 30px;;">
+<select id="layout_preset" data-compile="config" style="float: left;margin-bottom: 30px;">
 	<?php 
 		// Populate select list of available layotus	
 		foreach ($files as $key => $layout)

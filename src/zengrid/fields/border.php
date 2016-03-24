@@ -31,12 +31,12 @@ $options = array('solid', 'dashed','dotted','none');
 		<div data-key="3" data-id="west" class="bw west"></div>
 	</div>
 	
-	<input type="text" data-stored="<?php echo $value;?>" data-compile="1" id="<?php echo $name;?>-widths" data-default="0px" value="<?php echo str_replace('#', '', $value);?>" class="hidden border-widths-value" ></input>
+	<input type="text" data-stored="<?php echo $value;?>" data-compile="theme" id="<?php echo $name;?>-widths" data-default="0px" value="<?php echo str_replace('#', '', $value);?>" class="hidden border-widths-value" ></input>
 	
 	
-	<input type="text" data-stored="<?php echo $value;?>" data-compile="1" id="<?php echo $name;?>-width" data-default="0px" value="<?php echo str_replace('#', '', $value);?>"></input>
+	<input type="text" data-stored="<?php echo $value;?>" data-compile="theme" id="<?php echo $name;?>-width" data-default="0px" value="<?php echo str_replace('#', '', $value);?>"></input>
 	
-	<select data-compile="1" id="<?php echo $name;?>-style" class="zen-select <?php echo $class;?>" value="<?php echo $value;?>">
+	<select data-compile="theme" id="<?php echo $name;?>-style" class="zen-select <?php echo $class;?>" value="<?php echo $value;?>">
 	          
 		<?php foreach ($options as $key => $option) {
 			
@@ -52,7 +52,7 @@ $options = array('solid', 'dashed','dotted','none');
 	</select>
 	
 	<div id="<?php echo $name;?>-color-wrap" class="color-wrap compile <?php echo $class;?>">
-		<input type="text" data-stored="<?php echo $value;?>" data-compile="1" class="zt-picker" id="<?php echo $name;?>-color" data-default="<?php echo str_replace('#', '', $value);?>" value="<?php echo str_replace('#', '', $value);?>" style="border-color:<?php echo $value;?>"></input>
+		<input type="text" data-stored="<?php echo $value;?>" data-compile="theme" class="zt-picker" id="<?php echo $name;?>-color" data-default="<?php echo str_replace('#', '', $value);?>" value="<?php echo str_replace('#', '', $value);?>" style="border-color:<?php echo $value;?>"></input>
 	</div>
 	
 	

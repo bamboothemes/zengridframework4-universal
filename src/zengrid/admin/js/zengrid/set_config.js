@@ -42,8 +42,7 @@ For usage and examples: colpick.com/plugin
 			     		 
 			     		//$('#compile_required').val('1');
 			     		$(document).set_theme_data(theme, time,theme_path);
-			     		
-			     		
+			     	
 			     	}
 			     	
 			     	console.log('Setting Layout');

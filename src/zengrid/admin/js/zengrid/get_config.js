@@ -21,7 +21,7 @@
 		// Add any relevant settings to the params
 		// Theme data is not stored here
 		
-		$('#theme-settings input,#theme-settings textarea,#theme-settings select').not('[data-compile="1"]').not('.zt-picker').not('.exclude').not('[data-animate="1"]').each(function(i) {
+		$('[data-compile="both"],[data-compile="config"]').not('.zt-picker').not('.exclude').each(function(i) {
 	    	
 	    	id = $(this).attr('id');
 	   

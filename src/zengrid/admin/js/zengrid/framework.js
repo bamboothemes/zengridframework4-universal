@@ -45,6 +45,7 @@ jQuery(document).ready(function ($) {
 		if($(this).prop('checked') ) {	
 			jQuery('.' + toggle).fadeIn().parent().show();
 		} 
+		
 	});
 	
 	
@@ -72,6 +73,9 @@ jQuery(document).ready(function ($) {
 			$('.' + toggle).fadeOut().parent().hide();
 			
 		}
+		
+		console.log('yeah');
+		$('#compile_required').val(1);
 	});
 	
 	
@@ -255,11 +259,24 @@ jQuery(document).ready(function ($) {
 	*/
 	
 	
-	$(document).on('blur', '[data-compile="1"],[data-compile="both"]', function() {
+	$(document).on('blur', '[data-compile="theme"],[data-compile="both"]', function() {
 	
 		var stored = $(this).attr('data-stored');
 		var current = $(this).val();
 		
+		
+		if(stored !== current ) {
+			$('#compile_required').val(1);
+			var name = $(this).attr('id');
+			console.log(name + ' value changed and triggered compile required');
+		}
+	});
+	
+	
+	$(document).on('change', '#theme-settings select', function() {
+	
+		var stored = $(this).attr('data-stored');
+		var current = $(this).val();
 		
 		if(stored !== current ) {
 			$('#compile_required').val(1);

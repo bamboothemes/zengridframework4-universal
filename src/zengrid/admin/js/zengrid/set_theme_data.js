@@ -63,8 +63,10 @@ For usage and examples: colpick.com/plugin
 	     	 	
 	     	 	// Set data object
 	     	 	data = flattenObject(data);
-	     	 	console.log(data);
+
 	     	 }
+	     	 
+	     
 	     	// Parse through the json object and populate fields
 			$.each( data, function( key, val ) {
 	     	    	
@@ -77,11 +79,11 @@ For usage and examples: colpick.com/plugin
 	     	    	
 	     	    	val = val.replace(/\"..\/..\/../g, '').replace(/"/g, '');
 	     	    	
-	     	    	console.log(val);
-	     	    	
+	     	    		     	    	
 	     	    	// Set the value if its not null
 	     	    	if(val!=="") {
-	     	    		$(target).val(val).attr('data-stored', val);
+	   
+	     	    		$(target).not('[data-compile="layout"]').val(val).attr('data-stored', val);
 	     	    		
 	     	    	}
 	     	    	
@@ -164,8 +166,11 @@ For usage and examples: colpick.com/plugin
 					if($(target).is('select')) {
 						// Check if checked and set to 1
 						if(val == "") {
-							$(target + ' option[data-state="inherit"]').attr('selected', 1);
-						}				
+							$(target + ' option[value="inherit"]').attr('selected', 1);
+						}	else {
+							$(target + ' option[value="'+ val + '"]').attr('selected', 1);
+						}	
+					
 					}
 						     	    	
 	       	    	if(key == "framework_version") {
@@ -179,16 +184,14 @@ For usage and examples: colpick.com/plugin
 	     	    		// Reset Framework files
 	     	    		$('input.framework_files').removeAttr('checked').val(0);
 	     	    		
-	     	    		var files = val.split(' ');
-	     	    		
+	     	    		var files = val.split('_');
+	     	    		console.log(files);
 	     	    		$(files).each(function() {
 	     	    			
 	     	    			$('.active input[data-id="' + this + '"]').prop('checked', 'true').val(1);
 	     	    		
 	     	    		});	    		
 	     	    	}
-	     	    	
-	     	    	
 	     	  });
 	     	  
 	     	  $('.border-rule').each(function() {
@@ -199,10 +202,8 @@ For usage and examples: colpick.com/plugin
 		     	  		
 		     	  		widths = widths.split(' ');
 		     	  		
-		     	  		console.log(widths);
 		     	  		$(widths).each(function(i, width) {
 		     	  			if(width !=="0") {
-		     	  				console.log('widths-values' + i);
 		     	  				$(rule).find('[data-key="' + i + '"]').addClass('active');
 		     	  			}
 		     	  		});
@@ -210,7 +211,7 @@ For usage and examples: colpick.com/plugin
 	     	  });
 	     	  
 	     	  $('#compile_required').val('0');
-	     	  	console.log('compile' + $('#compile_required').val());
+	     	  	
 	     });
 	};			
 })(jQuery);

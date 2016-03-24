@@ -14,7 +14,11 @@ $zgf = new zen();
 // Template Id
 $settings = $zgf->getsettings()->params;?>
 
-<h3 id="<?php echo $name;?>" class="<?php echo $class;?>"><?php echo $label;?></h3>
+<div class="bevel <?php echo $class;?>"></div>
+	
+<div class="section-heading">
+	<a name="<?php echo $name;?>"></a>
+	<h2 id="<?php echo $name;?>" class="uk-article-title <?php echo $class;?>"><?php echo $label;?></h2></div>
 
 	<?php if($description !=="" && isset($description)) { ?>
  		<p class="info"><?php echo $description;?></p>

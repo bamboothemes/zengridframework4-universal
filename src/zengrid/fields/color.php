@@ -21,7 +21,7 @@ if($value == "0") {
 
 <div id="<?php echo $name;?>-color" class="color-wrap compile <?php echo $class;?>">
 	<label><strong><?php echo $label;?></strong></label>
-	<input type="text" data-stored="<?php echo $value;?>" data-compile="1" class="zt-picker setting" id="<?php echo $name;?>" data-default="<?php echo str_replace('#', '', $value);?>" value="<?php echo str_replace('#', '', $value);?>" style="border-color:<?php echo $value;?>"></input>
+	<input type="text" data-stored="<?php echo $value;?>" data-compile="theme" class="zt-picker setting" id="<?php echo $name;?>" data-default="<?php echo str_replace('#', '', $value);?>" value="<?php echo str_replace('#', '', $value);?>" style="border-color:<?php echo $value;?>"></input>
 </div>
 
 <script>
