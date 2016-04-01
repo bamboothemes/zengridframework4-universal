@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Zen Grid Framework v4, 1.4.1
+ * @package     Zen Grid Framework v5, 5.0
  * @subpackage  Updated: March 10 2016
  * @author      Joomlabamboo http://www.joomlabamboo.com
  * @copyright   Copyright (C) Joomlabamboo, March 10 2016

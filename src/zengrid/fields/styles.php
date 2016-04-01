@@ -27,7 +27,7 @@ if(JOOMLA) {
 	
 	
 	// Get list of default styles that shipped with the theme
-	$default_styles = $zgf->get_files('settings/config/sample', '.json');
+	$default_styles = $zgf->get_files('settings/config/config-sample', '.json');
 	$options ="<option value='none'>Select saved settings to apply</option>";
 	
 	foreach ($default_styles as $key => $file) {

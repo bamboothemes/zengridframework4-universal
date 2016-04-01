@@ -124,7 +124,8 @@
 		.visuallyhidden();
 	}
 	
-	#menu ul{
+	#menu ul,
+	#onepage ul{
 		display:none
 	}
 	
@@ -175,9 +176,17 @@
 		.sb-close {
 			display: none !important
 		}
-	}
-	
-	
+		
+		#toolbar {
+			margin-top:45px
+		}
+		
+		&.fixed {
+			#toolbar {
+				margin-top:0
+			}
+		}
+	}	
 }
 
 

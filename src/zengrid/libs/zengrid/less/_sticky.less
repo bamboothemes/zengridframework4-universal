@@ -16,13 +16,23 @@
  	top: 0;
  	left: 0;
  	width: 100%;
- 	background: @sticky-bg;
+ 	background-color: @sticky-bg !important;
+ 	.transition();
  	
+ 	.zen-spotlight {
+ 		background-color: @sticky-container-bg !important;
+ 	}
  	
- 	&.zen-row-wrap .zen-spotlight,
- 	&.zen-row-wrap .zen-container {
+ 	.zen-spotlight,
+ 	.zen-container {
+ 	
  		margin: 0 auto;
- 		padding: 0
+ 		padding-top: 0;
+ 		padding-bottom: 0;
+ 		
+ 		@media screen and (min-width:@tablet-max-width) {
+ 			padding: 0
+ 		}
  	}
  	
  	

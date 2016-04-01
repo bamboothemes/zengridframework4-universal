@@ -96,6 +96,8 @@ textarea {
 }
 
 
+
+
 // Reset Input buttons
 input.button {
 	width: auto;
@@ -113,6 +115,23 @@ input,select {
 	margin-bottom: @gutter-sml;
 	height: @input-min-height;
 }
+
+
+ul li .input-group-addon {
+	line-height: @input-min-height;
+	width: 8%;
+	text-align: center;
+	display: inline-block
+}
+
+ul li input[type="text"],
+ul li input[type="password"] {
+	
+	width: 88%;
+	box-sizing:border-box !important;
+	display: inline;
+}
+
 
 
 

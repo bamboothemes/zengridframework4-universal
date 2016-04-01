@@ -25,7 +25,7 @@ $current_layout = $settings->params->layout_preset;
 
 ?>
 <h2>Stored Layout</h2>
-<select id="layout_preset" data-compile="config" style="float: left;margin-bottom: 30px;">
+<select id="layout_preset" data-compile="config" style="float: left;width: 60%;margin-right: 10px;margin-bottom: 30px;">
 	<?php 
 		// Populate select list of available layotus	
 		foreach ($files as $key => $layout)
@@ -42,3 +42,11 @@ $current_layout = $settings->params->layout_preset;
 			}
 		} ?>
 </select>
+
+<a href="#none" class="uk-button-primary uk-button" id="apply-layout">Load Layout</a>
+<div class="clearfix"></div>
+<h3>Save layout settings</h3>
+<p>
+<input class="uk-form uk-form-large exclude advanced" id="layout-name" value="New Layout">
+<a href="#" class="uk-button-primary uk-button exclude advanced" id="save-layout">Save Layout</a>
+</p>

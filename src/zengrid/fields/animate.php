@@ -9,18 +9,13 @@
 // No Direct Access
 defined('ZEN_ALLOW') or die(); 
 
-$animations = zen::get_files('zengrid/libs/zengrid/less/animate', '.less'); 
-
-
-?>
-
-
+$animations = zen::get_files('zengrid/libs/zengrid/less/animate', '.less'); ?>
 <p class="<?php echo $class;?>">
 	<?php echo $label;?>
 </p>
 
 <select id="<?php echo $name;?>" data-animate="1" data-compile="<?php echo $compile;?>" class="zen-select <?php echo $class;?>" value="<?php echo $value;?>">
-          
+         <option value="none">none</option>
 	<?php foreach ($animations as $key => $option) {
 	
 			$option = str_replace('.less', '', $option);
@@ -33,10 +28,6 @@ $animations = zen::get_files('zengrid/libs/zengrid/less/animate', '.less');
 					echo  '<option value="'.$option.'">'.$option.'</option>';
 				}
 			}
-			
-		
-		} 	
-		
+		} 			
 	?>
-	
 </select>

@@ -1,29 +1,41 @@
 jQuery(document).ready(function($) {
 	
 	// Fixes for the Wordpress menu classes to make them comaptible for existing themes
+	var menuspeed = $('html').attr('data-menu-speed');
+		menuspeed = menuspeed.replace('s', '') * 1000;
+		
 	$('#menu .menu-item-has-children').addClass('deeper parent');
 	
 	
 	// Make all justified menus the full width of the container
-	$('.zen-menu.zen-menu-horizontal .first-level > li.justify').hover(function() {
-		var container_width = $(this).parent().parent().parent().parent().parent().parent().width();
-		
+	$('.zen-menu.zen-menu-horizontal .first-level > li.justify').each(function() {
+		var container_width = $(this).parent().parent().parent().parent().parent().parent().outerWidth();
+
 		// Right aligned menu
 		var offset = $(this).parent().parent().parent().parent().position();
 		var parent_offset = $(this).parent().parent().parent().parent().parent().parent().position();
 		var offset = offset.left - parent_offset.left;
 		
-		console.log(offset);
 		$(this).find('ul:first').css({"width":container_width,"margin-left": -offset});	
 	});	
 	
 	// Dropdown Menu
 	$("#menu.zen-menu-fading ul li.parent").hover(function(){
-		 $(this).children("ul").fadeIn("fast");
+		 $(this).children("ul").fadeIn(menuspeed);
 	},
 	  	function(){
-		     $(this).children("ul").fadeOut("fast");   
+		     $(this).children("ul").fadeOut(menuspeed);   
 	});
+	
+	
+	// Fix for bootstrap hiding dropdowns
+	setTimeout(function() {
+		$("#menu.zen-menu-zoom ul ul,#menu.zen-menu-below ul ul,#menu.zen-menu-no-animation ul ul").css({'display': ""});
+	}, 1000)
+	
+	
+	// Tell which div has the menu
+	$('#menu').parent().parent().parent().parent().parent().addClass('menu-wrapper');
 	
 	// Check if dropdown is offscreen
 		// Check if dropdown is offscreen
@@ -33,6 +45,7 @@ jQuery(document).ready(function($) {
 	    
 	    if(!$('html').hasClass('touch')) {
 	   	 	$('body').offscreen_check(item);
+	   	 	console.log('off');
 	   	}
 	});
 	
@@ -199,6 +212,7 @@ jQuery(document).ready(function($) {
 		var isEntirelyVisible = (l+ w <= docW);
 			        
 		if ( ! isEntirelyVisible ) {
+			console.log('This is offscreen');
 		    $('.zen-menu-horizontal li:nth-child(' + item + ')').addClass('zen-menu-offscreen');
 		} else {
 		    $(this).parent().removeClass('zen-menu-offscreen');
@@ -210,10 +224,18 @@ jQuery(document).ready(function($) {
 		
 		var offcanvastarget = '#off-canvas-menu';	
 		var window_width = $(window).width();		
+		var target;
+		
+		if($('#menu').length > 0) {
+			target = "#menu ul";
+		}
+		else {
+			target = "#onepage ul";
+		}
 		
 		if(window_width < collapse) {
 			if(!$(offcanvastarget + ' ul').hasClass('simple-list')) {
-				var nav = $('#menu ul').html();
+				var nav = $(target).html();
 				$(offcanvastarget + ' ul').append(nav).addClass('simple-list').parent().addClass('accordion');
 			}
 		}	

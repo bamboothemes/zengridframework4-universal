@@ -24,8 +24,16 @@
 	padding: @base-padding 0;
 }
 
+.row-padding-hor {
+	padding: 0 @base-padding ;
+}
+
 .row-padding-vert-sml {
 	padding: @base-padding / 2 0
+}
+
+.row-padding-hor-sml {
+	padding: 0 @base-padding / 2;
 }
 
 .row-padding-vert-sml-norm-hor {
@@ -85,13 +93,30 @@
 
 .container-padding {
 	.zen-spotlight {
+		
 		padding: @base-padding @gutter-pc;
+		
+		@media screen and (max-width: @tablet-max-width) {
+			padding: @base-padding @tablet-gutter;
+		}
+		
+		@media screen and (max-width: @phone-max-width) {
+			padding: @base-padding @phone-gutter;
+		}
 	}
 }
 
 .container-padding-sml {
 	.zen-spotlight {
-		padding: @base-padding / 2 @gutter-pc / 2
+		padding: @base-padding / 2 @gutter-pc / 2;
+		
+		@media screen and (max-width: @tablet-max-width) {
+			padding: @base-padding @tablet-gutter / 2;
+		}
+		
+		@media screen and (max-width: @phone-max-width) {
+			padding: @base-padding @phone-gutter / 2;
+		}
 	}
 }
 
@@ -104,18 +129,35 @@
 .container-padding-hor {
 	.zen-spotlight {
 		padding: 0 @gutter-pc;
+		
+		@media screen and (max-width: @tablet-max-width) {
+			padding: 0 @tablet-gutter;
+		}
+		
+		@media screen and (max-width: @phone-max-width) {
+			padding: 0 @phone-gutter;
+		}
 	}
 }
 
 .container-padding-vert-sml {
 	.zen-spotlight {
-		padding: @base-padding / 2 0
+		padding: @base-padding / 2 0;
 	}
 }
  
 .container-padding-vert-sml-normal-hor {
 	.zen-spotlight {
-		padding: @base-padding / 2 @gutter-pc
+		
+		padding: @base-padding / 2 @gutter-pc;
+		
+		@media screen and (max-width: @tablet-max-width) {
+			padding: @base-padding / 2 @tablet-gutter;
+		}
+		
+		@media screen and (max-width: @phone-max-width) {
+			padding: @base-padding / 2 @phone-gutter;
+		}
 	}
 }
 

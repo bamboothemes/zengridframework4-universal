@@ -11,7 +11,7 @@
  
  
  .off-canvas-body {
- 	padding: @gutter;
+ 	padding: @gutter * 2 @gutter;
 	background: @off-canvas-bg;
 	color: @off-canvas-text;
 	clear: both;
@@ -22,7 +22,7 @@
 	}
 	
 	ul {
-	
+		max-width: 100%;
 		.simplelist();
 		
 		ul {
@@ -43,11 +43,6 @@
 				margin-left: 16px
 			}
 		}	
-	}
-	.zen-nav {
-		ul {
-			font-size: 90%
-		}
 	}
 	
 	h1,h2,h3,h4,h5,h6 {
@@ -81,8 +76,8 @@
 // Offcanvas close
 .sb-close span{
 	cursor: pointer;
-	top: 20px;
-	right: 20px;
+	top: 10px;
+	right: 10px;
 	position: absolute;
 	z-index:1;
 	color: @off-canvas-text;

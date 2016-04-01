@@ -11,16 +11,16 @@
      
        
       // Add the icons where necesary
-      $('.zen-accordion li.parent span').not('.zen-icon,.zen-menu-caption').prepend('<span class="zen-icon zen-icon-' + settings.closeicon + '"></span>');
+      $('.zen-accordion li.parent span.zen-menu-heading,.zen-accordion li.parent a').prepend('<span class="zen-accordion-trigger zen-icon zen-icon-' + settings.closeicon + '"></span>');
       
       // Open First
       if(settings.openfirst) {
        		$('.zen-accordion').find('ul:first').slideDown().parent().addClass('open').find('.zen-icon').removeClass('zen-icon-'+ settings.closeicon).addClass('zen-icon-'+ settings.openicon);
       }
        
-      $(document).on('click', '.zen-accordion > li.parent > span', function() {
+      $(document).on('click', '.zen-accordion > li.parent > span.zen-menu-heading,.zen-accordion > li.parent > a', function(e) {
            
-           
+           console.log(e.target);
            // Markup can define the type of accordion used but if none is specified 
            // we default to the Template setting
            if($(this).parent().parent().hasClass('zen-accordion-panel')) {
@@ -38,7 +38,7 @@
            		// User clicked on open parent
            		$(this).parent().removeClass('open').find('ul').slideUp();
            		
-           		$(this).parent().find('.zen-icon').removeClass('zen-icon-'+ settings.openicon).addClass('zen-icon-'+ settings.closeicon);
+           		$(this).parent().find('.zen-accordion-trigger').removeClass('zen-icon-'+ settings.openicon).addClass('zen-icon-'+ settings.closeicon);
            		
            } else {
             	
@@ -49,15 +49,23 @@
             		
             		// Remove Active class
             		$(menu).find('li.parent').removeClass('open');
-            		$(menu).find('.zen-icon').removeClass('zen-icon-'+ settings.openicon).addClass('zen-icon-'+ settings.closeicon);
+            		$(menu).find('.zen-accordion-trigger').removeClass('zen-icon-'+ settings.openicon).addClass('zen-icon-'+ settings.closeicon);
             	}
-            	
             	
             	// Make current active and open next ul
             	$(this).parent().addClass('open').find('ul').slideDown();
             	
             	// Change the icon
-            	$(this).parent().find('.zen-icon').removeClass('zen-icon-'+ settings.closeicon).addClass('zen-icon-'+ settings.openicon);
+            	$(this).parent().find('.zen-accordion-trigger').removeClass('zen-icon-'+ settings.closeicon).addClass('zen-icon-'+ settings.openicon);
+           }
+           
+           if(!$(this).hasClass('clicked')) {
+          		$(this).addClass('clicked')
+           		return false;
+           } 
+           
+           if($(e.target).hasClass('zen-accordion-trigger')) {
+	           	return false;	
            }
        }); 
     }

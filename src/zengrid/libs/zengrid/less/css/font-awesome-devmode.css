@@ -6,8 +6,8 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../zengrid/fonts/fontawesome-webfont.eot?v=4.4.0');
-  src: url('../zengrid/fonts/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('../zengrid/fonts/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('../zengrid/fonts/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('../zengrid/fonts/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('../zengrid/fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
+  src: url('../fonts/fontawesome-webfont.eot?v=4.4.0');
+  src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.4.0') format('embedded-opentype'), url('../fonts/fontawesome-webfont.woff2?v=4.4.0') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.4.0') format('woff'), url('../fonts/fontawesome-webfont.ttf?v=4.4.0') format('truetype'), url('../fonts/fontawesome-webfont.svg?v=4.4.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -19,7 +19,9 @@
 .icon-edit:before,
 .icon-folder-2:before,
 .icon-search:before,
-.icon-search {
+.icon-search,
+.icon-chevron-left,
+.icon-chevron-right {
   display: inline-block;
   font: normal normal normal 14px/1em FontAwesome;
   font-size: inherit;
@@ -438,10 +440,12 @@
 .zen-icon-eject:before {
   content: "\f052";
 }
-.zen-icon-chevron-left:before {
+.zen-icon-chevron-left:before,
+.icon-chevron-left:before {
   content: "\f053";
 }
-.zen-icon-chevron-right:before {
+.zen-icon-chevron-right:before,
+.icon-chevron-right:before {
   content: "\f054";
 }
 .zen-icon-plus-circle:before {
@@ -2041,4 +2045,64 @@
 }
 .zen-icon-fonticons:before {
   content: "\f280";
+}
+.zen-icon-reddit-alien:before {
+  content: "\f281";
+}
+.zen-icon-edge:before {
+  content: "\f282";
+}
+.zen-icon-credit-card-alt:before {
+  content: "\f283";
+}
+.zen-icon-codiepie:before {
+  content: "\f284";
+}
+.zen-icon-modx:before {
+  content: "\f285";
+}
+.zen-icon-fort-awesome:before {
+  content: "\f286";
+}
+.zen-icon-usb:before {
+  content: "\f287";
+}
+.zen-icon-product-hunt:before {
+  content: "\f288";
+}
+.zen-icon-mixcloud:before {
+  content: "\f289";
+}
+.zen-icon-scribd:before {
+  content: "\f28a";
+}
+.zen-icon-pause-circle:before {
+  content: "\f28b";
+}
+.zen-icon-pause-circle-o:before {
+  content: "\f28c";
+}
+.zen-icon-stop-circle:before {
+  content: "\f28d";
+}
+.zen-icon-stop-circle-o:before {
+  content: "\f28e";
+}
+.zen-icon-shopping-bag:before {
+  content: "\f290";
+}
+.zen-icon-shopping-basket:before {
+  content: "\f291";
+}
+.zen-icon-hashtag:before {
+  content: "\f292";
+}
+.zen-icon-bluetooth:before {
+  content: "\f293";
+}
+.zen-icon-bluetooth-b:before {
+  content: "\f294";
+}
+.zen-icon-percent:before {
+  content: "\f295";
 }

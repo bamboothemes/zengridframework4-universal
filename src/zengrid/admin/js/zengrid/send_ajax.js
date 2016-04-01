@@ -36,7 +36,7 @@
 		    },
 		    
 		    beforeSend: function () {
-		    
+		    	
 		      	 console.log(target + ' action triggered');
 		      	 $('#log pre').append('Save Action -- \n');
 		      	 $('#log pre').append(target + ' action triggered \n');

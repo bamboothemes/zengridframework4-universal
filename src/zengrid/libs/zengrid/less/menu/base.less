@@ -26,6 +26,13 @@
 	// First level
 	margin: 0;
 	
+	.with-caption {
+		.zen-menu-heading,
+		a {
+			margin-top:-6px;
+			padding-bottom: 7px
+		}
+	}
 	
 	> li {
 		list-style-type: none;
@@ -35,12 +42,10 @@
 		// Nav header
 		a,
 		.zen-menu-heading {
-			color:  @navbar-default-link-color;
 			cursor:pointer;
 			
 			&:hover {
 				text-decoration:none;
-				color:  @navbar-default-link-hover-color;
 			}
 		
 		}
@@ -52,7 +57,6 @@
 			 > a,
 			 > .zen-menu-heading {
 				
-				color: @navbar-default-link-active-color !important;
 				
 				&:hover {
 					
@@ -104,8 +108,7 @@
 						height: 0;
 						margin-top:10px;
 						border-style: solid;
-						border-width: 4px 0 4px 4px;
-						border-color: transparent transparent transparent @dropdown-link-color;
+						border-color: @dropdown-link-color;
 					}	
 				}
 			}
@@ -131,7 +134,7 @@
 		padding: 4px 0 12px;
 		line-height: 1em;
 		color: @navbar-text-color;
-		margin-top: -28px;
+		margin-top: -@navbar-height * 0.4;
 	}	
 	
 	li li {

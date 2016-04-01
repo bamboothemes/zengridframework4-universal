@@ -74,7 +74,6 @@ jQuery(document).ready(function ($) {
 			
 		}
 		
-		console.log('yeah');
 		$('#compile_required').val(1);
 	});
 	
@@ -287,41 +286,7 @@ jQuery(document).ready(function ($) {
 	
 	
 	
-	/*
-	*	
-	*	Toggles for advanced settings
-	*
-	*/
-	
-	var advanced_settings = $('#advanced_setting').val();
-	
-	if(advanced_settings ==='1') {
-		$('#framework-options').addClass('pro').removeClass('basic');
-		$('.toggle-advanced').text('Hide Advanced Options');
-	
-	} else {
 		
-		$('#framework-options').removeClass('pro').addClass('basic');
-		$('.toggle-advanced').text('Show Advanced Options');
-	}
-	
-	
-	
-	$('.toggle-advanced').click(function() {
-		
-		var options = '#framework-options';
-		
-		if($(options).hasClass('basic')) {
-			$(options).addClass('pro').removeClass('basic');
-			$('.toggle-advanced').text('Hide Advanced Options');
-			$('#advanced_setting').val('1');
-		} else {
-			$(options).removeClass('pro').addClass('basic');
-			$('.toggle-advanced').text('Show Advanced Options');
-			$('#advanced_setting').val('0');
-		}
-		return false;
-	});
 	
 	
 	

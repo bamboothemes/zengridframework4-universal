@@ -7796,6 +7796,10 @@ html {
   width: 50%;
   float: left;
 }
+#top-left-row .resizable,
+#top-right-row .resizable {
+  max-width: 260px !important;
+}
 #framework-options .side-drawer .half {
   margin-right: 10px;
 }
@@ -8402,30 +8406,6 @@ html {
   border: 1px solid #eee;
   max-width: 800px;
 }
-.advanced {
-  transition: all 0.4s;
-}
-#framework-options.pro .advanced {
-  opacity: 1;
-  height: auto;
-  visibility: visible;
-}
-#framework-options.basic .advanced,
-#framework-options.pro .not-advanced {
-  opacity: 0;
-  height: 0;
-  visibility: hidden;
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
-  padding-top: 0 !important;
-  margin-top: 0 !important;
-}
-.toggle-advanced {
-  float: left;
-  font-size: 90%;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
 .preview-left {
   float: left;
   margin-right: 40px;
@@ -8539,8 +8519,7 @@ h2#Style {
 .devmode-on #theme label,
 .devmode-on #theme select,
 .devmode-on #theme .checkbox-info,
-.devmode-on #theme .compile-included,
-.devmode-on #theme .toggle-advanced {
+.devmode-on #theme .compile-included {
   display: none;
 }
 .devmode-on #theme #fonts [data-compile="1"] {

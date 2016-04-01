@@ -18,14 +18,9 @@ defined('ZEN_ALLOW') or die(); ?>
 	
 			var item = $(this).text();
 			var id = $(this).attr('id');
-			var advanced = '';
-			
-			if($(this).parent().parent().hasClass('advanced')) {
-				advanced = ' advanced';
-			}
-			
+						
 			if(id !=="") {
-				item = '<li><a class="subnavlink-item' + advanced + '" href="#' + id + '">' + item +'</a>';
+				item = '<li><a class="subnavlink-item" href="#' + id + '">' + item +'</a>';
 				$("#<?php echo $name;?>-subnav ul").append(item);
 			}
 		});

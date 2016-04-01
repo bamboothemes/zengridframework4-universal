@@ -102,7 +102,7 @@ defined('ZEN_ALLOW') or die();
 				var framework_files = "";
 					
 				$('.framework_file_list.active input.framework_files').each(function() {
-						
+						console.log($(this).val());
 					if($(this).val() == '1') {
 						var filename = $(this).attr('data-id');
 						framework_files += filename;
@@ -113,6 +113,7 @@ defined('ZEN_ALLOW') or die();
 				
 				$('#framework_files_group').val(framework_files);
 				
+				console.log(framework_files);
 			});
 			
 			

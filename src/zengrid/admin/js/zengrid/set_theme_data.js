@@ -30,13 +30,18 @@ For usage and examples: colpick.com/plugin
 			$('#style-name').val(clean_theme);
 			$('input#theme').val(clean_theme);
 		
-			// Retrieve the appropriate json file	        	
-	     	$.getJSON( '../' + theme_path + '/settings/themes/' + theme + '.json?v=' + time, function( data ) {
-	     	 
-	     	 
-	     	 // Check to see if the preset being used uses the new nested objects of colors and settings
-	     	 // We have to revert it back to the old way because there is no way to update old themes to the new format until the user saves them.
-
+		
+		// Check json before continuing.
+		// Might take a little longer but is better to check if the json is correct
+		
+	
+		
+		$.getJSON('../' + theme_path + 'settings/themes/' + theme + '.json?v=' + time, function() {})
+		
+		.success(function(data) { 
+				
+				// We have to revert it back to the old way because there is no way to update old themes to the new format until the user saves them.
+				
 	     	 if(data.settings) {
 	     	 
 	     	 	var flattenObject = function(ob) {
@@ -77,9 +82,10 @@ For usage and examples: colpick.com/plugin
 	     	    	
 	     	    	// If its an image file name we remove the folder name
 	     	    	
-	     	    	val = val.replace(/\"..\/..\/../g, '').replace(/"/g, '');
+	     	    	val = val.replace(/\'..\/..\/../g, '').replace(/'/g, '');
 	     	    	
-	     	    		     	    	
+	     	    	
+	     	    	     	    	
 	     	    	// Set the value if its not null
 	     	    	if(val!=="") {
 	   
@@ -153,25 +159,31 @@ For usage and examples: colpick.com/plugin
 	 	    			// Check if checked and set to 1
 	 	    			if(val == 1) {
 	 	    				$('.' + toggle).fadeIn().parent().fadeIn();
-	 	    				$(target).prop('checked', 'true').val(1);
+	 	    				$(target).prop('checked', 'true').val('1').attr('data-stored', '1');
+	 	    				
 	 	    			}
 	 	    			
 	 	    			if(val == "" || val == 0) {
+	 	    				
 	 	    				$('.' + toggle).fadeOut().parent().fadeOut();
-	 	    				$(target).prop('checked', false).val(0);
+	 	    				$(target).prop('checked', false).val('0').attr('data-stored', '0');
 	 	    			}
-	     	    	}
+	 	    		}
 
 					// Select
 					if($(target).is('select')) {
 						// Check if checked and set to 1
+						
 						if(val == "") {
 							$(target + ' option[value="inherit"]').attr('selected', 1);
+														
 						}	else {
 							$(target + ' option[value="'+ val + '"]').attr('selected', 1);
 						}	
 					
 					}
+					
+					
 						     	    	
 	       	    	if(key == "framework_version") {
 	     	    		$('#framework_version').val(val);
@@ -185,7 +197,7 @@ For usage and examples: colpick.com/plugin
 	     	    		$('input.framework_files').removeAttr('checked').val(0);
 	     	    		
 	     	    		var files = val.split('_');
-	     	    		console.log(files);
+	     	    		
 	     	    		$(files).each(function() {
 	     	    			
 	     	    			$('.active input[data-id="' + this + '"]').prop('checked', 'true').val(1);
@@ -211,7 +223,14 @@ For usage and examples: colpick.com/plugin
 	     	  });
 	     	  
 	     	  $('#compile_required').val('0');
-	     	  	
-	     });
+					     	  	
+		})
+		.error(function(data) { 
+		
+			alert("There is an error your theme's saved data. Loading system defaults.");
+		
+		 });
+		
+		
 	};			
 })(jQuery);

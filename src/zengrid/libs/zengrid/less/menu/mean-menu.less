@@ -13,10 +13,22 @@ a.meanmenu-reveal {
 	float: left;
 	width: 100%;
 	position: relative;
-	background: @navbar-default-bg;
+	background: @off-canvas-bg;
 	padding: 4px 0 0;
 	min-height: 42px;
 	z-index: 100;
+	
+	h1,h2,h3,h4,h4,h6,blockquote {
+		color: @off-canvas-header
+	}
+	
+	p {
+		color: @off-canvas-text-color
+	}
+	
+	.cols-2,.cols-3,.cols-4 {
+		width: 100% !important
+	}
 }
 
 .mean-container li.parent .zen-icon-plus,
@@ -33,7 +45,7 @@ a.meanmenu-reveal {
 	top: 0;
 	right: 0;
 	cursor: pointer;
-	color: @navbar-default-link-color;
+	color: @off-canvas-link-color;
 	text-decoration: none;
 	font-size: 16px;
 	text-indent: -9999em;
@@ -44,22 +56,22 @@ a.meanmenu-reveal {
 	font-weight: 700;
 	
 	&:hover {
-		color:@navbar-default-link-hover-color;
+		color:@off-canvas-link-hover-color;
 		
 		span {
-			background: @navbar-default-link-hover-color;
+			background: @off-canvas-link-hover-color;
 		}	
 	}
 }
 
 .mean-container a.meanmenu-reveal span {
 	display: block;
-	background: @navbar-default-link-color;
+	background: @off-canvas-link-color;
 	height: 3px;
 	margin-top: 3px;
 	
 	&:hover {
-		color:@navbar-default-link-hover-color
+		color:@off-canvas-link-hover-color
 	}
 }
 
@@ -99,16 +111,16 @@ a.meanmenu-reveal {
 	margin: 0;
 	text-align: left;
 	cursor:pointer;
-	color: @navbar-default-link-color;
-	border-top: 1px solid lighten(@navbar-default-bg, 8%);
-	border-top: 1px solid darken(@navbar-default-bg, 8%);
+	color: @off-canvas-link-color;
+	border-top: 1px solid lighten(@off-canvas-bg, 8%);
+	border-top: 1px solid darken(@off-canvas-bg, 8%);
 	text-decoration: none;
 	text-transform: uppercase;
 	display: block;
 	width: 100%;
 		
 	&:hover {
-		color: @navbar-default-link-hover-color
+		color: @off-canvas-link-hover-color
 	}
 }
 
@@ -116,8 +128,8 @@ a.meanmenu-reveal {
 .mean-container .mean-nav ul li li span.zen-menu-heading {
 	width: 80%;
 	padding: 0.9em 10%;
-	border-top: 1px solid lighten(@navbar-default-bg, 4%);
-	border-top: 1px solid darken(@navbar-default-bg, 4%);
+	border-top: 1px solid lighten(@off-canvas-bg, 4%);
+	border-top: 1px solid darken(@off-canvas-bg, 4%);
 	text-shadow: none !important;
 	visibility: visible;
 	
@@ -177,7 +189,7 @@ a.meanmenu-reveal {
 	position: absolute;
 	z-index: 1;
 	right: @gutter;
-	color: @navbar-default-link-color
+	color: @off-canvas-link-color
 }
 
 .mean-container .mean-push {
@@ -204,10 +216,10 @@ a.meanmenu-reveal {
 
 .mean-container a.meanmenu-reveal.meanclose .zen-icon {
 	background: none;
-	color: @navbar-default-link-color;
+	color: @off-canvas-link-color;
 	
 	&:hover {
-		color: @navbar-default-link-hover-color;
+		color: @off-canvas-link-hover-color;
 	}
 }
 
@@ -218,7 +230,7 @@ a.meanmenu-reveal {
 .mean-container .zen-menu-caption {
 	font-size:11px;
 	font-style:italic;
-	color: @dropdown-header-color;
+	color: @off-canvas-heading;
 	margin-left:10px;
 	
 }
@@ -235,22 +247,12 @@ a.meanmenu-reveal {
 		.form-group {
 			margin-bottom:0;
 		}
-		
-		input {
-			width:100%;
-			box-sizing:border-box;
-			
-			&[type="checkbox"],
-			&[type="radio"] {
-				width:auto
-			}
-		}
 	}
 
 
 // Offcanvas modules
 
 .mean-menu-open .mean-bar .off-canvas-body {
-	background: @navbar-default-bg;
+	background: @off-canvas-bg;
 	padding-top: 0;
 }

@@ -90,15 +90,13 @@
 				}
 			}
 			
-			
 			// Fullwidth
 			var row_fullwidth = $('#' + modulerow +  '-container-fullwidth').val();
-	 		if(row_fullwidth) {
+	 		if(row_fullwidth =="1") {
 	 			classes += ' zg-fullwidth';
 	 		}
-	 		
 	 		layout[modulerow]['classes']['classes'] = classes;
-	 		
+	 			 		
 	 	});
 
 		return layout;

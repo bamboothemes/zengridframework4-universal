@@ -21,13 +21,28 @@
  			display: block;
  		}
  		
+ 		&:hover {
+ 			.zen-accordion-trigger:before {
+ 				background: @secondary;
+ 				color: #fff
+ 			}
+ 		}
  		
- 		span {
+ 		.zen-icon {
+ 			margin-right: 4px
+ 		}
+ 		
+ 		span.zen-accordion-trigger {
  			cursor: pointer;
- 		 	
+ 		 	margin-right: 0;
  		 	
  			&:hover {
  				color:  @link-hover-color;
+ 				
+ 				&:before {
+ 					background: @secondary;
+ 					color: #fff
+ 				}	
  			}
  			
  			&:before {
@@ -38,12 +53,21 @@
  				line-height: 25px;
  				text-align: center;
  				font-size: 1.3em;
- 				margin-top: -4px
+ 				margin-top: -4px;
+ 				background: @primary;
+ 				color: #fff;
+ 				border-radius:2px;
+ 				.transition();
  			}
  		}
  		
- 		&.open span{
- 			color: @secondary
+ 		&.open span.zen-accordion-trigger{
+ 			color: @secondary;
+ 			
+ 			&:before {
+				background: @secondary;
+				color: #fff
+ 			}
  		}
  	}	
  	&.zen-rounded,

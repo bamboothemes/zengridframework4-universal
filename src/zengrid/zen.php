@@ -1,6 +1,6 @@
 <?php
 /**
- * @package     Zen Grid Framework v4, 1.4.1
+ * @package     Zen Grid Framework v5, 5.0
  * @subpackage  Updated: March 10 2016
  * @author      Joomlabamboo http://www.joomlabamboo.com
  * @copyright   Copyright (C) Joomlabamboo, March 10 2016
@@ -37,16 +37,19 @@ if(!class_exists('Zen4')) {
 				$this->doc  	= JFactory::getDocument();
 			} 
 			
+			// Config params
 			$this->params 	= self::getParams();
 			$this->layout 	= $this->params->layout;
 			$this->params 	= $this->params->params;
+	
+			// Theme params
+			//$this->theme_params = self::getThemeParams()->settings;
+			
 			$this->template_id = self::getTemplateId();
 			$this->template_path = TEMPLATE_PATH_RELATIVE;
 			$this->libs 	= $this->template_path.'zengrid/libs/';
 			$this->is_mobile = false;
 			$this->is_tablet = false;
-		
-			
 		}
 		
 		
@@ -59,6 +62,7 @@ if(!class_exists('Zen4')) {
 		
 		
 		public function get_json($path) {
+			
 			$file = TEMPLATE_PATH .$path;
 			$settings = file_get_contents($file);
 			$settings = stripslashes($settings);
@@ -81,9 +85,10 @@ if(!class_exists('Zen4')) {
 			$settings = TEMPLATE_PATH .'settings/config/config-'.$templateId.'.json';
 			
 			if(file_exists($settings)) {
-				return self::get_json('settings/config/config-'.$templateId.'.json');
+				$settings = self::get_json('settings/config/config-'.$templateId.'.json');
+				return $settings;
 			} else {
-				return self::get_json('settings/config/config-default.json');
+				return self::get_json('settings/default-config.json');
 			}
 		}
 		
@@ -99,7 +104,7 @@ if(!class_exists('Zen4')) {
 		public function getThemeParams() {
 		
 			$settings = TEMPLATE_PATH .'settings/themes/theme.'.$this->params->theme.'.json';
-			
+
 			if(file_exists($settings)) {
 				return self::get_json('settings/themes/theme.'.$this->params->theme.'.json');
 			} else {
@@ -345,6 +350,29 @@ if(!class_exists('Zen4')) {
 		
 		 }
 		 
+		 
+		 /**
+		  * Get responsive classes from class object
+		  *
+		  * 
+		  */
+		 function getResponsiveClasses($row) {
+		 	
+		 	$classes = explode(' ', $this->rowClass($row));
+		 	$responsive = "";
+		 	
+		 	foreach ($classes as $key => $class) {
+		 		$portion = substr($class, 0, 3);
+		 		
+		 		if($portion == "hid") {
+		 			$responsive .= $class;
+		 			$responsive .= ' ';
+		 		}
+		 	}
+		 	
+		 	return $responsive;
+		 }
+		 
 	
 		
 		/**
@@ -405,6 +433,10 @@ if(!class_exists('Zen4')) {
 								}
 								
 								elseif($module == "social") {
+									return true;
+								}
+								
+								elseif($module == "social-mobile") {
 									return true;
 								}
 								
@@ -1022,6 +1054,7 @@ if(!class_exists('Zen4')) {
 					
 					
 					if(!$this->params->load_template_css) {
+						
 						// Set the file extension
 						if($this->params->gzip_css) {
 							$ext = 'php';
@@ -1033,11 +1066,17 @@ if(!class_exists('Zen4')) {
 						$theme = str_replace('theme.[example]-', '', $this->params->theme);
 						$theme = str_replace('presets/theme.[example]-', '', $this->params->theme);
 						
+						if(file_exists(self::template_path() . 'css/theme.'. $theme .'.'. $ext)) {
+							$theme = self::template_path() . 'css/theme.'. $theme .'.'. $ext;
+						} else {
+							$theme = self::template_path() . 'css/theme.template.'. $ext;
+						}
+						
 						if(JOOMLA) {
 							// load the file
-							$this->doc->addStyleSheet(self::template_path() . 'css/theme.'. $theme .'.'. $ext);
+							$this->doc->addStyleSheet($theme);
 						} else {
-							wp_enqueue_style($this->params->theme, '/'.self::template_path() . 'css/theme.'. $theme .'.'. $ext,'',null);
+							wp_enqueue_style($theme,'',null);
 						}
 					}
 					else {
@@ -1069,7 +1108,7 @@ if(!class_exists('Zen4')) {
 						 };
 						 </script>
 						
-						<script src="<?php echo $this->libs;?>/lessjs/less.js" type="text/javascript"></script>
+						<script src="<?php echo $this->libs;?>lessjs/less.js" type="text/javascript"></script>
 						
 						<?php if($this->params->watch_mode) { ?>
 							<script>less.watch();</script>

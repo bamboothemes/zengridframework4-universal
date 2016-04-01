@@ -41,13 +41,13 @@
 				
 				// Get the id
 				var id = $(this).attr('id'); 
-		console.log(id + ' - ' + value);
+		
 				// Create delimited list of variables
 				if(value !=="") {
 					if($(this).hasClass('image-name')) {
 						if(value !== null) {
 							if(value !== "inherit") {
-								settings[id] = '"../../..' + value + '"';
+								settings[id] = "'../../.." + value + "'";
 							} else {
 								settings[id] = "";
 							}
@@ -55,14 +55,24 @@
 					} else {
 						settings[id] = value;
 					}
-				}	 
+				}	else {
+					settings[id] = "";
+				} 
 			    		
 		});
 		
 		
 		// Which files are included
-		var framework_files = $('input#framework_files_group').val();
-			framework_files = framework_files.slice(0,-1);
+		var framework_files = "";
+			$('.framework_list.active input.framework_files').each(function() {
+				
+				if($(this).val() == '1') {
+					var filename = $(this).attr('data-id');
+					framework_files += filename;
+					framework_files += '_';	
+				}
+			});
+			
 		
 		files.framework_files = framework_files;
 		
@@ -97,18 +107,11 @@
 		settings.framework_version = $('#framework_version').val();
 		settings.theme = $('#style-name').val();
 		
-		
-		
-		// Child themes
-		files.childtheme = $('#childtheme').val();
-		
-		
-		
 		theme.settings = settings;
 		theme.colors = colors;
 		theme.files = files;
 
-		//console.log(theme);
+
 		return theme;
-	} 	
+	};
 })(jQuery);

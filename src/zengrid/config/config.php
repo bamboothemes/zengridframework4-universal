@@ -1,6 +1,6 @@
 <?php
 /**
- * @package		Zen Grid Framework v4, 1.4.1
+ * @package		Zen Grid Framework v5, 5.0
  * @subpackage	Updated: March 10 2016
  * @author		Joomlabamboo http://www.joomlabamboo.com
  * @copyright 	Copyright (C) Joomlabamboo, March 10 2016
@@ -14,7 +14,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 /**
  * Form Field class for the Joomla Framework.
  *
- * @package		ZGF4
+ * @package		ZGF5
  * @subpackage	Form
  * @since		1.6
  */
@@ -123,11 +123,9 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				        	
 				        	<li id="<?php echo $safename; ?>">	
 				        		<ul>	
-				        			<?php foreach ($fields as $key => $field) { 
-				        				
-			        					$advanced = (string)$field['advanced']; ?>
+				        			<?php foreach ($fields as $key => $field) { ?>
 			        				
-			        					<li data-display="<?php echo $field['display'];?>" data-name="<?php echo $field['name'];?>" <?php if($advanced) { ?>class="advanced"<?php } ?>>	
+			        					<li data-display="<?php echo $field['display'];?>" data-name="<?php echo $field['name'];?>">	
 	        								<?php $type = (string)$field['type'];
 	        									$description = $field['description'];
 	        									$label = $field['label'];
@@ -263,7 +261,7 @@ defined('ZEN_ALLOW') or die('Restricted access');
 				
 				
 				// Load layout
-				$('#layout_preset').change(function() {
+				$('#apply-layout').click(function() {
 					// Data used for loading layouts from config
 					var data = 'preset';
 					$(document).set_layout_data(data,url,template);

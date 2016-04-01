@@ -18,11 +18,8 @@ $files = $zgf->files(TEMPLATE_PATH.'/settings/layouts/','');
 $master = $zgf->files(TEMPLATE_PATH.'/tpls','');
 $config = $zgf->get_xml('settings/themer.xml');
 
-
 // Read settings
 $settings = $zgf->getsettings();
-
-
 
 // Users can override the positions available by adding 
 // customs/positions.json. Let's check to see if they have done that
@@ -39,12 +36,10 @@ if(file_exists(TEMPLATE_PATH . 'custom/positions.json')) {
 	}
 }
 
+$exclude_params = (array)$zgf->get_json('settings/themer-exclude.json');
 
 
-$colors = array('row-background','container-background', 'text-color', 'heading-color', 'link-color','link-hover-color');
-?>
-
-
+$colors = array('row-background','container-background', 'text-color', 'heading-color', 'link-color','link-hover-color'); ?>
 <div class="layout-container">
 	<div class="browser-toolbar">		
 		<div class="buttons clearfix">
@@ -134,8 +129,6 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 		
 			</div>
 		</div> 
-	
-		
 		<?php foreach ($default_layout as $key => $row) { ?>
 		<div data-id="<?php echo $key;?>_settings" class="side-drawer">
 		<div class="settings-title"><?php echo ucfirst($key);?> Row Settings</div>
@@ -153,7 +146,7 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 						$name = $fields['name'];
 						
 						if($name == "row_styles") {
-							
+						
 							foreach ($fields as $group) { 
 								echo '<div class="zen-toggle '.$group['class'].'">';
 								echo '<h3>'.$group['label'].'</h3>';
@@ -177,7 +170,9 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 									$folder = $block['folder'];
 									$show_empty = $block['show_empty'];
 									
-									if(isset($field['hide_label'])) {
+									if(!in_array($name, $exclude_params)) {
+										
+										if(isset($field['hide_label'])) {
 												$hide_label = $field['hide_label'];
 											} else {
 												$hide_label = 0;
@@ -203,21 +198,13 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 										
 											// Determine the field typr and render the appropriate field
 											echo $zgf->render($type,$description,$label,$options, $name,$class, $value, $tag, $compile,$target, $folder,$show_empty, $hide_label);
-									
+										}
 									}
-									
 									echo '</div>';
-								
-								
-								
 							}
 						}
-					
 				} ?>
-    			
-    			
     		</div>
-    		
     		<div data-target="display"  class="tab-panel active">
     			<div class="zen-toggle first"><h3>Available modules</h3></div>
     			<div class="zen-toggle-content">
@@ -248,14 +235,11 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 	    						<a href="#" class="stack-positions" data-id="hidden-phones">Hide</a>
 	    						<a href="#" class="stack-positions" data-id="no-change-phones">No Change</a>
 	    					</div>
-	    					
 	    					<div>
 	    						<span class="stack-positions-label">Nav Collapse</span>
 	    						<a class="stack-positions" data-id="stack-navcollapse" href="#">Stack</a>
 	    						<a class="stack-positions" data-id="hidden-navcollapse" href="#">Hide</a>
 	    					</div>
-	    					
-	    					
 	    					<div>
 	    						<span class="stack-positions-label">Grid collapse</span>
 	    						<a class="stack-positions" data-id="stack-gridcollapse" href="#">Stack</a>
@@ -281,22 +265,17 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 				
 			
 				setTimeout( 
-				
 					function() {
-					
 						// USed unused modules
 						$('[data-row="<?php echo $key;?>-row"] .resizable').each(function() {
 							var active = $(this).attr('data-active');
 							if(active =="1") {
-								
 								var id = $(this).attr('id');
 								$('[data-id="<?php echo $key;?>_settings"].side-drawer .unused-modules [data-id="'+id+'"]').hide();
 							}
 						});
 				
 					}, 2000);
-				
-				
 				
 				$(document).on('click', '.<?php echo $key;?>_edit-row', function() {
 					// Position
@@ -313,15 +292,12 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 		</script>
 		
 		<?php } ?>
-		
-		 
-		 <div id="resize-container" class="advanced"></div>
+		<div id="resize-container" class="advanced"></div>
 
 		 <script>
 		 	jQuery(document).ready(function($) {
 		 		
-		 		 
-		 		 $('.zen-toggle.first').next('.zen-toggle-content').slideDown();
+		 		$('.zen-toggle.first').next('.zen-toggle-content').slideDown();
 		 		 
 		 		$('.zen-toggle').click(function() {
 		 			$(this).next('.zen-toggle-content').slideToggle();
@@ -332,9 +308,7 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 		 			$('[data-id="general-settings"].side-drawer').fadeIn();
 		 		});
 		 		
-		
-		 		
-		 		$('[data-id="general-settings"] .settings-options li').click(function() {
+				$('[data-id="general-settings"] .settings-options li').click(function() {
 		 			$('[data-id="general-settings"] .settings-options li').removeClass('active');
 		 			$(this).addClass('active');
 		 			var target = $(this).attr('data-id');
@@ -344,6 +318,4 @@ $colors = array('row-background','container-background', 'text-color', 'heading-
 		 		});
 		 		
 		});
-		 
-		 </script>
- 
+		</script>

@@ -54,7 +54,7 @@ For usage and examples: colpick.com/plugin
 			 		console.log(data);
 			 },
 			 	success: function (data) {
-			 		
+			
 			 		$('#resize-container').append(data);
 			
 			 		$( ".resizable" ).each(function() {

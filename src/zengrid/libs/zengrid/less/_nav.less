@@ -188,6 +188,10 @@
 			display: block;
 			padding: @button-padding 0;
 			
+			a,.zen-menu-heading {
+				display: block
+			}
+			
 			a:not(.btn),span {
 				padding: @button-padding 0;
 				color:  @stacked-link-color;
@@ -256,6 +260,11 @@
 		li { 
 			display:inline-table;
 			float:none !important;
+			
+			a,
+			span.zen-menu-heading {
+				float: none !important
+			}
 			
 			
 			li {
